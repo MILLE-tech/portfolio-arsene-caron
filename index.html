@@ -1,0 +1,2770 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Arsène Caron | Administrateur systèmes | Portfolio BTS SIO SISR</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <meta name="description" content="Portfolio d'Arsène Caron, administrateur systèmes en BTS SIO SISR. Spécialisé en administration systèmes, virtualisation et sécurité réseau.">
+    <meta name="keywords" content="Arsène Caron, BTS SIO, SISR, Infrastructure, Réseaux, Windows Server, Active Directory, Linux, Portfolio">
+    <meta name="author" content="Arsène Caron">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Arsène Caron - Administrateur systèmes">
+    <meta property="og:description" content="De l'idée à l'infrastructure - Portfolio BTS SIO SISR">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://arsene-caron.vercel.app">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <style>
+        :root {
+            /* Light Mode - Gris Perle + Turquoise Pastel */
+            --bg-primary: #F0F4F8;
+            --bg-secondary: #E1E8ED;
+            --glass-bg: rgba(255, 255, 255, 0.4);
+            --glass-border: rgba(160, 211, 227, 0.3);
+            --text-primary: #2D3748;
+            --text-secondary: #4A5568;
+            --text-muted: #718096;
+            --accent: #5EAFC6;
+            --accent-dark: #4A8FA0;
+            --accent-light: #9DCFDE;
+            --dark-gray: #2D3748;
+            --light-gray: #CBD5E0;
+            
+            /* Glassmorphism */
+            --blur: blur(20px);
+            --glass-shadow: 0 8px 32px 0 rgba(94, 175, 198, 0.15);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0F1419;
+            --bg-secondary: #1A1F2E;
+            --glass-bg: rgba(26, 31, 46, 0.5);
+            --glass-border: rgba(94, 175, 198, 0.2);
+            --text-primary: #F7FAFC;
+            --text-secondary: #E2E8F0;
+            --text-muted: #A0AEC0;
+            --accent: #5EAFC6;
+            --accent-dark: #4A8FA0;
+            --accent-light: #9DCFDE;
+            --dark-gray: #1A202C;
+            --light-gray: #4A5568;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Sora', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+            transition: background 0.4s ease, color 0.4s ease;
+        }
+
+        /* Particle Background */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.6;
+        }
+
+        /* Gradient Mesh Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(20, 184, 166, 0.15), transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(45, 212, 191, 0.1), transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(94, 234, 212, 0.1), transparent 50%);
+            animation: gradientMove 20s ease infinite;
+            z-index: 0;
+        }
+
+        @keyframes gradientMove {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(5%, 5%) rotate(5deg); }
+        }
+
+        /* Glassmorphism Base */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+        }
+
+        /* Navigation avec contrôles intégrés */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 0;
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: var(--glass-bg);
+            backdrop-filter: var(--blur);
+            box-shadow: var(--glass-shadow);
+        }
+
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .nav-center {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .control-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            background: transparent;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            color: var(--accent);
+        }
+
+        .control-btn:hover {
+            background: var(--accent);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .lang-toggle {
+            width: auto;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-family: 'Sora', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            z-index: 1001;
+            transform-origin: left;
+            transition: transform 0.1s;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Grid asymétrique pour sections */
+        .asymmetric-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .col-full {
+            grid-column: 1 / -1;
+        }
+
+        .col-8 {
+            grid-column: 1 / 9;
+        }
+
+        .col-4 {
+            grid-column: 9 / -1;
+        }
+
+        .col-7 {
+            grid-column: 1 / 8;
+        }
+
+        .col-5 {
+            grid-column: 8 / -1;
+        }
+
+        /* Section */
+        section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        section:first-of-type {
+            padding-top: 10rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .avatar {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            font-weight: 800;
+            color: white;
+            position: relative;
+        }
+
+        .avatar::before {
+            content: '';
+            position: absolute;
+            inset: -10px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            opacity: 0.3;
+            filter: blur(20px);
+            z-index: -1;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 2.5rem;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(20, 184, 166, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--accent);
+            font-weight: 700;
+            border: 2px solid var(--accent);
+            transition: all 0.3s;
+        }
+
+        .social-link svg {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+            transition: all 0.3s;
+        }
+
+        .control-btn svg {
+            stroke: currentColor;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Glass Card */
+        .glass-card {
+            border-radius: 25px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(20, 184, 166, 0.2);
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: var(--accent);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Experience Item */
+        .experience-item {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 3rem;
+            border-left: 2px solid var(--accent);
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 20px var(--accent);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .experience-item h3 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-meta {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .experience-item p {
+            color: var(--text-secondary);
+            margin: 1rem 0;
+            line-height: 1.8;
+        }
+
+        .experience-item ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .experience-item li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.7rem;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .experience-item li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .tech-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-badge {
+            padding: 0.3rem 0.8rem;
+            background: rgba(20, 184, 166, 0.1);
+            border: 1px solid var(--accent);
+            border-radius: 15px;
+            font-size: 0.75rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Project Card */
+        .project-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-card h3 {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .project-section {
+            margin: 1.5rem 0;
+        }
+
+        .project-section h4 {
+            font-size: 1.1rem;
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .project-section p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            background: var(--bg-secondary);
+            border-radius: 15px;
+            margin: 1.5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-style: italic;
+            border: 2px dashed var(--light-gray);
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--accent), var(--accent-light));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.6rem;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 3px solid var(--bg-primary);
+            box-shadow: 0 0 20px var(--accent);
+        }
+
+        .timeline-item h4 {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item .year {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-family: 'IBM Plex Mono', monospace;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item p {
+            color: var(--text-secondary);
+        }
+
+        /* AI News Cards */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .news-card {
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .news-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .news-content {
+            padding: 1.5rem;
+        }
+
+        .news-card h4 {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .news-date {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 0.8rem;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .news-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .news-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .news-link:hover {
+            transform: translateX(5px);
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 15px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg);
+            backdrop-filter: var(--blur);
+            color: var(--text-primary);
+            font-family: 'Sora', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(20, 184, 166, 0.2);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-status {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 15px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+
+        .form-status.success {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid #10B981;
+            color: #10B981;
+        }
+
+        .form-status.error {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid #EF4444;
+            color: #EF4444;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
+            border: none;
+            font-size: 1.5rem;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(20, 184, 166, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        footer p {
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Info Box */
+        .info-box {
+            padding: 1.5rem;
+            background: rgba(20, 184, 166, 0.05);
+            border-left: 3px solid var(--accent);
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .info-box h4 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .info-box ul {
+            list-style: none;
+        }
+
+        .info-box li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .info-box li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* Certification Cards avec effet Flip */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .cert-card {
+            perspective: 1000px;
+            height: 320px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .cert-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .cert-card.flipped .cert-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .cert-card-front,
+        .cert-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            border-radius: 20px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .cert-card-front {
+            background: var(--glass-bg);
+            backdrop-filter: var(--blur);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+        }
+
+        .cert-card-front::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            border-radius: 20px 20px 0 0;
+        }
+
+        .cert-card-back {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: white;
+            transform: rotateY(180deg);
+            padding: 2rem 1.5rem;
+            overflow-y: auto;
+            justify-content: flex-start;
+        }
+
+        .cert-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .cert-card-front h4 {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .cert-status {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cert-card-back h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            margin-top: 0.5rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .cert-details {
+            width: 100%;
+            text-align: left;
+        }
+
+        .cert-detail-item {
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .cert-detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .cert-detail-label {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+        }
+
+        .cert-detail-value {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .cert-badge {
+            width: 60px;
+            height: 60px;
+            margin: 1rem auto 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .flip-hint {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            opacity: 0.6;
+        }
+        
+        .cert-view-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.7rem 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            border-radius: 25px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .cert-view-btn:hover {
+            background: white;
+            color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-center {
+                display: none;
+            }
+
+            .asymmetric-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .col-8, .col-4, .col-7, .col-5 {
+                grid-column: 1 / -1;
+            }
+
+            section {
+                padding: 4rem 0;
+            }
+
+            section:first-of-type {
+                padding-top: 8rem;
+            }
+
+            .avatar {
+                width: 140px;
+                height: 140px;
+                font-size: 3rem;
+            }
+
+            .timeline {
+                padding-left: 2rem;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .back-to-top {
+                bottom: 1rem;
+                right: 1rem;
+            }
+        }
+
+        /* Hidden class */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Particles Background -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <a href="#" class="logo" style="display: flex; align-items: center; gap: 0.5rem;">
+                <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#5EAFC6;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#9DCFDE;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="32" height="32" rx="8" fill="url(#logoGrad)"/>
+                    <text x="16" y="22" font-family="'Sora', sans-serif" font-size="14" font-weight="800" fill="white" text-anchor="middle">AC</text>
+                </svg>
+            </a>
+            <ul class="nav-center">
+                <li><a href="#home" class="lang-fr">Accueil</a><a href="#home" class="lang-en hidden">Home</a></li>
+                <li><a href="#about" class="lang-fr">Moi</a><a href="#about" class="lang-en hidden">About</a></li>
+                <li><a href="#bts" class="lang-fr">BTS</a><a href="#bts" class="lang-en hidden">BTS</a></li>
+                <li><a href="#experience" class="lang-fr">Expérience</a><a href="#experience" class="lang-en hidden">Experience</a></li>
+                <li><a href="#projects" class="lang-fr">Projets</a><a href="#projects" class="lang-en hidden">Projects</a></li>
+                <li><a href="#ai-watch" class="lang-fr">Veille IA</a><a href="#ai-watch" class="lang-en hidden">AI Watch</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <button class="control-btn lang-toggle" id="langToggle" title="Changer de langue">
+                    <span class="lang-fr">EN</span>
+                    <span class="lang-en hidden">FR</span>
+                </button>
+                <button class="control-btn" id="themeToggle" title="Changer de thème">
+                    <svg class="theme-light" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                    <svg class="theme-dark hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="avatar" style="background-image: url('images/avataaars.png'); background-size:cover;"></div>
+                
+                <h1>Arsène Caron</h1>
+                
+                <p class="subtitle lang-fr">Administrateur systèmes</p>
+                <p class="subtitle lang-en hidden">Infrastructure & Network Technician</p>
+                
+                <p class="tagline lang-fr">« De l'idée à l'infrastructure »</p>
+                <p class="tagline lang-en hidden">« From Idea to Infrastructure »</p>
+
+                <div class="btn-group">
+                    <a href="#skills" class="btn btn-primary lang-fr">Voir mes compétences</a>
+                    <a href="#skills" class="btn btn-primary lang-en hidden">View my skills</a>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://github.com/MILLE-tech" target="_blank" class="social-link" title="GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                            <path d="M9 18c-4.51 2-5-2-7-2"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/arsène-caron-2b585b311" target="_blank" class="social-link" title="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                            <rect width="4" height="12" x="2" y="9"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- About Me Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="lang-fr">👋 À Propos de Moi</h2>
+            <h2 class="lang-en hidden">👋 About Me</h2>
+
+            <div class="glass-card glass">
+                <div style="display: flex; gap: 3rem; align-items: center;">
+                    <div style="width: 200px; height: 200px; border-radius: 20px; background: linear-gradient(135deg, var(--accent), var(--accent-light)); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 5rem; color: white;">
+                        💻
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.8rem; color: var(--title-color); margin-bottom: 1rem;" class="lang-fr">Passionné par l'Infrastructure IT</h3>
+                        <h3 style="font-size: 1.8rem; color: var(--title-color); margin-bottom: 1rem;" class="lang-en hidden">Passionate about IT Infrastructure</h3>
+                        
+                        <p class="lang-fr" style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem;">
+                            Je suis Arsène Caron, étudiant en BTS SIO option SISR à INGETIS Paris. Passionné 
+                            par les technologies de l'infrastructure et des réseaux, je me spécialise dans 
+                            l'administration des systèmes, la virtualisation et la sécurisation des infrastructures IT.
+                        </p>
+                        <p class="lang-en hidden" style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem;">
+                            I'm Arsène Caron, BTS SIO SISR student at INGETIS Paris. Passionate about infrastructure 
+                            and network technologies, I specialize in systems administration, virtualization and 
+                            IT infrastructure security.
+                        </p>
+
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
+                            <span style="padding: 0.6rem 1.2rem; background: rgba(94, 175, 198, 0.1); border: 1px solid var(--accent); border-radius: 20px; color: var(--accent); font-weight: 600; font-size: 0.9rem;" class="lang-fr">🎯 Rigoureux</span>
+                            <span style="padding: 0.6rem 1.2rem; background: rgba(94, 175, 198, 0.1); border: 1px solid var(--accent); border-radius: 20px; color: var(--accent); font-weight: 600; font-size: 0.9rem;" class="lang-fr">💡 Curieux</span>
+                            <span style="padding: 0.6rem 1.2rem; background: rgba(94, 175, 198, 0.1); border: 1px solid var(--accent); border-radius: 20px; color: var(--accent); font-weight: 600; font-size: 0.9rem;" class="lang-fr">🚀 Motivé</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BTS Section -->
+    <section id="bts">
+        <div class="container">
+            <h2 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 3rem; color: var(--title-color);" class="lang-fr">
+                🎓 BTS SIO - SISR
+            </h2>
+
+            <div class="glass-card glass">
+                <span class="badge lang-fr">INGETIS Paris - 5ème arrondissement</span>
+                
+                <h3 style="font-size: 1.8rem; margin: 1rem 0; color: var(--title-color);" class="lang-fr">
+                    Services Informatiques aux Organisations
+                </h3>
+
+                <p class="lang-fr" style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 2rem;">
+                    Le BTS SIO option SISR forme des techniciens capables d'installer, administrer et sécuriser 
+                    des infrastructures systèmes et réseaux. Formation de 2 ans à INGETIS Paris.
+                </p>
+
+                <!-- Programme -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin: 2rem 0;">
+                    <div style="padding: 2rem; border-left: 4px solid var(--accent);" class="glass">
+                        <h4 style="font-size: 1.5rem; color: var(--title-color); margin-bottom: 1rem;" class="lang-fr">
+                            📚 Première Année
+                        </h4>
+                        <ul style="list-style: none;">
+                            <li style="padding-left: 1.5rem; margin-bottom: 0.7rem; position: relative; color: var(--text-secondary);">
+                                <span style="position: absolute; left: 0; color: var(--accent); font-weight: 700;">▸</span>
+                                Fondamentaux des réseaux (TCP/IP, modèle OSI)
+                            </li>
+                            <li style="padding-left: 1.5rem; margin-bottom: 0.7rem; position: relative; color: var(--text-secondary);">
+                                <span style="position: absolute; left: 0; color: var(--accent); font-weight: 700;">▸</span>
+                                Administration Windows Server & Linux
+                            </li>
+                            <li style="padding-left: 1.5rem; margin-bottom: 0.7rem; position: relative; color: var(--text-secondary);">
+                                <span style="position: absolute; left: 0; color: var(--accent); font-weight: 700;">▸</span>
+                                Virtualisation (VMware, Hyper-V)
+                            </li>
+                            <li style="padding-left: 1.5rem; margin-bottom: 0.7rem; position: relative; color: var(--text-secondary);">
+                                <span style="position: absolute; left: 0; color: var(--accent); font-weight: 700;">▸</span>
+                                Cybersécurité niveau 1
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div style="padding: 2rem; border-left: 4px solid var(--accent);" class="glass">
+                        <h4 style="font-size: 1.5rem; color: var(--title-color); margin-bottom: 1rem;" class="lang-fr">
+                            🚀 Deuxième Année
+                        </h4>
+                        <ul style="list-style: none;">
+                            <li style="padding-left: 1.5rem; margin-bottom: 0.7rem; position: relative; color: var(--text-secondary);">
+                                <span style="position: absolute; left: 0; color: var(--accent); font-weight: 700;">▸</span>
+                                Architectures réseau avancées (VLAN, routage)
+                            </li>
+                            <li style="padding-left: 1.5rem; margin-bottom: 0.7rem; position: relative; color: var(--text-secondary);">
+                                <span style="position: absolute; left: 0; color: var(--accent); font-weight: 700;">▸</span>
+                                Active Directory et stratégies de groupe
+                            </li>
+                            <li style="padding-left: 1.5rem; margin-bottom: 0.7rem; position: relative; color: var(--text-secondary);">
+                                <span style="position: absolute; left: 0; color: var(--accent); font-weight: 700;">▸</span>
+                                Cloud Computing (Azure, AWS)
+                            </li>
+                            <li style="padding-left: 1.5rem; margin-bottom: 0.7rem; position: relative; color: var(--text-secondary);">
+                                <span style="position: absolute; left: 0; color: var(--accent); font-weight: 700;">▸</span>
+                                Projets professionnels (E4, E5)
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Vidéo YouTube -->
+                <h4 style="color: var(--title-color); margin: 2rem 0 1rem; font-size: 1.3rem;" class="lang-fr">
+                    📹 Découvrir le BTS SIO
+                </h4>
+
+                <div style="padding: 2rem; background: rgba(94, 175, 198, 0.1); border: 2px solid var(--accent); border-radius: 20px; text-align: center; margin: 2rem 0;">
+                    <h4 style="color: var(--title-color); margin-bottom: 1rem; font-size: 1.3rem;">
+                        📹 Découvrir le BTS SIO
+                    </h4>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Regardez la vidéo de présentation du BTS SIO
+                    </p>
+                    <a href="https://youtu.be/kfgHfSGnSfA" target="_blank" class="btn btn-primary" style="display: inline-block;">
+                        ▶️ Voir la vidéo sur YouTube
+                    </a>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            <h3 style="color: var(--title-color); margin: 3rem 0 2rem; font-size: 2rem;" class="lang-fr">
+                🏆 Mes Certifications
+            </h3>
+            <h3 style="color: var(--title-color); margin: 3rem 0 2rem; font-size: 2rem;" class="lang-en hidden">
+                🏆 My Certifications
+            </h3>
+
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem; font-style: italic;" class="lang-fr">
+                💡 Cliquez sur une carte pour voir les détails
+            </p>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem; font-style: italic;" class="lang-en hidden">
+                💡 Click on a card to see details
+            </p>
+
+            <div class="cert-grid">
+                <!-- Cisco CCNA -->
+                <div class="cert-card" onclick="this.classList.toggle('flipped')">
+                    <div class="cert-card-inner">
+                        <div class="cert-card-front">
+                            <div class="cert-icon">📡</div>
+                            <h4>Cisco CCNA</h4>
+                            <p class="cert-status lang-fr">En cours</p>
+                            <p class="cert-status lang-en hidden">In Progress</p>
+                            <p class="flip-hint">👆 Cliquer pour détails</p>
+                        </div>
+                        <div class="cert-card-back">
+                            <h4>Cisco CCNA</h4>
+                            <div class="cert-details">
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Statut</div>
+                                    <div class="cert-detail-label lang-en hidden">Status</div>
+                                    <div class="cert-detail-value lang-fr">En cours de préparation</div>
+                                    <div class="cert-detail-value lang-en hidden">In Progress</div>
+                                </div>
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Organisme</div>
+                                    <div class="cert-detail-label lang-en hidden">Organization</div>
+                                    <div class="cert-detail-value">Cisco</div>
+                                </div>
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Date prévue</div>
+                                    <div class="cert-detail-label lang-en hidden">Expected Date</div>
+                                    <div class="cert-detail-value">2026</div>
+                                </div>
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Compétences</div>
+                                    <div class="cert-detail-label lang-en hidden">Skills</div>
+                                    <div class="cert-detail-value" style="font-size: 0.85rem;">Réseaux, Routage, Switching, IPv4/IPv6</div>
+                                </div>
+                            </div>
+                            <div class="cert-badge">🎯</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SecNum -->
+                <div class="cert-card" onclick="this.classList.toggle('flipped')">
+                    <div class="cert-card-inner">
+                        <div class="cert-card-front">
+                            <div class="cert-icon">🔒</div>
+                            <h4>SecNum</h4>
+                            <p class="cert-status lang-fr">Obtenue</p>
+                            <p class="cert-status lang-en hidden">Obtained</p>
+                            <p class="flip-hint">👆 Cliquer pour détails</p>
+                        </div>
+                        <div class="cert-card-back">
+                            <h4>SecNum Académie</h4>
+                            <div class="cert-details">
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Statut</div>
+                                    <div class="cert-detail-label lang-en hidden">Status</div>
+                                    <div class="cert-detail-value lang-fr">✅ Certifié</div>
+                                    <div class="cert-detail-value lang-en hidden">✅ Certified</div>
+                                </div>
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Organisme</div>
+                                    <div class="cert-detail-label lang-en hidden">Organization</div>
+                                    <div class="cert-detail-value">ANSSI</div>
+                                </div>
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Date d'obtention</div>
+                                    <div class="cert-detail-label lang-en hidden">Obtained Date</div>
+                                    <div class="cert-detail-value">2024</div>
+                                </div>
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Compétences</div>
+                                    <div class="cert-detail-label lang-en hidden">Skills</div>
+                                    <div class="cert-detail-value" style="font-size: 0.85rem;">Cybersécurité, Protection des données</div>
+                                </div>
+                            </div>
+                            <div class="cert-badge">🏆</div>
+                            <a href="certifs/Attesation ANSSI.pdf" class="cert-view-btn lang-fr" onclick="event.stopPropagation();">
+                                📄 Voir le certificat
+                            </a>
+                            <a href="certifs/Attesation ANSSI.pdf" class="cert-view-btn lang-en hidden" onclick="event.stopPropagation();">
+                                📄 View certificate
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cisco NetAcad -->
+                <div class="cert-card" onclick="this.classList.toggle('flipped')">
+                    <div class="cert-card-inner">
+                        <div class="cert-card-front">
+                            <div class="cert-icon">🌐</div>
+                            <h4>Cisco NetAcad</h4>
+                            <p class="cert-status lang-fr">Obtenue</p>
+                            <p class="cert-status lang-en hidden">Obtained</p>
+                            <p class="flip-hint">👆 Cliquer pour détails</p>
+                        </div>
+                        <div class="cert-card-back">
+                            <h4>Cisco Networking Academy</h4>
+                            <div class="cert-details">
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Statut</div>
+                                    <div class="cert-detail-label lang-en hidden">Status</div>
+                                    <div class="cert-detail-value lang-fr">✅ Certifié</div>
+                                    <div class="cert-detail-value lang-en hidden">✅ Certified</div>
+                                </div>
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Organisme</div>
+                                    <div class="cert-detail-label lang-en hidden">Organization</div>
+                                    <div class="cert-detail-value">Cisco</div>
+                                </div>
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Date d'obtention</div>
+                                    <div class="cert-detail-label lang-en hidden">Obtained Date</div>
+                                    <div class="cert-detail-value">2024</div>
+                                </div>
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Compétences</div>
+                                    <div class="cert-detail-label lang-en hidden">Skills</div>
+                                    <div class="cert-detail-value" style="font-size: 0.85rem;">Fondamentaux réseaux, Configuration Cisco</div>
+                                </div>
+                            </div>
+                            <div class="cert-badge">🏆</div>
+                            <a href="certifs/Cisco.pdf" class="cert-view-btn lang-fr" onclick="event.stopPropagation();">
+                                📄 Voir le certificat
+                            </a>
+                            <a href="certifs/Cisco.pdf" class="cert-view-btn lang-en hidden" onclick="event.stopPropagation();">
+                                📄 View certificate
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RGPD CNIL -->
+                <div class="cert-card" onclick="this.classList.toggle('flipped')">
+                    <div class="cert-card-inner">
+                        <div class="cert-card-front">
+                            <div class="cert-icon">📋</div>
+                            <h4 class="lang-fr">Atelier RGPD CNIL</h4>
+                            <h4 class="lang-en hidden">GDPR Workshop CNIL</h4>
+                            <p class="cert-status lang-fr">Obtenue</p>
+                            <p class="cert-status lang-en hidden">Obtained</p>
+                            <p class="flip-hint">👆 Cliquer pour détails</p>
+                        </div>
+                        <div class="cert-card-back">
+                            <h4 class="lang-fr">Atelier RGPD</h4>
+                            <h4 class="lang-en hidden">GDPR Workshop</h4>
+                            <div class="cert-details">
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Statut</div>
+                                    <div class="cert-detail-label lang-en hidden">Status</div>
+                                    <div class="cert-detail-value lang-fr">✅ Validé</div>
+                                    <div class="cert-detail-value lang-en hidden">✅ Validated</div>
+                                </div>
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Organisme</div>
+                                    <div class="cert-detail-label lang-en hidden">Organization</div>
+                                    <div class="cert-detail-value">CNIL</div>
+                                </div>
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Date d'obtention</div>
+                                    <div class="cert-detail-label lang-en hidden">Obtained Date</div>
+                                    <div class="cert-detail-value">2024</div>
+                                </div>
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Compétences</div>
+                                    <div class="cert-detail-label lang-en hidden">Skills</div>
+                                    <div class="cert-detail-value" style="font-size: 0.85rem;" class="lang-fr">Protection des données, RGPD</div>
+                                    <div class="cert-detail-value" style="font-size: 0.85rem;" class="lang-en hidden">Data Protection, GDPR</div>
+                                </div>
+                            </div>
+                            <div class="cert-badge">🏆</div>
+                            <a href="certifs/CNIL.pdf" class="cert-view-btn lang-fr" onclick="event.stopPropagation();">
+                                📄 Voir le certificat
+                            </a>
+                            <a href="certifs/CNIL.pdf" class="cert-view-btn lang-en hidden" onclick="event.stopPropagation();">
+                                📄 View certificate
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CoinAcademy -->
+                <div class="cert-card" onclick="this.classList.toggle('flipped')">
+                    <div class="cert-card-inner">
+                        <div class="cert-card-front">
+                            <div class="cert-icon">💰</div>
+                            <h4>CoinAcademy</h4>
+                            <p class="cert-status lang-fr">Obtenue</p>
+                            <p class="cert-status lang-en hidden">Obtained</p>
+                            <p class="flip-hint">👆 Cliquer pour détails</p>
+                        </div>
+                        <div class="cert-card-back">
+                            <h4>CoinAcademy</h4>
+                            <div class="cert-details">
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Statut</div>
+                                    <div class="cert-detail-label lang-en hidden">Status</div>
+                                    <div class="cert-detail-value lang-fr">✅ Certifié</div>
+                                    <div class="cert-detail-value lang-en hidden">✅ Certified</div>
+                                </div>
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Organisme</div>
+                                    <div class="cert-detail-label lang-en hidden">Organization</div>
+                                    <div class="cert-detail-value">CoinAcademy</div>
+                                </div>
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Date d'obtention</div>
+                                    <div class="cert-detail-label lang-en hidden">Obtained Date</div>
+                                    <div class="cert-detail-value">2024</div>
+                                </div>
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Compétences</div>
+                                    <div class="cert-detail-label lang-en hidden">Skills</div>
+                                    <div class="cert-detail-value" style="font-size: 0.85rem;">Blockchain, Cryptomonnaies</div>
+                                </div>
+                            </div>
+                            <div class="cert-badge">🏆</div>
+                            <a href="certifs/Crypto.pdf" class="cert-view-btn lang-fr" onclick="event.stopPropagation();">
+                                📄 Voir le certificat
+                            </a>
+                            <a href="certifs/Crypto.pdf" class="cert-view-btn lang-en hidden" onclick="event.stopPropagation();">
+                                📄 View certificate
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title lang-fr">💼 Expérience Professionnelle</h2>
+            <h2 class="section-title lang-en hidden">💼 Professional Experience</h2>
+
+            <div class="glass-card glass">
+                <div class="experience-item">
+                    <span class="badge lang-fr">EN COURS</span>
+                    <span class="badge lang-en hidden">CURRENT</span>
+                    
+                    <div class="experience-header">
+                        <div>
+                            <h3 class="lang-fr">Alternant Technicien Infrastructure</h3>
+                            <h3 class="lang-en hidden">Infrastructure Technician Apprentice</h3>
+                            <p class="experience-meta">TDF • <span class="lang-fr">Alternance</span><span class="lang-en hidden">Work-study</span> • <span class="lang-fr">10 mois</span><span class="lang-en hidden">10 months</span></p>
+                        </div>
+                    </div>
+
+                    <p class="lang-fr">
+                        En alternance chez TDF, leader de l'audiovisuel et des télécommunications, je contribue 
+                        à la maintenance et l'évolution de l'infrastructure IT de l'entreprise.
+                    </p>
+                    <p class="lang-en hidden">
+                        Work-study at TDF, leader in audiovisual and telecommunications, contributing to IT 
+                        infrastructure maintenance and evolution.
+                    </p>
+
+                    <ul class="lang-fr">
+                        <li><strong>Ticketing & Support :</strong> Gestion d'incidents via système de ticketing, support technique niveau 2</li>
+                        <li><strong>IA Générative :</strong> Mise en production d'une solution d'IA pour optimiser les processus internes</li>
+                        <li><strong>Virtualisation :</strong> Création et configuration de machines virtuelles de préproduction Windows 10</li>
+                        <li><strong>Monitoring :</strong> Mise à jour et déploiement des agents NCPA pour la supervision</li>
+                        <li><strong>Documentation :</strong> Rédaction de procédures techniques et guides d'utilisation</li>
+                    </ul>
+
+                    <ul class="lang-en hidden">
+                        <li><strong>Ticketing & Support:</strong> Incident management via ticketing system, level 2 technical support</li>
+                        <li><strong>Generative AI:</strong> Production deployment of AI solution to optimize internal processes</li>
+                        <li><strong>Virtualization:</strong> Creation and configuration of Windows 10 pre-production virtual machines</li>
+                        <li><strong>Monitoring:</strong> Update and deployment of NCPA agents for monitoring</li>
+                        <li><strong>Documentation:</strong> Writing technical procedures and user guides</li>
+                    </ul>
+
+                    <div class="tech-badges">
+                        <span class="tech-badge">Windows 10</span>
+                        <span class="tech-badge">Virtualisation</span>
+                        <span class="tech-badge">NCPA</span>
+                        <span class="tech-badge">Support N2</span>
+                        <span class="tech-badge">IA</span>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <h3 class="lang-fr">Stage Technicien Systèmes</h3>
+                            <h3 class="lang-en hidden">Systems Technician Internship</h3>
+                            <p class="experience-meta lang-fr">Mairie de Yerres • Stage • 2 mois</p>
+                            <p class="experience-meta lang-en hidden">Yerres City Hall • Internship • 2 months</p>
+                        </div>
+                    </div>
+
+                    <p class="lang-fr">
+                        Stage au sein des services informatiques de la ville, centré sur le développement et le 
+                        déploiement d'une solution de gestion du parc automobile municipal.
+                    </p>
+                    <p class="lang-en hidden">
+                        Internship in the city's IT services, focused on developing and deploying a vehicle fleet 
+                        management solution for the municipality.
+                    </p>
+
+                    <ul class="lang-fr">
+                        <li><strong>Développement :</strong> Création d'une application de gestion du parc automobile</li>
+                        <li><strong>Infrastructure :</strong> Mise en place d'une VM Windows 10 pour héberger l'application en production</li>
+                        <li><strong>Haute disponibilité :</strong> Configuration pour un fonctionnement 24/7 de la solution</li>
+                        <li><strong>Formation :</strong> Accompagnement et formation des utilisateurs finaux</li>
+                    </ul>
+
+                    <ul class="lang-en hidden">
+                        <li><strong>Development:</strong> Creation of vehicle fleet management application</li>
+                        <li><strong>Infrastructure:</strong> Setup of Windows 10 VM to host the application in production</li>
+                        <li><strong>High Availability:</strong> Configuration for 24/7 operation of the solution</li>
+                        <li><strong>Training:</strong> End-user support and training</li>
+                    </ul>
+
+                    <div class="tech-badges">
+                        <span class="tech-badge">Windows 10</span>
+                        <span class="tech-badge">VM</span>
+                        <span class="tech-badge">Application</span>
+                        <span class="tech-badge">24/7</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title lang-fr">🚀 Mes Projets Techniques</h2>
+            <h2 class="section-title lang-en hidden">🚀 My Technical Projects</h2>
+
+            <!-- Project 1 -->
+            <div class="glass-card glass project-card">
+                <div class="project-header">
+                    <h3 class="lang-fr">Segmentation Réseau par VLAN</h3>
+                    <h3 class="lang-en hidden">Network Segmentation with VLANs</h3>
+                    <span class="badge">01</span>
+                </div>
+
+                <div class="tech-badges">
+                    <span class="tech-badge">Cisco Switch 2960</span>
+                    <span class="tech-badge">VLAN</span>
+                    <span class="tech-badge">Trunk</span>
+                    <span class="tech-badge">DHCP</span>
+                    <span class="tech-badge">Router-on-a-stick</span>
+                </div>
+
+                <div class="project-image lang-fr">
+                    [Insérez ici votre capture d'écran du schéma réseau VLAN]
+                </div>
+                <div class="project-image lang-en hidden">
+                    [Insert here your VLAN network diagram screenshot]
+                </div>
+
+                <div class="project-section">
+                    <h4 class="lang-fr">⚠️ Problème / Challenge</h4>
+                    <h4 class="lang-en hidden">⚠️ Problem / Challenge</h4>
+                    <p class="lang-fr">
+                        L'entreprise AC.Corp (15 salariés) avait besoin de séparer logiquement les services RH et 
+                        Comptabilité pour des raisons de sécurité et d'organisation. Le réseau existant ne permettait 
+                        pas d'isoler les flux entre départements, créant des risques d'accès non autorisés aux données sensibles.
+                    </p>
+                    <p class="lang-en hidden">
+                        AC.Corp company (15 employees) needed to logically separate HR and Accounting departments for 
+                        security and organizational reasons. The existing network didn't allow traffic isolation between 
+                        departments, creating risks of unauthorized access to sensitive data.
+                    </p>
+                </div>
+
+                <div class="project-section">
+                    <h4 class="lang-fr">✅ Solution</h4>
+                    <h4 class="lang-en hidden">✅ Solution</h4>
+                    <p class="lang-fr">
+                        Mise en place d'une segmentation réseau complète avec configuration de 2 VLAN distincts (VLAN 10 
+                        pour RH et VLAN 20 pour COMPTA) sur un switch Cisco 2960. Configuration d'un lien trunk vers le 
+                        routeur pour permettre le routage inter-VLAN (router-on-a-stick). Déploiement d'un serveur DHCP 
+                        avec relais DHCP (ip helper-address) pour l'attribution automatique des adresses IP dans chaque VLAN. 
+                        Plan d'adressage optimisé : 192.168.10.0/28 pour RH et 192.168.10.16/29 pour COMPTA.
+                    </p>
+                    <p class="lang-en hidden">
+                        Implementation of complete network segmentation with configuration of 2 distinct VLANs (VLAN 10 
+                        for HR and VLAN 20 for Accounting) on a Cisco 2960 switch. Configuration of trunk link to router 
+                        for inter-VLAN routing (router-on-a-stick). Deployment of DHCP server with DHCP relay (ip helper-address) 
+                        for automatic IP address assignment in each VLAN. Optimized addressing plan: 192.168.10.0/28 for HR 
+                        and 192.168.10.16/29 for Accounting.
+                    </p>
+                </div>
+
+                <div class="info-box">
+                    <h4 class="lang-fr">📊 Résultats</h4>
+                    <h4 class="lang-en hidden">📊 Results</h4>
+                    <ul class="lang-fr">
+                        <li>Isolation complète des flux réseau entre services</li>
+                        <li>Sécurisation accrue de l'infrastructure</li>
+                        <li>Facilitation de l'administration et du troubleshooting</li>
+                        <li>Attribution automatique des IP via DHCP fonctionnelle</li>
+                    </ul>
+                    <ul class="lang-en hidden">
+                        <li>Complete network traffic isolation between departments</li>
+                        <li>Enhanced infrastructure security</li>
+                        <li>Simplified administration and troubleshooting</li>
+                        <li>Functional automatic IP assignment via DHCP</li>
+                    </ul>
+                </div>
+
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">
+                    <span class="lang-fr">📄 <a href="#" style="color: var(--accent);">Voir la fiche de situation E5 complète</a></span>
+                    <span class="lang-en hidden">📄 <a href="#" style="color: var(--accent);">View complete E5 situation sheet</a></span>
+                </p>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="glass-card glass project-card">
+                <div class="project-header">
+                    <h3 class="lang-fr">Infrastructure Virtualisée avec Active Directory</h3>
+                    <h3 class="lang-en hidden">Virtualized Infrastructure with Active Directory</h3>
+                    <span class="badge">02</span>
+                </div>
+
+                <div class="tech-badges">
+                    <span class="tech-badge">Windows Server 2022</span>
+                    <span class="tech-badge">Active Directory</span>
+                    <span class="tech-badge">GPO</span>
+                    <span class="tech-badge">DNS</span>
+                    <span class="tech-badge">DHCP</span>
+                </div>
+
+                <div class="project-image lang-fr">
+                    [Insérez ici votre capture d'écran de l'infrastructure AD]
+                </div>
+                <div class="project-image lang-en hidden">
+                    [Insert here your AD infrastructure screenshot]
+                </div>
+
+                <div class="project-section">
+                    <h4 class="lang-fr">⚠️ Problème / Challenge</h4>
+                    <h4 class="lang-en hidden">⚠️ Problem / Challenge</h4>
+                    <p class="lang-fr">
+                        Besoin de créer une maquette d'infrastructure d'entreprise complète pour simuler un environnement 
+                        professionnel réaliste. L'objectif était d'implémenter une gestion centralisée des utilisateurs, 
+                        des ordinateurs et des stratégies de sécurité, tout en maintenant une administration simplifiée.
+                    </p>
+                    <p class="lang-en hidden">
+                        Need to create a complete enterprise infrastructure mockup to simulate a realistic professional 
+                        environment. The goal was to implement centralized management of users, computers and security 
+                        policies, while maintaining simplified administration.
+                    </p>
+                </div>
+
+                <div class="project-section">
+                    <h4 class="lang-fr">✅ Solution</h4>
+                    <h4 class="lang-en hidden">✅ Solution</h4>
+                    <p class="lang-fr">
+                        Déploiement complet de Windows Server 2022 avec installation et configuration des rôles Active 
+                        Directory, DNS et DHCP. Structuration de l'annuaire avec création d'unités organisationnelles (OU) 
+                        par service. Mise en place de stratégies de groupe (GPO) pour standardiser les configurations : 
+                        déploiement automatique de logiciels, restrictions d'accès par profil, paramètres de sécurité 
+                        renforcés, configuration des bureaux utilisateurs. Gestion complète des comptes utilisateurs et 
+                        configuration des permissions NTFS sur les partages réseau.
+                    </p>
+                    <p class="lang-en hidden">
+                        Complete deployment of Windows Server 2022 with installation and configuration of Active Directory, 
+                        DNS and DHCP roles. Directory structuring with creation of organizational units (OU) by department. 
+                        Implementation of Group Policy Objects (GPO) to standardize configurations: automatic software 
+                        deployment, profile-based access restrictions, enhanced security settings, user desktop configuration. 
+                        Complete user account management and NTFS permissions configuration on network shares.
+                    </p>
+                </div>
+
+                <div class="info-box">
+                    <h4 class="lang-fr">📊 Résultats</h4>
+                    <h4 class="lang-en hidden">📊 Results</h4>
+                    <ul class="lang-fr">
+                        <li>Administration centralisée de plus de 20 postes clients</li>
+                        <li>Automatisation complète du déploiement de configurations</li>
+                        <li>Respect strict des politiques de sécurité de l'entreprise</li>
+                        <li>Réduction significative du temps d'administration</li>
+                    </ul>
+                    <ul class="lang-en hidden">
+                        <li>Centralized administration of over 20 client workstations</li>
+                        <li>Complete automation of configuration deployment</li>
+                        <li>Strict compliance with company security policies</li>
+                        <li>Significant reduction in administration time</li>
+                    </ul>
+                </div>
+
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">
+                    <span class="lang-fr">📄 <a href="#" style="color: var(--accent);">Voir la fiche de situation E5 complète</a></span>
+                    <span class="lang-en hidden">📄 <a href="#" style="color: var(--accent);">View complete E5 situation sheet</a></span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title lang-fr">🎓 Compétences & Formation</h2>
+            <h2 class="section-title lang-en hidden">🎓 Skills & Education</h2>
+
+            <div class="glass-card glass">
+                <span class="badge lang-fr">BTS SIO - SISR</span>
+                <span class="badge lang-en hidden">BTS SIO - SISR</span>
+                
+                <h3 style="font-size: 1.8rem; margin: 1rem 0; color: var(--text-primary);" class="lang-fr">
+                    Services Informatiques aux Organisations
+                </h3>
+                <h3 style="font-size: 1.8rem; margin: 1rem 0; color: var(--text-primary);" class="lang-en hidden">
+                    IT Services for Organizations
+                </h3>
+
+                <div class="timeline">
+                    <!-- BTS Competencies -->
+                    <div class="timeline-item">
+                        <h4>B1.1 - Support & Patrimoine</h4>
+                        <p class="lang-fr">Gérer le patrimoine informatique et assister les utilisateurs dans l'utilisation des systèmes et réseaux</p>
+                        <p class="lang-en hidden">Manage IT assets and assist users in using systems and networks</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <h4>B1.2 - Cybersécurité</h4>
+                        <p class="lang-fr">Répondre aux incidents de sécurité, assurer la protection des données et des systèmes</p>
+                        <p class="lang-en hidden">Respond to security incidents, ensure data and system protection</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <h4>B2.1 - Administration Systèmes</h4>
+                        <p class="lang-fr">Installer, configurer et administrer les systèmes d'exploitation serveurs (Windows Server, Linux)</p>
+                        <p class="lang-en hidden">Install, configure and administer server operating systems (Windows Server, Linux)</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <h4>B2.2 - Administration Réseau</h4>
+                        <p class="lang-fr">Concevoir, déployer et maintenir une infrastructure réseau sécurisée</p>
+                        <p class="lang-en hidden">Design, deploy and maintain a secure network infrastructure</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <h4>B3 - Cloud & Virtualisation</h4>
+                        <p class="lang-fr">Déployer des services dans des environnements virtualisés et cloud</p>
+                        <p class="lang-en hidden">Deploy services in virtualized and cloud environments</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <h4>B4 - Gestion de Projet</h4>
+                        <p class="lang-fr">Travailler en mode projet agile, documenter les solutions techniques</p>
+                        <p class="lang-en hidden">Work in agile project mode, document technical solutions</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Skills -->
+            <div class="glass-card glass">
+                <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--accent);" class="lang-fr">
+                    🛠️ Outils & Technologies Maîtrisés
+                </h3>
+                <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--accent);" class="lang-en hidden">
+                    🛠️ Tools & Technologies Mastered
+                </h3>
+
+                <div class="tech-badges">
+                    <span class="tech-badge">Windows Server 2019/2022</span>
+                    <span class="tech-badge">Linux (Ubuntu, Debian, CentOS)</span>
+                    <span class="tech-badge">Active Directory</span>
+                    <span class="tech-badge">VMware / Hyper-V</span>
+                    <span class="tech-badge">PowerShell</span>
+                    <span class="tech-badge">Bash</span>
+                    <span class="tech-badge">Cisco IOS</span>
+                    <span class="tech-badge">DNS / DHCP</span>
+                    <span class="tech-badge">VPN</span>
+                    <span class="tech-badge">Firewall</span>
+                </div>
+            </div>
+
+            <!-- Academic Background -->
+            <div class="glass-card glass">
+                <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--accent);" class="lang-fr">
+                    📚 Parcours Scolaire
+                </h3>
+                <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--accent);" class="lang-en hidden">
+                    📚 Academic Background
+                </h3>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h4 class="lang-fr">BTS SIO - SISR</h4>
+                        <h4 class="lang-en hidden">BTS SIO - SISR</h4>
+                        <p class="year">2024 - 2026</p>
+                        <p class="lang-fr">Services Informatiques aux Organisations - Solutions d'Infrastructure, Systèmes et Réseaux</p>
+                        <p class="lang-en hidden">IT Services for Organizations - Infrastructure, Systems and Networks Solutions</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <h4 class="lang-fr">Baccalauréat Général</h4>
+                        <h4 class="lang-en hidden">High School Diploma (General)</h4>
+                        <p class="year">2023</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Languages -->
+            <div class="info-box">
+                <h4 class="lang-fr">🌍 Compétences Linguistiques</h4>
+                <h4 class="lang-en hidden">🌍 Language Skills</h4>
+                <ul class="lang-fr">
+                    <li>Français : Langue maternelle</li>
+                    <li>Anglais : Professionnel (B2)</li>
+                </ul>
+                <ul class="lang-en hidden">
+                    <li>French: Native</li>
+                    <li>English: Professional (B2)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Watch Section -->
+    <section id="ai-watch">
+        <div class="container">
+            <h2 class="section-title lang-fr">🤖 Veille Technologique - IA Générative</h2>
+            <h2 class="section-title lang-en hidden">🤖 Technology Watch - Generative AI</h2>
+
+            <div class="glass-card glass">
+                <p class="lang-fr" style="margin-bottom: 2rem; line-height: 1.8; color: var(--text-secondary);">
+                    L'intelligence artificielle générative révolutionne de nombreux domaines. Cette veille technologique 
+                    automatisée se met à jour quotidiennement pour suivre les dernières avancées en IA textuelle, 
+                    génération d'images, vidéo et audio.
+                </p>
+                <p class="lang-en hidden" style="margin-bottom: 2rem; line-height: 1.8; color: var(--text-secondary);">
+                    Generative artificial intelligence is revolutionizing many fields. This automated technology watch 
+                    updates daily to track the latest advances in text AI, image generation, video and audio.
+                </p>
+
+                <div class="info-box">
+                    <h4 class="lang-fr">ℹ️ À propos de cette veille</h4>
+                    <h4 class="lang-en hidden">ℹ️ About this watch</h4>
+                    <ul class="lang-fr">
+                        <li>Mise à jour automatique quotidienne à 00h00</li>
+                        <li>Sources : TechCrunch, VentureBeat, The Verge, MIT Technology Review</li>
+                        <li>Thèmes : IA textuelle, génération d'images, vidéo, audio</li>
+                        <li>Articles en anglais avec résumé</li>
+                    </ul>
+                    <ul class="lang-en hidden">
+                        <li>Automatic daily update at 00:00</li>
+                        <li>Sources: TechCrunch, VentureBeat, The Verge, MIT Technology Review</li>
+                        <li>Topics: Text AI, image generation, video, audio</li>
+                        <li>English articles with summary</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="ai-news-container">
+                <p class="loading lang-fr">⏳ Chargement des dernières actualités IA...</p>
+                <p class="loading lang-en hidden">⏳ Loading latest AI news...</p>
+            </div>
+
+            <div class="news-grid" id="news-grid" style="display: none;">
+                <!-- News will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title lang-fr">📬 Me Contacter</h2>
+            <h2 class="section-title lang-en hidden">📬 Contact Me</h2>
+
+            <div class="glass-card glass">
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name" class="lang-fr">Nom *</label>
+                        <label for="name" class="lang-en hidden">Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone" class="lang-fr">Téléphone (optionnel)</label>
+                        <label for="phone" class="lang-en hidden">Phone (optional)</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject" class="lang-fr">Sujet *</label>
+                        <label for="subject" class="lang-en hidden">Subject *</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <span class="lang-fr">Envoyer le message</span>
+                        <span class="lang-en hidden">Send message</span>
+                    </button>
+
+                    <div class="form-status" id="formStatus"></div>
+                </form>
+            </div>
+
+            <div class="social-links" style="margin-top: 3rem;">
+                <a href="https://github.com/MILLE-tech" target="_blank" class="social-link" title="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                        <path d="M9 18c-4.51 2-5-2-7-2"/>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/arsène-caron-2b585b311" target="_blank" class="social-link" title="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                        <rect width="4" height="12" x="2" y="9"/>
+                        <circle cx="4" cy="4" r="2"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Arsène Caron - Portfolio BTS SIO SISR</p>
+            <p style="margin-top: 0.5rem;">
+                <span class="lang-fr">Créé avec passion pour l'infrastructure et les réseaux</span>
+                <span class="lang-en hidden">Created with passion for infrastructure and networks</span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Retour en haut">
+        ↑
+    </button>
+
+    <script>
+        // ============================================
+        // THEME TOGGLE
+        // ============================================
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        const themeLight = document.querySelector('.theme-light');
+        const themeDark = document.querySelector('.theme-dark');
+
+        // Check system preference and set default to dark
+        const getPreferredTheme = () => {
+            const saved = localStorage.getItem('theme');
+            if (saved) return saved;
+            return 'dark'; // Default to dark mode
+        };
+
+        const currentTheme = getPreferredTheme();
+        html.setAttribute('data-theme', currentTheme);
+
+        if (currentTheme === 'dark') {
+            themeLight.classList.add('hidden');
+            themeDark.classList.remove('hidden');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const theme = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            
+            themeLight.classList.toggle('hidden');
+            themeDark.classList.toggle('hidden');
+        });
+
+        // ============================================
+        // LANGUAGE TOGGLE
+        // ============================================
+        const langToggle = document.getElementById('langToggle');
+        const langFr = document.querySelectorAll('.lang-fr');
+        const langEn = document.querySelectorAll('.lang-en');
+
+        const currentLang = localStorage.getItem('language') || 'fr';
+        html.setAttribute('lang', currentLang);
+
+        if (currentLang === 'en') {
+            langFr.forEach(el => el.classList.add('hidden'));
+            langEn.forEach(el => el.classList.remove('hidden'));
+        }
+
+        function updateLanguageVisibility() {
+            const lang = html.getAttribute('lang') || 'fr';
+            document.querySelectorAll('.lang-fr').forEach(el => {
+                el.classList.toggle('hidden', lang !== 'fr');
+            });
+            document.querySelectorAll('.lang-en').forEach(el => {
+                el.classList.toggle('hidden', lang !== 'en');
+            });
+        }
+
+        langToggle.addEventListener('click', () => {
+            const lang = html.getAttribute('lang') === 'fr' ? 'en' : 'fr';
+            html.setAttribute('lang', lang);
+            localStorage.setItem('language', lang);
+            updateLanguageVisibility();
+        });
+
+        // ============================================
+        // PROGRESS BAR
+        // ============================================
+        const progressBar = document.getElementById('progressBar');
+
+        window.addEventListener('scroll', () => {
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollPercent = (scrollTop / (documentHeight - windowHeight)) * 100;
+            
+            progressBar.style.transform = `scaleX(${scrollPercent / 100})`;
+        });
+
+        // ============================================
+        // NAVBAR SCROLL EFFECT
+        // ============================================
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // ============================================
+        // BACK TO TOP BUTTON
+        // ============================================
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // ============================================
+        // SMOOTH SCROLL
+        // ============================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // ============================================
+        // PARTICLES ANIMATION
+        // ============================================
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const particleCount = 80;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 3 + 1;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.5 - 0.25;
+                this.opacity = Math.random() * 0.5 + 0.2;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x > canvas.width) this.x = 0;
+                else if (this.x < 0) this.x = canvas.width;
+
+                if (this.y > canvas.height) this.y = 0;
+                else if (this.y < 0) this.y = canvas.height;
+            }
+
+            draw() {
+                ctx.fillStyle = `rgba(20, 184, 166, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                
+                // Draw connections
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 150) {
+                        ctx.strokeStyle = `rgba(20, 184, 166, ${0.2 * (1 - distance / 150)})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // ============================================
+        // AI NEWS FETCHER avec images thématiques
+        // ============================================
+        const aiNews = [
+            {
+                titleFr: "GPT-5 : L'IA Textuelle de Nouvelle Génération",
+                titleEn: "GPT-5: Next Generation Text AI",
+                date: "2025-02-10",
+                descriptionFr: "Le modèle de langage de prochaine génération d'OpenAI promet des capacités de raisonnement et de génération de texte sans précédent.",
+                descriptionEn: "OpenAI's next-generation language model promises unprecedented text generation and reasoning capabilities.",
+                link: "#",
+                image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop",
+                category: "text"
+            },
+            {
+                titleFr: "Midjourney V7 : Photor\u00e9alisme Parfait",
+                titleEn: "Midjourney V7: Perfect Photorealism",
+                date: "2025-02-08",
+                descriptionFr: "La dernière version de Midjourney établit de nouveaux standards en génération d'images IA avec un photoréalisme quasi-parfait.",
+                descriptionEn: "The latest version of Midjourney sets new standards in AI image generation with near-perfect photorealism.",
+                link: "#",
+                image: "https://images.unsplash.com/photo-1686191128892-34053b1b7e55?w=400&h=300&fit=crop",
+                category: "image"
+            },
+            {
+                titleFr: "Sora AI : Révolution de la Génération Vidéo",
+                titleEn: "Sora AI: Video Generation Revolution",
+                date: "2025-02-05",
+                descriptionFr: "Le modèle text-to-video d'OpenAI permet désormais aux entreprises de créer des vidéos haute qualité à partir de simples descriptions.",
+                descriptionEn: "OpenAI's text-to-video model now enables businesses to create high-quality videos from simple text descriptions.",
+                link: "#",
+                image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=400&h=300&fit=crop",
+                category: "video"
+            },
+            {
+                titleFr: "ElevenLabs : Clonage Vocal en Temps Réel",
+                titleEn: "ElevenLabs: Real-Time Voice Cloning",
+                date: "2025-02-03",
+                descriptionFr: "Nouvelle technologie audio IA permettant le clonage vocal instantané avec seulement 3 secondes d'échantillon audio.",
+                descriptionEn: "New AI audio technology enables instant voice cloning with just 3 seconds of audio sample.",
+                link: "#",
+                image: "https://images.unsplash.com/photo-1589903308904-1010c2294adc?w=400&h=300&fit=crop",
+                category: "audio"
+            }
+        ];
+
+        async function loadAINews() {
+    const newsGrid = document.getElementById('news-grid');
+    const container = document.getElementById('ai-news-container');
+    const currentLang = html.getAttribute('lang') || 'fr';
+    
+    const API_KEY = 'aadda8c29395487d9b50fb1dfc2966a7';
+    
+    // Requête pour articles IA en anglais
+    const url = `https://newsapi.org/v2/everything?q=(artificial+intelligence+OR+AI+OR+generative+AI)+(GPT+OR+image+generation+OR+video+generation+OR+voice+synthesis)&language=en&sortBy=publishedAt&pageSize=4&apiKey=${API_KEY}`;
+    
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        
+        if (data.status === 'ok' && data.articles && data.articles.length > 0) {
+            container.style.display = 'none';
+            newsGrid.style.display = 'grid';
+            
+            // Catégories avec icônes et traductions
+            const categories = {
+                'GPT': { icon: '📝', nameFr: 'IA Textuelle', nameEn: 'Text AI' },
+                'image': { icon: '🎨', nameFr: 'Génération d\'Images', nameEn: 'Image Generation' },
+                'video': { icon: '🎥', nameFr: 'Génération Vidéo', nameEn: 'Video Generation' },
+                'voice': { icon: '🔊', nameFr: 'Synthèse Vocale', nameEn: 'Voice Synthesis' }
+            };
+            
+            // Déterminer la catégorie de chaque article
+            const articlesWithCategory = data.articles.slice(0, 4).map((article, index) => {
+                const content = (article.title + ' ' + article.description).toLowerCase();
+                let category = null;
+                
+                if (content.includes('gpt') || content.includes('language model') || content.includes('chatbot')) {
+                    category = categories['GPT'];
+                } else if (content.includes('image') || content.includes('midjourney') || content.includes('dall-e')) {
+                    category = categories['image'];
+                } else if (content.includes('video') || content.includes('sora')) {
+                    category = categories['video'];
+                } else if (content.includes('voice') || content.includes('audio') || content.includes('speech')) {
+                    category = categories['voice'];
+                } else {
+                    // Par défaut, attribuer une catégorie selon l'index
+                    const catKeys = Object.keys(categories);
+                    category = categories[catKeys[index % catKeys.length]];
+                }
+                
+                return { ...article, category };
+            });
+            
+            newsGrid.innerHTML = articlesWithCategory.map(article => {
+                // Image : utiliser celle de l'article ou image par défaut Unsplash selon catégorie
+                let imageUrl = article.urlToImage;
+                if (!imageUrl || imageUrl.includes('placeholder')) {
+                    // Images par défaut selon catégorie
+                    const defaultImages = {
+                        '📝': 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop',
+                        '🎨': 'https://images.unsplash.com/photo-1686191128892-34053b1b7e55?w=400&h=300&fit=crop',
+                        '🎥': 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=400&h=300&fit=crop',
+                        '🔊': 'https://images.unsplash.com/photo-1589903308904-1010c2294adc?w=400&h=300&fit=crop'
+                    };
+                    imageUrl = defaultImages[article.category.icon];
+                }
+                
+                // Traduction basique du titre et description
+                const titleFr = article.title;
+                const titleEn = article.title;
+                const descFr = article.description || 'Découvrez les dernières avancées en intelligence artificielle.';
+                const descEn = article.description || 'Discover the latest advances in artificial intelligence.';
+                
+                return `
+                    <div class="news-card glass">
+                        <img src="${imageUrl}" 
+                             alt="${currentLang === 'fr' ? titleFr : titleEn}" 
+                             style="width:100%; height:180px; object-fit:cover;"
+                             onerror="this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop'">
+                        <div class="news-content">
+                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                <span style="font-size: 1.5rem;">${article.category.icon}</span>
+                                <span style="font-size: 0.8rem; color: var(--accent); font-weight: 600;">
+                                    ${currentLang === 'fr' ? article.category.nameFr : article.category.nameEn}
+                                </span>
+                            </div>
+                            <p class="news-date">${new Date(article.publishedAt).toLocaleDateString(currentLang === 'fr' ? 'fr-FR' : 'en-US')}</p>
+                            <h4 class="lang-fr">${titleFr}</h4>
+                            <h4 class="lang-en hidden">${titleEn}</h4>
+                            <p class="lang-fr">${descFr}</p>
+                            <p class="lang-en hidden">${descEn}</p>
+                            <a href="${article.url}" class="news-link" target="_blank" rel="noopener noreferrer">
+                                <span class="lang-fr">Lire l'article →</span>
+                                <span class="lang-en hidden">Read article →</span>
+                            </a>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            updateLanguageVisibility();
+            
+        } else {
+            // Si l'API ne retourne pas d'articles, afficher les articles par défaut
+            loadDefaultNews();
+        }
+    } catch (error) {
+        console.error('Erreur lors du chargement des actualités:', error);
+        // En cas d'erreur, charger les articles par défaut
+        loadDefaultNews();
+    }
+}
+
+        // Articles par défaut en cas d'erreur API
+        function loadDefaultNews() {
+            const newsGrid = document.getElementById('news-grid');
+            const container = document.getElementById('ai-news-container');
+            const currentLang = html.getAttribute('lang') || 'fr';
+            
+            const defaultNews = [
+                {
+                    titleFr: "GPT-5 : L'IA Textuelle de Nouvelle Génération",
+                    titleEn: "GPT-5: Next Generation Text AI",
+                    date: "2025-02-10",
+                    descriptionFr: "Le modèle de langage de prochaine génération d'OpenAI promet des capacités de raisonnement sans précédent.",
+                    descriptionEn: "OpenAI's next-generation language model promises unprecedented reasoning capabilities.",
+                    link: "#",
+                    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop",
+                    icon: "📝"
+                },
+                {
+                    titleFr: "Midjourney V7 : Photoréalisme Parfait",
+                    titleEn: "Midjourney V7: Perfect Photorealism",
+                    date: "2025-02-08",
+                    descriptionFr: "La dernière version de Midjourney établit de nouveaux standards en génération d'images IA.",
+                    descriptionEn: "The latest version of Midjourney sets new standards in AI image generation.",
+                    link: "#",
+                    image: "https://images.unsplash.com/photo-1686191128892-34053b1b7e55?w=400&h=300&fit=crop",
+                    icon: "🎨"
+                },
+                {
+                    titleFr: "Sora AI : Révolution de la Génération Vidéo",
+                    titleEn: "Sora AI: Video Generation Revolution",
+                    date: "2025-02-05",
+                    descriptionFr: "Le modèle text-to-video d'OpenAI permet de créer des vidéos haute qualité.",
+                    descriptionEn: "OpenAI's text-to-video model enables high-quality video creation.",
+                    link: "#",
+                    image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=400&h=300&fit=crop",
+                    icon: "🎥"
+                },
+                {
+                    titleFr: "ElevenLabs : Clonage Vocal en Temps Réel",
+                    titleEn: "ElevenLabs: Real-Time Voice Cloning",
+                    date: "2025-02-03",
+                    descriptionFr: "Nouvelle technologie audio IA permettant le clonage vocal instantané.",
+                    descriptionEn: "New AI audio technology enables instant voice cloning.",
+                    link: "#",
+                    image: "https://images.unsplash.com/photo-1589903308904-1010c2294adc?w=400&h=300&fit=crop",
+                    icon: "🔊"
+                }
+            ];
+            
+            container.style.display = 'none';
+            newsGrid.style.display = 'grid';
+            
+            newsGrid.innerHTML = defaultNews.map(news => `
+                <div class="news-card glass">
+                    <img src="${news.image}" alt="${currentLang === 'fr' ? news.titleFr : news.titleEn}">
+                    <div class="news-content">
+                        <p class="news-date">${new Date(news.date).toLocaleDateString(currentLang === 'fr' ? 'fr-FR' : 'en-US')}</p>
+                        <h4 class="lang-fr">${news.titleFr}</h4>
+                        <h4 class="lang-en hidden">${news.titleEn}</h4>
+                        <p class="lang-fr">${news.descriptionFr}</p>
+                        <p class="lang-en hidden">${news.descriptionEn}</p>
+                        <a href="${news.link}" class="news-link" target="_blank">
+                            <span class="lang-fr">Lire l'article →</span>
+                            <span class="lang-en hidden">Read article →</span>
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+            
+            updateLanguageVisibility();
+        }
+
+        // Charger les news au chargement de la page
+        setTimeout(loadAINews, 1000);
+
+        // ============================================
+        // EMAILJS CONTACT FORM
+        // ============================================
+        // Initialize EmailJS (you need to replace with your own credentials)
+        (function() {
+            emailjs.init("k7RUjYx4oOh1AmDAi") // Replace with your EmailJS public key
+        })();
+
+        const contactForm = document.getElementById('contactForm');
+        const formStatus = document.getElementById('formStatus');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = '⏳ Envoi en cours...';
+            
+            // Replace with your EmailJS service ID, template ID
+            emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+                .then(function() {
+                    formStatus.className = 'form-status success';
+                    formStatus.style.display = 'block';
+                    formStatus.textContent = '✅ Message envoyé avec succès !';
+                    contactForm.reset();
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Envoyer le message';
+                }, function(error) {
+                    formStatus.className = 'form-status error';
+                    formStatus.style.display = 'block';
+                    formStatus.textContent = '❌ Erreur lors de l\'envoi. Réessayez.';
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Envoyer le message';
+                });
+        });
+
+        // ============================================
+        // SCROLL ANIMATIONS
+        // ============================================
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.glass-card, .timeline-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+
+    <!--
+    ============================================
+    📚 DOCUMENTATION - LIRE ATTENTIVEMENT
+    ============================================
+
+    🎨 GÉNÉRATEUR D'AVATAR
+    Pour créer votre avatar illustré, utilisez ces services gratuits :
+    - https://www.notion.so/profile/avatar (styles variés)
+    - https://getavataaars.com/ (personnages cartoon)
+    - https://avatar.iran.liara.run/ (avatars minimalistes)
+    
+    Téléchargez l'image et remplacez la div .avatar par :
+    <div class="avatar" style="background-image: url('avataaars.png'); background-size: cover;">
+    </div>
+
+    ============================================
+    📧 CONFIGURATION EMAILJS
+    ============================================
+    
+    1. Créer un compte sur https://www.emailjs.com/
+    2. Créer un service email (Gmail, Outlook, etc.)
+    3. Créer un template d'email
+    4. Récupérer vos identifiants :
+       - Public Key (ligne 1027)
+       - Service ID (ligne 1037)
+       - Template ID (ligne 1037)
+    
+    5. Remplacer dans le code :
+       - Ligne 1949 : emailjs.init("k7RUjYx4oOh1AmDAi")
+       - Ligne 1963 : emailjs.sendForm('service_559ta8j', 'template_p1uh40a', this)
+
+    ============================================
+    🖼️ AJOUTER VOS CAPTURES D'ÉCRAN
+    ============================================
+    
+    1. Placez vos images dans un dossier "images" à côté du fichier HTML
+    2. Remplacez les divs avec texte par :
+       
+       <img src="images/nom-image.jpg" alt="Description" class="project-image">
+    
+    3. Nommez vos fichiers :
+       - projet1-vlan.png
+       - projet2-ad.png
+
+    ============================================
+    📰 API VEILLE IA - MISE À JOUR AUTOMATIQUE
+    ============================================
+    
+    Pour une vraie mise à jour automatique, utilisez NewsAPI :
+    
+    1. Créer un compte sur https://newsapi.org/ (gratuit)
+    2. Récupérer votre clé API
+    3. Remplacer la fonction loadAINews() par :
+
+    async function loadAINews() {
+        const API_KEY = 'aadda8c29395487d9b50fb1dfc2966a7';
+        const url = `https://newsapi.org/v2/everything?q=artificial+intelligence+OR+generative+AI&language=en&sortBy=publishedAt&apiKey=${API_KEY}`;
+        
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            const articles = data.articles.slice(0, 4);
+            
+            const newsGrid = document.getElementById('news-grid');
+            const container = document.getElementById('ai-news-container');
+            
+            container.style.display = 'none';
+            newsGrid.style.display = 'grid';
+            
+            newsGrid.innerHTML = articles.map((article, index) => {
+                const icons = ['📝', '🎨', '🎥', '🔊'];
+                return `
+                    <div class="news-card glass">
+                        <div class="news-image">${article.urlToImage ? 
+                            `<img src="${article.urlToImage}" style="width:100%;height:100%;object-fit:cover;">` : 
+                            icons[index]}</div>
+                        <div class="news-content">
+                            <p class="news-date">${new Date(article.publishedAt).toLocaleDateString()}</p>
+                            <h4>${article.title}</h4>
+                            <p>${article.description || ''}</p>
+                            <a href="${article.url}" class="news-link" target="_blank">
+                                Lire l'article →
+                            </a>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        } catch (error) {
+            console.error('Erreur:', error);
+        }
+    }
+
+    4. Pour mettre à jour tous les jours à minuit, déployez sur Vercel avec une fonction serverless
+
+    ============================================
+    🚀 DÉPLOIEMENT SUR VERCEL
+    ============================================
+    
+    1. Créer un compte sur https://vercel.com/
+    2. Installer Vercel CLI :
+       npm i -g vercel
+    
+    3. Dans le dossier du portfolio :
+       vercel login
+       vercel
+    
+    4. Suivre les instructions (répondre aux questions)
+    5. Votre site sera en ligne sur https://votre-nom.vercel.app
+    
+    CONFIGURATION AUTOMATIQUE :
+    - Créer un fichier vercel.json :
+    {
+      "functions": {
+        "api/news.js": {
+          "memory": 1024,
+          "maxDuration": 10
+        }
+      },
+      "crons": [{
+        "path": "/api/update-news",
+        "schedule": "0 0 * * *"
+      }]
+    }
+
+    ============================================
+    ✏️ MODIFIER LE CONTENU
+    ============================================
+    
+    TEXTES :
+    - Tous les textes sont dans le HTML entre les balises
+    - Cherchez le texte que vous voulez modifier
+    - Gardez les balises <span class="lang-fr"> et <span class="lang-en hidden">
+    
+    LIENS FICHES E5 :
+    - Uploadez vos PDFs sur Google Drive ou Dropbox
+    - Remplacez href="#" par le lien de partage
+    
+    COULEURS :
+    - Variables CSS en haut du <style>
+    - Modifier --accent pour changer la couleur principale
+    - Modifier --bg-primary pour changer le fond
+    
+    POLICES :
+    - Changer les liens Google Fonts (ligne 23)
+    - Modifier font-family dans le CSS
+
+    ============================================
+    🔧 PERSONNALISATION AVANCÉE
+    ============================================
+    
+    AJOUTER UN PROJET :
+    1. Copier tout le bloc <div class="glass-card glass project-card">
+    2. Coller après le dernier projet
+    3. Modifier le badge number (01, 02, 03...)
+    4. Remplacer le contenu
+    
+    MODIFIER LES ANIMATIONS :
+    - Chercher @keyframes dans le CSS
+    - Ajuster les durées (1s = 1 seconde)
+    - Modifier les transform et opacity
+    
+    PARTICULES :
+    - Ligne 855 : particleCount = nombre de particules
+    - Ligne 867-868 : speedX/Y = vitesse
+    - Ligne 892 : distance < 150 = distance connexion
+
+    ============================================
+    📱 RESPONSIVE
+    ============================================
+    
+    Le site est déjà responsive, mais pour personnaliser :
+    - Chercher @media (max-width: 768px)
+    - Ajouter vos propres règles
+    - Tester sur mobile avec F12 > Toggle device toolbar
+
+    ============================================
+    🆘 SUPPORT & AIDE
+    ============================================
+    
+    Si vous rencontrez des problèmes :
+    1. Vérifier la console (F12 > Console)
+    2. Tester sur navigateur récent (Chrome, Firefox, Edge)
+    3. Vérifier que tous les liens/clés API sont corrects
+    
+    Ressources utiles :
+    - EmailJS : https://www.emailjs.com/docs/
+    - NewsAPI : https://newsapi.org/docs
+    - Vercel : https://vercel.com/docs
+    - MDN Web Docs : https://developer.mozilla.org/
+
+    ============================================
+    ✅ CHECKLIST AVANT MISE EN LIGNE
+    ============================================
+    
+    [ ] Avatar personnalisé ajouté
+    [ ] EmailJS configuré et testé
+    [ ] Images de projets ajoutées
+    [ ] Liens fiches E5 mis à jour
+    [ ] API News configurée (ou hardcodée)
+    [ ] Toutes les infos personnelles vérifiées
+    [ ] Testé en mode sombre et clair
+    [ ] Testé en français et anglais
+    [ ] Testé sur mobile
+    [ ] Meta tags SEO personnalisés
+
+    Bon courage ! 🚀
+    -->
+</body>
+</html>
