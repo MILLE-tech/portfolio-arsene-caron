@@ -645,66 +645,323 @@
             color: var(--text-secondary);
         }
 
-        /* AI News Cards */
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
+        .veille-header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 12px;
+            }
 
-        .news-card {
+            .veille-subtitle {
+            color: #94a3b8;
+            font-size: 15px;
+            margin-bottom: 28px;
+            max-width: 680px;
+            line-height: 1.7;
+            }
+
+            .veille-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 28px;
+            }
+
+            .veille-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(99, 102, 241, 0.12);
+            border: 1px solid rgba(99, 102, 241, 0.3);
             border-radius: 20px;
+            padding: 5px 12px;
+            font-size: 12px;
+            color: #a5b4fc;
+            font-family: monospace;
+            }
+
+            .veille-status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #64748b;
+            transition: background 0.3s;
+            flex-shrink: 0;
+            }
+            .veille-status-dot.live {
+            background: #10b981;
+            box-shadow: 0 0 6px #10b981;
+            animation: veille-pulse 2s infinite;
+            }
+            .veille-status-dot.loading {
+            background: #f59e0b;
+            animation: veille-pulse 0.5s infinite;
+            }
+
+            @keyframes veille-pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+            .veille-btn-refresh {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 0 16px rgba(99,102,241,0.25);
+            font-family: inherit;
+            }
+            .veille-btn-refresh:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(99,102,241,0.45); }
+            .veille-btn-refresh:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+            .veille-spin { display: inline-block; }
+            .veille-btn-refresh.spinning .veille-spin { animation: veille-rotate 0.8s linear infinite; }
+            @keyframes veille-rotate { to { transform: rotate(360deg); } }
+
+            .veille-tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+            padding-bottom: 16px;
+            }
+
+            .veille-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #64748b;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+            }
+            .veille-tab:hover { border-color: rgba(99,102,241,0.4); color: #a5b4fc; }
+            .veille-tab.active {
+            background: rgba(99,102,241,0.15);
+            border-color: rgba(99,102,241,0.5);
+            color: #a5b4fc;
+            box-shadow: 0 0 12px rgba(99,102,241,0.15);
+            }
+            .veille-tab .tab-count {
+            background: rgba(99,102,241,0.25);
+            border-radius: 10px;
+            padding: 1px 7px;
+            font-size: 11px;
+            color: #a5b4fc;
+            }
+
+            .veille-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 16px;
+            min-height: 200px;
+            }
+
+            .veille-card {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+            transition: all 0.25s;
+            position: relative;
             overflow: hidden;
-            transition: all 0.3s;
-        }
+            animation: veille-fadeup 0.35s ease both;
+            }
+            .veille-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            opacity: 0;
+            transition: opacity 0.25s;
+            }
+            .veille-card.cat-texte::after  { background: linear-gradient(90deg, #6366f1, #8b5cf6); }
+            .veille-card.cat-images::after { background: linear-gradient(90deg, #ec4899, #f43f5e); }
+            .veille-card.cat-video::after  { background: linear-gradient(90deg, #f59e0b, #ef4444); }
+            .veille-card.cat-audio::after  { background: linear-gradient(90deg, #10b981, #06b6d4); }
 
-        .news-card:hover {
-            transform: translateY(-5px);
-        }
+            .veille-card:hover {
+            border-color: rgba(99,102,241,0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            }
+            .veille-card:hover::after { opacity: 1; }
 
-        .news-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
+            @keyframes veille-fadeup {
+            from { opacity: 0; transform: translateY(14px); }
+            to   { opacity: 1; transform: translateY(0); }
+            }
 
-        .news-content {
-            padding: 1.5rem;
-        }
+            .veille-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            }
 
-        .news-card h4 {
-            font-size: 1.1rem;
-            color: var(--text-primary);
-            margin-bottom: 0.8rem;
+            .veille-cat-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            border-radius: 6px;
+            padding: 4px 10px;
+            font-size: 11px;
+            font-weight: 700;
+            font-family: monospace;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
+            }
+            .badge-texte  { background: rgba(99,102,241,0.12); color: #a5b4fc; border: 1px solid rgba(99,102,241,0.25); }
+            .badge-images { background: rgba(236,72,153,0.12); color: #f9a8d4; border: 1px solid rgba(236,72,153,0.25); }
+            .badge-video  { background: rgba(245,158,11,0.12); color: #fcd34d; border: 1px solid rgba(245,158,11,0.25); }
+            .badge-audio  { background: rgba(16,185,129,0.12); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.25); }
+
+            .veille-importance {
+            display: flex;
+            gap: 3px;
+            flex-shrink: 0;
+            }
+            .veille-imp-dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            }
+            .veille-imp-dot.on { background: #f59e0b; box-shadow: 0 0 4px rgba(245,158,11,0.5); }
+
+            .veille-card-title {
+            font-size: 15px;
+            font-weight: 700;
             line-height: 1.4;
-        }
+            color: #f1f5f9;
+            }
 
-        .news-date {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-bottom: 0.8rem;
-            font-family: 'IBM Plex Mono', monospace;
-        }
+            .veille-card-summary {
+            font-size: 13px;
+            line-height: 1.65;
+            color: #94a3b8;
+            flex-grow: 1;
+            }
 
-        .news-card p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
+            .veille-card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            }
+            .veille-tag {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 4px;
+            padding: 2px 8px;
+            font-size: 11px;
+            color: #64748b;
+            font-family: monospace;
+            }
 
-        .news-link {
-            display: inline-block;
-            margin-top: 1rem;
-            color: var(--accent);
+            .veille-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            gap: 8px;
+            }
+            .veille-source {
+            font-size: 12px;
+            color: #475569;
+            font-family: monospace;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            }
+            .veille-date {
+            font-size: 11px;
+            color: #475569;
+            font-family: monospace;
+            white-space: nowrap;
+            flex-shrink: 0;
+            }
+            .veille-link {
+            color: #818cf8;
+            font-size: 12px;
             text-decoration: none;
             font-weight: 600;
-            transition: transform 0.3s;
-        }
+            white-space: nowrap;
+            flex-shrink: 0;
+            transition: color 0.2s;
+            }
+            .veille-link:hover { color: #fff; }
 
-        .news-link:hover {
-            transform: translateX(5px);
-        }
+            .veille-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 10px;
+            margin-bottom: 24px;
+            }
+            .veille-stat {
+            background: rgba(15,23,42,0.6);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 10px;
+            padding: 12px 16px;
+            }
+            .veille-stat-label { font-size: 11px; color: #475569; font-family: monospace; text-transform: uppercase; letter-spacing: 0.5px; }
+            .veille-stat-val { font-size: 24px; font-weight: 800; line-height: 1.2; }
+            .sv-indigo { color: #818cf8; }
+            .sv-pink   { color: #f472b6; }
+            .sv-amber  { color: #fbbf24; }
+            .sv-green  { color: #34d399; }
+
+            .veille-empty {
+            grid-column: 1/-1;
+            text-align: center;
+            padding: 60px 20px;
+            color: #475569;
+            }
+            .veille-empty-icon { font-size: 40px; margin-bottom: 12px; }
+            .veille-empty-title { font-size: 18px; font-weight: 700; color: #64748b; margin-bottom: 6px; }
+
+            .veille-last-update {
+            font-size: 12px;
+            color: #475569;
+            font-family: monospace;
+            margin-bottom: 20px;
+            min-height: 18px;
+            }
+
+            #veilleToast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #1e1b30;
+            border: 1px solid #f87171;
+            border-radius: 10px;
+            padding: 12px 18px;
+            font-size: 13px;
+            color: #f87171;
+            z-index: 9999;
+            transform: translateY(80px);
+            opacity: 0;
+            transition: all 0.3s;
+            max-width: 340px;
+            pointer-events: none;
+            }
+            #veilleToast.show { transform: translateY(0); opacity: 1; }
 
         /* Contact Form */
         .contact-form {
@@ -1545,48 +1802,95 @@
     <!-- AI Watch Section -->
     <section id="ai-watch">
         <div class="container">
-            <h2 class="section-title lang-fr">🤖 Veille Technologique - IA Générative</h2>
-            <h2 class="section-title lang-en hidden">🤖 Technology Watch - Generative AI</h2>
 
-            <div class="glass-card glass">
-                <p class="lang-fr" style="margin-bottom: 2rem; line-height: 1.8; color: var(--text-secondary);">
-                    L'intelligence artificielle générative révolutionne de nombreux domaines. Cette veille technologique 
-                    automatisée se met à jour quotidiennement pour suivre les dernières avancées en IA textuelle, 
-                    génération d'images, vidéo et audio.
-                </p>
-                <p class="lang-en hidden" style="margin-bottom: 2rem; line-height: 1.8; color: var(--text-secondary);">
-                    Generative artificial intelligence is revolutionizing many fields. This automated technology watch 
-                    updates daily to track the latest advances in text AI, image generation, video and audio.
-                </p>
-
-                <div class="info-box">
-                    <h4 class="lang-fr">ℹ️ À propos de cette veille</h4>
-                    <h4 class="lang-en hidden">ℹ️ About this watch</h4>
-                    <ul class="lang-fr">
-                        <li>Mise à jour automatique quotidienne à 00h00</li>
-                        <li>Sources : TechCrunch, VentureBeat, The Verge, MIT Technology Review</li>
-                        <li>Thèmes : IA textuelle, génération d'images, vidéo, audio</li>
-                        <li>Articles en anglais avec résumé</li>
-                    </ul>
-                    <ul class="lang-en hidden">
-                        <li>Automatic daily update at 00:00</li>
-                        <li>Sources: TechCrunch, VentureBeat, The Verge, MIT Technology Review</li>
-                        <li>Topics: Text AI, image generation, video, audio</li>
-                        <li>English articles with summary</li>
-                    </ul>
-                </div>
+            <div class="veille-header-row">
+            <div>
+                <h2 class="section-title fr">🤖 Veille Technologique - IA Générative</h2>
+                <h2 class="section-title en">🤖 Technology Watch - Generative AI</h2>
+            </div>
+            <button class="veille-btn-refresh" id="veilleRefreshBtn" onclick="veilleLoad()">
+                <span class="veille-spin" id="veilleSpin">↻</span>
+                <span class="fr">Actualiser</span>
+                <span class="en">Refresh</span>
+            </button>
             </div>
 
-            <div id="ai-news-container">
-                <p class="loading lang-fr">⏳ Chargement des dernières actualités IA...</p>
-                <p class="loading lang-en hidden">⏳ Loading latest AI news...</p>
+            <p class="veille-subtitle fr">
+            L'IA générative révolutionne la création de contenu. Cette veille automatisée couvre les dernières
+            avancées en <strong style="color:#a5b4fc">texte</strong>, <strong style="color:#f9a8d4">images</strong>,
+            <strong style="color:#fcd34d">vidéo</strong> et <strong style="color:#6ee7b7">audio</strong>.
+            </p>
+            <p class="veille-subtitle en">
+            Generative AI is revolutionizing content creation. This automated watch covers the latest advances
+            in <strong style="color:#a5b4fc">text</strong>, <strong style="color:#f9a8d4">images</strong>,
+            <strong style="color:#fcd34d">video</strong> and <strong style="color:#6ee7b7">audio</strong>.
+            </p>
+
+            <div class="veille-meta">
+            <div class="veille-badge">
+                <div class="veille-status-dot" id="veilleStatusDot"></div>
+                <span id="veilleStatusText">En attente</span>
+            </div>
+            <div class="veille-badge">⚡ Powered by Claude + Web Search</div>
             </div>
 
-            <div class="news-grid" id="news-grid" style="display: none;">
-                <!-- News will be loaded here by JavaScript -->
+            <div class="veille-stats">
+            <div class="veille-stat">
+                <div class="veille-stat-label">Total</div>
+                <div class="veille-stat-val sv-indigo" id="vs-total">—</div>
             </div>
+            <div class="veille-stat">
+                <div class="veille-stat-label">Texte</div>
+                <div class="veille-stat-val sv-indigo" id="vs-texte">—</div>
+            </div>
+            <div class="veille-stat">
+                <div class="veille-stat-label">Images</div>
+                <div class="veille-stat-val sv-pink" id="vs-images">—</div>
+            </div>
+            <div class="veille-stat">
+                <div class="veille-stat-label">Vidéo</div>
+                <div class="veille-stat-val sv-amber" id="vs-video">—</div>
+            </div>
+            <div class="veille-stat">
+                <div class="veille-stat-label">Audio</div>
+                <div class="veille-stat-val sv-green" id="vs-audio">—</div>
+            </div>
+            </div>
+
+            <div class="veille-last-update" id="veilleLastUpdate"></div>
+
+            <div class="veille-tabs">
+            <button class="veille-tab active" data-cat="all" onclick="veilleFilter('all', this)">
+                🔭 <span class="fr">Tout voir</span><span class="en">All</span>
+                <span class="tab-count" id="tc-all">—</span>
+            </button>
+            <button class="veille-tab" data-cat="Texte" onclick="veilleFilter('Texte', this)">
+                💬 Texte <span class="tab-count" id="tc-texte">—</span>
+            </button>
+            <button class="veille-tab" data-cat="Images" onclick="veilleFilter('Images', this)">
+                🖼️ Images <span class="tab-count" id="tc-images">—</span>
+            </button>
+            <button class="veille-tab" data-cat="Vidéo" onclick="veilleFilter('Vidéo', this)">
+                🎬 <span class="fr">Vidéo</span><span class="en">Video</span>
+                <span class="tab-count" id="tc-video">—</span>
+            </button>
+            <button class="veille-tab" data-cat="Audio" onclick="veilleFilter('Audio', this)">
+                🎵 Audio <span class="tab-count" id="tc-audio">—</span>
+            </button>
+            </div>
+
+            <div class="veille-grid" id="veilleGrid">
+            <div class="veille-empty" id="veilleEmpty">
+                <div class="veille-empty-icon">📡</div>
+                <div class="veille-empty-title fr">Chargement des actualités...</div>
+                <div class="veille-empty-title en">Loading latest AI news...</div>
+            </div>
+            </div>
+
         </div>
-    </section>
+        </section>
+
+        <div id="veilleToast"></div>
 
     <!-- Contact Section -->
     <section id="contact">
@@ -1852,7 +2156,10 @@
             canvas.height = window.innerHeight;
         });
 
-        (function() {
+               // ============================================
+        // VEILLE IA GÉNÉRATIVE
+        // ============================================
+        (function () {
             let _articles = [];
             let _filter = 'all';
 
@@ -1866,9 +2173,8 @@
             function setStatus(state) {
                 const dot = document.getElementById('veilleStatusDot');
                 const txt = document.getElementById('veilleStatusText');
-                if (!dot || !txt) return;
                 dot.className = 'veille-status-dot';
-                if (state === 'live') { dot.classList.add('live'); txt.textContent = 'À jour'; }
+                if (state === 'live')    { dot.classList.add('live');    txt.textContent = 'À jour'; }
                 else if (state === 'loading') { dot.classList.add('loading'); txt.textContent = 'Chargement…'; }
                 else { txt.textContent = 'En attente'; }
             }
@@ -1881,7 +2187,7 @@
                 setTimeout(() => t.classList.remove('show'), 4500);
             }
 
-            window.veilleFilter = function(cat, el) {
+            window.veilleFilter = function (cat, el) {
                 _filter = cat;
                 document.querySelectorAll('.veille-tab').forEach(t => t.classList.remove('active'));
                 if (el) el.classList.add('active');
@@ -1893,14 +2199,15 @@
                 const empty = document.getElementById('veilleEmpty');
                 const filtered = _filter === 'all' ? _articles : _articles.filter(a => a.category === _filter);
 
+                // Counts
                 const counts = { all: _articles.length, Texte: 0, Images: 0, 'Vidéo': 0, Audio: 0 };
                 _articles.forEach(a => { if (counts[a.category] !== undefined) counts[a.category]++; });
-
-                const tcMap = { all:'tc-all', Texte:'tc-texte', Images:'tc-images', 'Vidéo':'tc-video', Audio:'tc-audio' };
+                const tcMap = { all: 'tc-all', Texte: 'tc-texte', Images: 'tc-images', 'Vidéo': 'tc-video', Audio: 'tc-audio' };
                 Object.entries(tcMap).forEach(([k, id]) => { const el = document.getElementById(id); if (el) el.textContent = counts[k] || 0; });
 
-                const sMap = { 'vs-total': counts.all, 'vs-texte': counts.Texte, 'vs-images': counts.Images, 'vs-video': counts['Vidéo'], 'vs-audio': counts.Audio };
-                Object.entries(sMap).forEach(([id, val]) => { const el = document.getElementById(id); if (el) el.textContent = val; });
+                // Stats
+                const statMap = { 'vs-total': counts.all, 'vs-texte': counts['Texte'], 'vs-images': counts['Images'], 'vs-video': counts['Vidéo'], 'vs-audio': counts['Audio'] };
+                Object.entries(statMap).forEach(([id, val]) => { const el = document.getElementById(id); if (el) el.textContent = val; });
 
                 grid.innerHTML = '';
                 if (empty) grid.appendChild(empty);
@@ -1909,188 +2216,122 @@
                 empty.style.display = 'none';
 
                 filtered.forEach((art, i) => {
-                    const [badgeClass, icon] = CAT_BADGE[art.category] || ['badge-texte', '📄'];
-                    const imp = art.importance || 3;
-                    const dots = [1,2,3,4,5].map(n => `<div class="veille-imp-dot${n<=imp?' on':''}"></div>`).join('');
-                    const tags = (art.tags||[]).slice(0,4).map(t => `<span class="veille-tag">${t}</span>`).join('');
-                    const catSlug = { Texte:'texte', Images:'images', 'Vidéo':'video', Audio:'audio' }[art.category] || 'texte';
+                const [badgeClass, icon] = CAT_BADGE[art.category] || ['badge-texte', '📄'];
+                const imp = art.importance || 3;
+                const dots = [1, 2, 3, 4, 5].map(n => `<div class="veille-imp-dot${n <= imp ? ' on' : ''}"></div>`).join('');
+                const tags = (art.tags || []).slice(0, 4).map(t => `<span class="veille-tag">${t}</span>`).join('');
+                const catSlug = { Texte: 'texte', Images: 'images', 'Vidéo': 'video', Audio: 'audio' }[art.category] || 'texte';
 
-                    const card = document.createElement('div');
-                    card.className = `veille-card cat-${catSlug}`;
-                    card.style.animationDelay = `${i * 0.06}s`;
-                    card.innerHTML = `
-                        <div class="veille-card-top">
-                            <span class="veille-cat-badge ${badgeClass}">${icon} ${art.category}</span>
-                            <div class="veille-importance">${dots}</div>
-                        </div>
-                        <div class="veille-card-title">${art.title}</div>
-                        <div class="veille-card-summary">${art.summary}</div>
-                        ${tags ? `<div class="veille-card-tags">${tags}</div>` : ''}
-                        <div class="veille-card-footer">
-                            <span class="veille-source">📰 ${art.source || '—'}</span>
-                            <span class="veille-date">${art.date || ''}</span>
-                            ${art.url ? `<a class="veille-link" href="${art.url}" target="_blank" rel="noopener">Lire →</a>` : ''}
-                        </div>`;
-                    grid.appendChild(card);
+                const card = document.createElement('div');
+                card.className = `veille-card cat-${catSlug}`;
+                card.style.animationDelay = `${i * 0.055}s`;
+                card.innerHTML = `
+                    <div class="veille-card-top">
+                    <span class="veille-cat-badge ${badgeClass}">${icon} ${art.category}</span>
+                    <div class="veille-importance">${dots}</div>
+                    </div>
+                    <div class="veille-card-title">${art.title}</div>
+                    <div class="veille-card-summary">${art.summary}</div>
+                    ${tags ? `<div class="veille-card-tags">${tags}</div>` : ''}
+                    <div class="veille-card-footer">
+                    <span class="veille-source">📰 ${art.source || '—'}</span>
+                    <span class="veille-date">${art.date || ''}</span>
+                    ${art.url ? `<a class="veille-link" href="${art.url}" target="_blank" rel="noopener">Lire →</a>` : ''}
+                    </div>`;
+                grid.appendChild(card);
                 });
-
-                // re-apply language
-                updateLanguageVisibility();
             }
 
-            window.veilleLoad = async function() {
+            window.veilleLoad = async function () {
                 const btn = document.getElementById('veilleRefreshBtn');
                 if (btn) { btn.disabled = true; btn.classList.add('spinning'); }
                 setStatus('loading');
 
-                const today = new Date().toLocaleDateString('fr-FR', { day:'numeric', month:'long', year:'numeric' });
+                const today = new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
 
                 try {
-                    const res = await fetch('https://api.anthropic.com/v1/messages', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            model: 'claude-sonnet-4-20250514',
-                            max_tokens: 4000,
-                            tools: [{ type: 'web_search_20250305', name: 'web_search' }],
-                            system: `Tu es un expert en veille sur l'IA générative. Recherche les actualités récentes et retourne UNIQUEMENT un objet JSON brut (sans backticks, sans markdown, sans texte avant ou après).
-                        Format exact :
-                        {
-                        "articles": [
-                            {
-                            "title": "Titre en français",
-                            "summary": "Résumé de 2-3 phrases informatif en français.",
-                            "category": "Texte ou Images ou Vidéo ou Audio",
-                            "source": "Nom de la source",
-                            "date": "date approximative",
-                            "importance": entier 1 à 5,
-                            "tags": ["tag1","tag2","tag3"],
-                            "url": "URL ou null"
-                            }
-                        ]
-                        }
-                        Génère exactement 12 articles : 3 Texte, 3 Images, 3 Vidéo, 3 Audio.`,
-                            messages: [{
-                                role: 'user',
-                                content: `Date du jour : ${today}. Recherche les 12 actualités IA générative les plus récentes et importantes : 3 sur les LLMs/IA texte (GPT, Claude, Gemini, Llama, Mistral...), 3 sur la génération d'images (Midjourney, DALL-E, Stable Diffusion, Flux...), 3 sur la vidéo IA (Sora, Runway, Kling, Pika...), 3 sur l'audio IA (Suno, Udio, ElevenLabs, Kling audio...). JSON brut uniquement.`
-                            }]
-                        })
-                    });
+                const res = await fetch('https://api.anthropic.com/v1/messages', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                    model: 'claude-sonnet-4-20250514',
+                    max_tokens: 4000,
+                    tools: [{ type: 'web_search_20250305', name: 'web_search' }],
+                    system: `Tu es un expert en veille sur l'IA générative. Recherche les actualités récentes et retourne UNIQUEMENT un objet JSON brut (sans backticks, sans markdown).
+            Format exact :
+            {
+            "articles": [
+                {
+                "title": "Titre en français",
+                "summary": "Résumé de 2-3 phrases en français.",
+                "category": "une valeur parmi exactement: Texte, Images, Vidéo, Audio",
+                "source": "Nom de la source",
+                "date": "date approximative",
+                "importance": entier entre 1 et 5,
+                "tags": ["tag1", "tag2", "tag3"],
+                "url": "URL ou null"
+                }
+            ]
+            }
+            Génère exactement 12 articles : 3 Texte, 3 Images, 3 Vidéo, 3 Audio. JSON brut uniquement, aucun texte avant ou après.`,
+                    messages: [{
+                        role: 'user',
+                        content: `Date du jour : ${today}. Recherche les 12 actualités IA générative les plus récentes : 3 sur les LLMs/IA texte (GPT, Claude, Gemini, Llama, Mistral...), 3 sur la génération d'images (Midjourney, DALL-E, Stable Diffusion, Flux...), 3 sur la génération vidéo (Sora, Runway, Kling, Pika...), 3 sur l'audio/musique (Suno, Udio, ElevenLabs...). JSON brut uniquement.`
+                    }]
+                    })
+                });
 
-                    const data = await res.json();
-                    let txt = '';
-                    for (const block of (data.content || [])) { if (block.type === 'text') txt += block.text; }
+                const data = await res.json();
+                let txt = '';
+                for (const block of (data.content || [])) { if (block.type === 'text') txt += block.text; }
 
-                    let clean = txt.trim().replace(/^```json\s*/i,'').replace(/^```\s*/,'').replace(/\s*```$/,'');
-                    const parsed = JSON.parse(clean);
-                    if (!parsed.articles || !Array.isArray(parsed.articles)) throw new Error('Format invalide');
+                let clean = txt.trim().replace(/^```json\s*/i, '').replace(/^```\s*/, '').replace(/\s*```$/, '');
+                const parsed = JSON.parse(clean);
+                if (!parsed.articles || !Array.isArray(parsed.articles)) throw new Error('Format invalide');
 
-                    _articles = parsed.articles;
-                    _filter = 'all';
-                    document.querySelectorAll('.veille-tab').forEach(t => t.classList.remove('active'));
-                    const allTab = document.querySelector('.veille-tab[data-cat="all"]');
-                    if (allTab) allTab.classList.add('active');
+                _articles = parsed.articles;
+                _filter = 'all';
+                document.querySelectorAll('.veille-tab').forEach(t => t.classList.remove('active'));
+                const allTab = document.querySelector('.veille-tab[data-cat="all"]');
+                if (allTab) allTab.classList.add('active');
 
-                    render();
-                    setStatus('live');
+                render();
+                setStatus('live');
 
-                    const lu = document.getElementById('veilleLastUpdate');
-                    if (lu) lu.textContent = `⏱ Dernière mise à jour : ${new Date().toLocaleString('fr-FR')}`;
+                const lu = document.getElementById('veilleLastUpdate');
+                if (lu) lu.textContent = `⏱ Dernière mise à jour : ${new Date().toLocaleString('fr-FR')}`;
 
-                    try { localStorage.setItem('veille_cache', JSON.stringify({ ts: Date.now(), articles: _articles })); } catch(e) {}
+                try { localStorage.setItem('veille_cache', JSON.stringify({ ts: Date.now(), articles: _articles })); } catch (e) {}
 
-                } catch(err) {
-                    console.error('Veille error:', err);
-                    showToast('Erreur de chargement. Réessaie dans quelques instants.');
-                    setStatus('idle');
+                } catch (err) {
+                console.error('Veille error:', err);
+                showToast('Erreur de chargement. Réessaie dans quelques instants.');
+                setStatus('idle');
                 } finally {
-                    if (btn) { btn.disabled = false; btn.classList.remove('spinning'); }
+                if (btn) { btn.disabled = false; btn.classList.remove('spinning'); }
                 }
             };
 
-            // Auto-load au démarrage avec cache 6h
-            document.addEventListener('DOMContentLoaded', function() {
+            // Au chargement : cache ou auto-load
+            document.addEventListener('DOMContentLoaded', function () {
                 try {
-                    const cached = localStorage.getItem('veille_cache');
-                    if (cached) {
-                        const { ts, articles } = JSON.parse(cached);
-                        if (Date.now() - ts < 6 * 60 * 60 * 1000 && articles.length > 0) {
-                            _articles = articles;
-                            render();
-                            setStatus('live');
-                            const lu = document.getElementById('veilleLastUpdate');
-                            if (lu) lu.textContent = `⏱ Depuis le cache — ${new Date(ts).toLocaleString('fr-FR')}`;
-                            return;
-                        }
+                const cached = localStorage.getItem('veille_cache');
+                if (cached) {
+                    const { ts, articles } = JSON.parse(cached);
+                    if (Date.now() - ts < 6 * 60 * 60 * 1000 && articles.length > 0) {
+                    _articles = articles;
+                    render();
+                    setStatus('live');
+                    const lu = document.getElementById('veilleLastUpdate');
+                    if (lu) lu.textContent = `⏱ Depuis le cache — ${new Date(ts).toLocaleString('fr-FR')}`;
+                    return;
                     }
-                } catch(e) {}
+                }
+                } catch (e) {}
                 veilleLoad();
             });
 
-        })();
-
-        // Load news after 1 second to simulate API call
-        setTimeout(loadAINews, 1000);
-
-        // ============================================
-        // EMAILJS CONTACT FORM
-        // ============================================
-        // Initialize EmailJS (you need to replace with your own credentials)
-        (function() {
-            emailjs.init("k7RUjYx4oOh1AmDAi") // Replace with your EmailJS public key
-        })();
-
-        const contactForm = document.getElementById('contactForm');
-        const formStatus = document.getElementById('formStatus');
-
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            submitBtn.disabled = true;
-            submitBtn.textContent = '⏳ Envoi en cours...';
-            
-            // Replace with your EmailJS service ID, template ID
-            emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
-                .then(function() {
-                    formStatus.className = 'form-status success';
-                    formStatus.style.display = 'block';
-                    formStatus.textContent = '✅ Message envoyé avec succès !';
-                    contactForm.reset();
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Envoyer le message';
-                }, function(error) {
-                    formStatus.className = 'form-status error';
-                    formStatus.style.display = 'block';
-                    formStatus.textContent = '❌ Erreur lors de l\'envoi. Réessayez.';
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Envoyer le message';
-                });
-        });
-
-        // ============================================
-        // SCROLL ANIMATIONS
-        // ============================================
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.glass-card, .timeline-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
-    </script>
+            })();
+            </script>
 </body>
 </html>
