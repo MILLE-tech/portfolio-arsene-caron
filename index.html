@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Meta Tags -->
-    <title>Arsène Caron | Technicien Infrastructure & Réseaux | Portfolio BTS SIO SISR</title>
-    <meta name="description" content="Portfolio d'Arsène Caron, technicien infrastructure et réseaux en BTS SIO SISR. Spécialisé en administration systèmes, virtualisation et sécurité réseau.">
+    <title>Arsène Caron | Administrateur systèmes | Portfolio BTS SIO SISR</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <meta name="description" content="Portfolio d'Arsène Caron, administrateur systèmes en BTS SIO SISR. Spécialisé en administration systèmes, virtualisation et sécurité réseau.">
     <meta name="keywords" content="Arsène Caron, BTS SIO, SISR, Infrastructure, Réseaux, Windows Server, Active Directory, Linux, Portfolio">
     <meta name="author" content="Arsène Caron">
     
     <!-- Open Graph / Social Media -->
-    <meta property="og:title" content="Arsène Caron - Technicien Infrastructure & Réseaux">
+    <meta property="og:title" content="Arsène Caron - Administrateur systèmes">
     <meta property="og:description" content="De l'idée à l'infrastructure - Portfolio BTS SIO SISR">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://arsene-caron.vercel.app">
@@ -415,6 +416,17 @@
             transition: all 0.3s;
         }
 
+        .social-link svg {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+            transition: all 0.3s;
+        }
+
+        .control-btn svg {
+            stroke: currentColor;
+        }
+
         .social-link:hover {
             background: var(--accent);
             color: white;
@@ -645,323 +657,66 @@
             color: var(--text-secondary);
         }
 
-        .veille-header-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 16px;
-            margin-bottom: 12px;
-            }
-
-            .veille-subtitle {
-            color: #94a3b8;
-            font-size: 15px;
-            margin-bottom: 28px;
-            max-width: 680px;
-            line-height: 1.7;
-            }
-
-            .veille-meta {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 28px;
-            }
-
-            .veille-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(99, 102, 241, 0.12);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            border-radius: 20px;
-            padding: 5px 12px;
-            font-size: 12px;
-            color: #a5b4fc;
-            font-family: monospace;
-            }
-
-            .veille-status-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: #64748b;
-            transition: background 0.3s;
-            flex-shrink: 0;
-            }
-            .veille-status-dot.live {
-            background: #10b981;
-            box-shadow: 0 0 6px #10b981;
-            animation: veille-pulse 2s infinite;
-            }
-            .veille-status-dot.loading {
-            background: #f59e0b;
-            animation: veille-pulse 0.5s infinite;
-            }
-
-            @keyframes veille-pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
-
-            .veille-btn-refresh {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            border: none;
-            border-radius: 8px;
-            padding: 10px 20px;
-            color: #fff;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            box-shadow: 0 0 16px rgba(99,102,241,0.25);
-            font-family: inherit;
-            }
-            .veille-btn-refresh:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(99,102,241,0.45); }
-            .veille-btn-refresh:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-            .veille-spin { display: inline-block; }
-            .veille-btn-refresh.spinning .veille-spin { animation: veille-rotate 0.8s linear infinite; }
-            @keyframes veille-rotate { to { transform: rotate(360deg); } }
-
-            .veille-tabs {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-bottom: 24px;
-            border-bottom: 1px solid rgba(255,255,255,0.07);
-            padding-bottom: 16px;
-            }
-
-            .veille-tab {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 8px;
-            padding: 8px 16px;
-            font-size: 13px;
-            font-weight: 600;
-            color: #64748b;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-family: inherit;
-            }
-            .veille-tab:hover { border-color: rgba(99,102,241,0.4); color: #a5b4fc; }
-            .veille-tab.active {
-            background: rgba(99,102,241,0.15);
-            border-color: rgba(99,102,241,0.5);
-            color: #a5b4fc;
-            box-shadow: 0 0 12px rgba(99,102,241,0.15);
-            }
-            .veille-tab .tab-count {
-            background: rgba(99,102,241,0.25);
-            border-radius: 10px;
-            padding: 1px 7px;
-            font-size: 11px;
-            color: #a5b4fc;
-            }
-
-            .veille-grid {
+        /* AI News Cards */
+        .news-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 16px;
-            min-height: 200px;
-            }
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
 
-            .veille-card {
-            background: rgba(15, 23, 42, 0.8);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 12px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 11px;
-            transition: all 0.25s;
-            position: relative;
+        .news-card {
+            border-radius: 20px;
             overflow: hidden;
-            animation: veille-fadeup 0.35s ease both;
-            }
-            .veille-card::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 2px;
-            opacity: 0;
-            transition: opacity 0.25s;
-            }
-            .veille-card.cat-texte::after  { background: linear-gradient(90deg, #6366f1, #8b5cf6); }
-            .veille-card.cat-images::after { background: linear-gradient(90deg, #ec4899, #f43f5e); }
-            .veille-card.cat-video::after  { background: linear-gradient(90deg, #f59e0b, #ef4444); }
-            .veille-card.cat-audio::after  { background: linear-gradient(90deg, #10b981, #06b6d4); }
+            transition: all 0.3s;
+        }
 
-            .veille-card:hover {
-            border-color: rgba(99,102,241,0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-            }
-            .veille-card:hover::after { opacity: 1; }
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
 
-            @keyframes veille-fadeup {
-            from { opacity: 0; transform: translateY(14px); }
-            to   { opacity: 1; transform: translateY(0); }
-            }
+        .news-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
 
-            .veille-card-top {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 8px;
-            }
+        .news-content {
+            padding: 1.5rem;
+        }
 
-            .veille-cat-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            border-radius: 6px;
-            padding: 4px 10px;
-            font-size: 11px;
-            font-weight: 700;
-            font-family: monospace;
-            letter-spacing: 0.3px;
-            flex-shrink: 0;
-            }
-            .badge-texte  { background: rgba(99,102,241,0.12); color: #a5b4fc; border: 1px solid rgba(99,102,241,0.25); }
-            .badge-images { background: rgba(236,72,153,0.12); color: #f9a8d4; border: 1px solid rgba(236,72,153,0.25); }
-            .badge-video  { background: rgba(245,158,11,0.12); color: #fcd34d; border: 1px solid rgba(245,158,11,0.25); }
-            .badge-audio  { background: rgba(16,185,129,0.12); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.25); }
-
-            .veille-importance {
-            display: flex;
-            gap: 3px;
-            flex-shrink: 0;
-            }
-            .veille-imp-dot {
-            width: 6px; height: 6px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            }
-            .veille-imp-dot.on { background: #f59e0b; box-shadow: 0 0 4px rgba(245,158,11,0.5); }
-
-            .veille-card-title {
-            font-size: 15px;
-            font-weight: 700;
+        .news-card h4 {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
             line-height: 1.4;
-            color: #f1f5f9;
-            }
+        }
 
-            .veille-card-summary {
-            font-size: 13px;
-            line-height: 1.65;
-            color: #94a3b8;
-            flex-grow: 1;
-            }
+        .news-date {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 0.8rem;
+            font-family: 'IBM Plex Mono', monospace;
+        }
 
-            .veille-card-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            }
-            .veille-tag {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 4px;
-            padding: 2px 8px;
-            font-size: 11px;
-            color: #64748b;
-            font-family: monospace;
-            }
+        .news-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
 
-            .veille-card-footer {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-top: 10px;
-            border-top: 1px solid rgba(255,255,255,0.06);
-            gap: 8px;
-            }
-            .veille-source {
-            font-size: 12px;
-            color: #475569;
-            font-family: monospace;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            }
-            .veille-date {
-            font-size: 11px;
-            color: #475569;
-            font-family: monospace;
-            white-space: nowrap;
-            flex-shrink: 0;
-            }
-            .veille-link {
-            color: #818cf8;
-            font-size: 12px;
+        .news-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--accent);
             text-decoration: none;
             font-weight: 600;
-            white-space: nowrap;
-            flex-shrink: 0;
-            transition: color 0.2s;
-            }
-            .veille-link:hover { color: #fff; }
+            transition: transform 0.3s;
+        }
 
-            .veille-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 10px;
-            margin-bottom: 24px;
-            }
-            .veille-stat {
-            background: rgba(15,23,42,0.6);
-            border: 1px solid rgba(255,255,255,0.07);
-            border-radius: 10px;
-            padding: 12px 16px;
-            }
-            .veille-stat-label { font-size: 11px; color: #475569; font-family: monospace; text-transform: uppercase; letter-spacing: 0.5px; }
-            .veille-stat-val { font-size: 24px; font-weight: 800; line-height: 1.2; }
-            .sv-indigo { color: #818cf8; }
-            .sv-pink   { color: #f472b6; }
-            .sv-amber  { color: #fbbf24; }
-            .sv-green  { color: #34d399; }
-
-            .veille-empty {
-            grid-column: 1/-1;
-            text-align: center;
-            padding: 60px 20px;
-            color: #475569;
-            }
-            .veille-empty-icon { font-size: 40px; margin-bottom: 12px; }
-            .veille-empty-title { font-size: 18px; font-weight: 700; color: #64748b; margin-bottom: 6px; }
-
-            .veille-last-update {
-            font-size: 12px;
-            color: #475569;
-            font-family: monospace;
-            margin-bottom: 20px;
-            min-height: 18px;
-            }
-
-            #veilleToast {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            background: #1e1b30;
-            border: 1px solid #f87171;
-            border-radius: 10px;
-            padding: 12px 18px;
-            font-size: 13px;
-            color: #f87171;
-            z-index: 9999;
-            transform: translateY(80px);
-            opacity: 0;
-            transition: all 0.3s;
-            max-width: 340px;
-            pointer-events: none;
-            }
-            #veilleToast.show { transform: translateY(0); opacity: 1; }
+        .news-link:hover {
+            transform: translateX(5px);
+        }
 
         /* Contact Form */
         .contact-form {
@@ -1106,6 +861,183 @@
             font-weight: 700;
         }
 
+        /* Certification Cards avec effet Flip */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .cert-card {
+            perspective: 1000px;
+            height: 320px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .cert-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .cert-card.flipped .cert-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .cert-card-front,
+        .cert-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            border-radius: 20px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .cert-card-front {
+            background: var(--glass-bg);
+            backdrop-filter: var(--blur);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+        }
+
+        .cert-card-front::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            border-radius: 20px 20px 0 0;
+        }
+
+        .cert-card-back {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: white;
+            transform: rotateY(180deg);
+            padding: 2rem 1.5rem;
+            overflow-y: auto;
+            justify-content: flex-start;
+        }
+
+        .cert-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .cert-card-front h4 {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .cert-status {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cert-card-back h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            margin-top: 0.5rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .cert-details {
+            width: 100%;
+            text-align: left;
+        }
+
+        .cert-detail-item {
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .cert-detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .cert-detail-label {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+        }
+
+        .cert-detail-value {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .cert-badge {
+            width: 60px;
+            height: 60px;
+            margin: 1rem auto 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .flip-hint {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            opacity: 0.6;
+        }
+        
+        .cert-view-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.7rem 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            border-radius: 25px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .cert-view-btn:hover {
+            background: white;
+            color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .nav-center {
@@ -1172,7 +1104,18 @@
     <!-- Navigation -->
     <nav id="navbar">
         <div class="container">
-            <a href="#" class="logo">AC</a>
+            <a href="#" class="logo" style="display: flex; align-items: center; gap: 0.5rem;">
+                <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#5EAFC6;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#9DCFDE;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="32" height="32" rx="8" fill="url(#logoGrad)"/>
+                    <text x="16" y="22" font-family="'Sora', sans-serif" font-size="14" font-weight="800" fill="white" text-anchor="middle">AC</text>
+                </svg>
+            </a>
             <ul class="nav-center">
                 <li><a href="#home" class="lang-fr">Accueil</a><a href="#home" class="lang-en hidden">Home</a></li>
                 <li><a href="#about" class="lang-fr">Moi</a><a href="#about" class="lang-en hidden">About</a></li>
@@ -1188,8 +1131,12 @@
                     <span class="lang-en hidden">FR</span>
                 </button>
                 <button class="control-btn" id="themeToggle" title="Changer de thème">
-                    <span class="theme-light">🌙</span>
-                    <span class="theme-dark hidden">☀️</span>
+                    <svg class="theme-light" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                    <svg class="theme-dark hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
                 </button>
             </div>
         </div>
@@ -1199,11 +1146,11 @@
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="avatar" style="background-image: url('avataaars.png'); background-size:cover;"></div>
+                <div class="avatar" style="background-image: url('images/avataaars.png'); background-size:cover;"></div>
                 
                 <h1>Arsène Caron</h1>
                 
-                <p class="subtitle lang-fr">Technicien Infrastructure & Réseaux</p>
+                <p class="subtitle lang-fr">Administrateur systèmes</p>
                 <p class="subtitle lang-en hidden">Infrastructure & Network Technician</p>
                 
                 <p class="tagline lang-fr">« De l'idée à l'infrastructure »</p>
@@ -1215,8 +1162,19 @@
                 </div>
 
                 <div class="social-links">
-                    <a href="https://github.com/MILLE-tech" target="_blank" class="social-link" title="GitHub">GH</a>
-                    <a href="https://www.linkedin.com/in/arsène-caron-2b585b311" target="_blank" class="social-link" title="LinkedIn">IN</a>
+                    <a href="https://github.com/MILLE-tech" target="_blank" class="social-link" title="GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                            <path d="M9 18c-4.51 2-5-2-7-2"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/arsène-caron-2b585b311" target="_blank" class="social-link" title="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                            <rect width="4" height="12" x="2" y="9"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>
@@ -1351,41 +1309,243 @@
             <h3 style="color: var(--title-color); margin: 3rem 0 2rem; font-size: 2rem;" class="lang-fr">
                 🏆 Mes Certifications
             </h3>
+            <h3 style="color: var(--title-color); margin: 3rem 0 2rem; font-size: 2rem;" class="lang-en hidden">
+                🏆 My Certifications
+            </h3>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
-                <div style="padding: 2rem; border-radius: 20px; text-align: center; position: relative; overflow: hidden;" class="glass">
-                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--accent), var(--accent-light));"></div>
-                    <div style="width: 80px; height: 80px; margin: 0 auto 1rem; background: linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">📡</div>
-                    <h4 style="font-size: 1.2rem; color: var(--title-color); margin-bottom: 0.5rem;">Cisco CCNA</h4>
-                    <p style="font-size: 0.85rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px;" class="lang-fr">En cours</p>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem; font-style: italic;" class="lang-fr">
+                💡 Cliquez sur une carte pour voir les détails
+            </p>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem; font-style: italic;" class="lang-en hidden">
+                💡 Click on a card to see details
+            </p>
+
+            <div class="cert-grid">
+                <!-- Cisco CCNA -->
+                <div class="cert-card" onclick="this.classList.toggle('flipped')">
+                    <div class="cert-card-inner">
+                        <div class="cert-card-front">
+                            <div class="cert-icon">📡</div>
+                            <h4>Cisco CCNA</h4>
+                            <p class="cert-status lang-fr">En cours</p>
+                            <p class="cert-status lang-en hidden">In Progress</p>
+                            <p class="flip-hint">👆 Cliquer pour détails</p>
+                        </div>
+                        <div class="cert-card-back">
+                            <h4>Cisco CCNA</h4>
+                            <div class="cert-details">
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Statut</div>
+                                    <div class="cert-detail-label lang-en hidden">Status</div>
+                                    <div class="cert-detail-value lang-fr">En cours de préparation</div>
+                                    <div class="cert-detail-value lang-en hidden">In Progress</div>
+                                </div>
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Organisme</div>
+                                    <div class="cert-detail-label lang-en hidden">Organization</div>
+                                    <div class="cert-detail-value">Cisco</div>
+                                </div>
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Date prévue</div>
+                                    <div class="cert-detail-label lang-en hidden">Expected Date</div>
+                                    <div class="cert-detail-value">2026</div>
+                                </div>
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Compétences</div>
+                                    <div class="cert-detail-label lang-en hidden">Skills</div>
+                                    <div class="cert-detail-value" style="font-size: 0.85rem;">Réseaux, Routage, Switching, IPv4/IPv6</div>
+                                </div>
+                            </div>
+                            <div class="cert-badge">🎯</div>
+                        </div>
+                    </div>
                 </div>
 
-                <div style="padding: 2rem; border-radius: 20px; text-align: center; position: relative; overflow: hidden;" class="glass">
-                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--accent), var(--accent-light));"></div>
-                    <div style="width: 80px; height: 80px; margin: 0 auto 1rem; background: linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">🔒</div>
-                    <h4 style="font-size: 1.2rem; color: var(--title-color); margin-bottom: 0.5rem;">SecNum</h4>
-                    <p style="font-size: 0.85rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px;" class="lang-fr">Obtenue</p>
+                <!-- SecNum -->
+                <div class="cert-card" onclick="this.classList.toggle('flipped')">
+                    <div class="cert-card-inner">
+                        <div class="cert-card-front">
+                            <div class="cert-icon">🔒</div>
+                            <h4>SecNum</h4>
+                            <p class="cert-status lang-fr">Obtenue</p>
+                            <p class="cert-status lang-en hidden">Obtained</p>
+                            <p class="flip-hint">👆 Cliquer pour détails</p>
+                        </div>
+                        <div class="cert-card-back">
+                            <h4>SecNum Académie</h4>
+                            <div class="cert-details">
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Statut</div>
+                                    <div class="cert-detail-label lang-en hidden">Status</div>
+                                    <div class="cert-detail-value lang-fr">✅ Certifié</div>
+                                    <div class="cert-detail-value lang-en hidden">✅ Certified</div>
+                                </div>
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Organisme</div>
+                                    <div class="cert-detail-label lang-en hidden">Organization</div>
+                                    <div class="cert-detail-value">ANSSI</div>
+                                </div>
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Date d'obtention</div>
+                                    <div class="cert-detail-label lang-en hidden">Obtained Date</div>
+                                    <div class="cert-detail-value">2024</div>
+                                </div>
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Compétences</div>
+                                    <div class="cert-detail-label lang-en hidden">Skills</div>
+                                    <div class="cert-detail-value" style="font-size: 0.85rem;">Cybersécurité, Protection des données</div>
+                                </div>
+                            </div>
+                            <div class="cert-badge">🏆</div>
+                            <a href="certifs/Attesation ANSSI.pdf" class="cert-view-btn lang-fr" onclick="event.stopPropagation();">
+                                📄 Voir le certificat
+                            </a>
+                            <a href="certifs/Attesation ANSSI.pdf" class="cert-view-btn lang-en hidden" onclick="event.stopPropagation();">
+                                📄 View certificate
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
-                <div style="padding: 2rem; border-radius: 20px; text-align: center; position: relative; overflow: hidden;" class="glass">
-                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--accent), var(--accent-light));"></div>
-                    <div style="width: 80px; height: 80px; margin: 0 auto 1rem; background: linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">🌐</div>
-                    <h4 style="font-size: 1.2rem; color: var(--title-color); margin-bottom: 0.5rem;">Cisco NetAcad</h4>
-                    <p style="font-size: 0.85rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px;" class="lang-fr">Obtenue</p>
+                <!-- Cisco NetAcad -->
+                <div class="cert-card" onclick="this.classList.toggle('flipped')">
+                    <div class="cert-card-inner">
+                        <div class="cert-card-front">
+                            <div class="cert-icon">🌐</div>
+                            <h4>Cisco NetAcad</h4>
+                            <p class="cert-status lang-fr">Obtenue</p>
+                            <p class="cert-status lang-en hidden">Obtained</p>
+                            <p class="flip-hint">👆 Cliquer pour détails</p>
+                        </div>
+                        <div class="cert-card-back">
+                            <h4>Cisco Networking Academy</h4>
+                            <div class="cert-details">
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Statut</div>
+                                    <div class="cert-detail-label lang-en hidden">Status</div>
+                                    <div class="cert-detail-value lang-fr">✅ Certifié</div>
+                                    <div class="cert-detail-value lang-en hidden">✅ Certified</div>
+                                </div>
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Organisme</div>
+                                    <div class="cert-detail-label lang-en hidden">Organization</div>
+                                    <div class="cert-detail-value">Cisco</div>
+                                </div>
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Date d'obtention</div>
+                                    <div class="cert-detail-label lang-en hidden">Obtained Date</div>
+                                    <div class="cert-detail-value">2024</div>
+                                </div>
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Compétences</div>
+                                    <div class="cert-detail-label lang-en hidden">Skills</div>
+                                    <div class="cert-detail-value" style="font-size: 0.85rem;">Fondamentaux réseaux, Configuration Cisco</div>
+                                </div>
+                            </div>
+                            <div class="cert-badge">🏆</div>
+                            <a href="certifs/Cisco.pdf" class="cert-view-btn lang-fr" onclick="event.stopPropagation();">
+                                📄 Voir le certificat
+                            </a>
+                            <a href="certifs/Cisco.pdf" class="cert-view-btn lang-en hidden" onclick="event.stopPropagation();">
+                                📄 View certificate
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
-                <div style="padding: 2rem; border-radius: 20px; text-align: center; position: relative; overflow: hidden;" class="glass">
-                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--accent), var(--accent-light));"></div>
-                    <div style="width: 80px; height: 80px; margin: 0 auto 1rem; background: linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">📋</div>
-                    <h4 style="font-size: 1.2rem; color: var(--title-color); margin-bottom: 0.5rem;" class="lang-fr">Atelier RGPD CNIL</h4>
-                    <p style="font-size: 0.85rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px;" class="lang-fr">Obtenue</p>
+                <!-- RGPD CNIL -->
+                <div class="cert-card" onclick="this.classList.toggle('flipped')">
+                    <div class="cert-card-inner">
+                        <div class="cert-card-front">
+                            <div class="cert-icon">📋</div>
+                            <h4 class="lang-fr">Atelier RGPD CNIL</h4>
+                            <h4 class="lang-en hidden">GDPR Workshop CNIL</h4>
+                            <p class="cert-status lang-fr">Obtenue</p>
+                            <p class="cert-status lang-en hidden">Obtained</p>
+                            <p class="flip-hint">👆 Cliquer pour détails</p>
+                        </div>
+                        <div class="cert-card-back">
+                            <h4 class="lang-fr">Atelier RGPD</h4>
+                            <h4 class="lang-en hidden">GDPR Workshop</h4>
+                            <div class="cert-details">
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Statut</div>
+                                    <div class="cert-detail-label lang-en hidden">Status</div>
+                                    <div class="cert-detail-value lang-fr">✅ Validé</div>
+                                    <div class="cert-detail-value lang-en hidden">✅ Validated</div>
+                                </div>
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Organisme</div>
+                                    <div class="cert-detail-label lang-en hidden">Organization</div>
+                                    <div class="cert-detail-value">CNIL</div>
+                                </div>
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Date d'obtention</div>
+                                    <div class="cert-detail-label lang-en hidden">Obtained Date</div>
+                                    <div class="cert-detail-value">2024</div>
+                                </div>
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Compétences</div>
+                                    <div class="cert-detail-label lang-en hidden">Skills</div>
+                                    <div class="cert-detail-value" style="font-size: 0.85rem;" class="lang-fr">Protection des données, RGPD</div>
+                                    <div class="cert-detail-value" style="font-size: 0.85rem;" class="lang-en hidden">Data Protection, GDPR</div>
+                                </div>
+                            </div>
+                            <div class="cert-badge">🏆</div>
+                            <a href="certifs/CNIL.pdf" class="cert-view-btn lang-fr" onclick="event.stopPropagation();">
+                                📄 Voir le certificat
+                            </a>
+                            <a href="certifs/CNIL.pdf" class="cert-view-btn lang-en hidden" onclick="event.stopPropagation();">
+                                📄 View certificate
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
-                <div style="padding: 2rem; border-radius: 20px; text-align: center; position: relative; overflow: hidden;" class="glass">
-                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--accent), var(--accent-light));"></div>
-                    <div style="width: 80px; height: 80px; margin: 0 auto 1rem; background: linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">💰</div>
-                    <h4 style="font-size: 1.2rem; color: var(--title-color); margin-bottom: 0.5rem;">CoinAcademy</h4>
-                    <p style="font-size: 0.85rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px;" class="lang-fr">Obtenue</p>
+                <!-- CoinAcademy -->
+                <div class="cert-card" onclick="this.classList.toggle('flipped')">
+                    <div class="cert-card-inner">
+                        <div class="cert-card-front">
+                            <div class="cert-icon">💰</div>
+                            <h4>CoinAcademy</h4>
+                            <p class="cert-status lang-fr">Obtenue</p>
+                            <p class="cert-status lang-en hidden">Obtained</p>
+                            <p class="flip-hint">👆 Cliquer pour détails</p>
+                        </div>
+                        <div class="cert-card-back">
+                            <h4>CoinAcademy</h4>
+                            <div class="cert-details">
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Statut</div>
+                                    <div class="cert-detail-label lang-en hidden">Status</div>
+                                    <div class="cert-detail-value lang-fr">✅ Certifié</div>
+                                    <div class="cert-detail-value lang-en hidden">✅ Certified</div>
+                                </div>
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Organisme</div>
+                                    <div class="cert-detail-label lang-en hidden">Organization</div>
+                                    <div class="cert-detail-value">CoinAcademy</div>
+                                </div>
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Date d'obtention</div>
+                                    <div class="cert-detail-label lang-en hidden">Obtained Date</div>
+                                    <div class="cert-detail-value">2024</div>
+                                </div>
+                                <div class="cert-detail-item">
+                                    <div class="cert-detail-label lang-fr">Compétences</div>
+                                    <div class="cert-detail-label lang-en hidden">Skills</div>
+                                    <div class="cert-detail-value" style="font-size: 0.85rem;">Blockchain, Cryptomonnaies</div>
+                                </div>
+                            </div>
+                            <div class="cert-badge">🏆</div>
+                            <a href="certifs/Crypto.pdf" class="cert-view-btn lang-fr" onclick="event.stopPropagation();">
+                                📄 Voir le certificat
+                            </a>
+                            <a href="certifs/Crypto.pdf" class="cert-view-btn lang-en hidden" onclick="event.stopPropagation();">
+                                📄 View certificate
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1763,26 +1923,6 @@
                 </div>
             </div>
 
-            <!-- Certifications -->
-            <div class="info-box">
-                <h4 class="lang-fr">🏆 Certifications</h4>
-                <h4 class="lang-en hidden">🏆 Certifications</h4>
-                <ul class="lang-fr">
-                    <li><strong>Cisco CCNA</strong> - En cours de préparation</li>
-                    <li><strong>SecNum</strong> - Obtenue</li>
-                    <li><strong>Cisco NetAcad</strong> - Obtenue</li>
-                    <li><strong>Atelier RGPD CNIL</strong> - Obtenue</li>
-                    <li><strong>CoinAcademy</strong> - Obtenue</li>
-                </ul>
-                <ul class="lang-en hidden">
-                    <li><strong>Cisco CCNA</strong> - In Progress</li>
-                    <li><strong>SecNum</strong> - Obtained</li>
-                    <li><strong>Cisco NetAcad</strong> - Obtained</li>
-                    <li><strong>GDPR Workshop CNIL</strong> - Obtained</li>
-                    <li><strong>CoinAcademy</strong> - Obtained</li>
-                </ul>
-            </div>
-
             <!-- Languages -->
             <div class="info-box">
                 <h4 class="lang-fr">🌍 Compétences Linguistiques</h4>
@@ -1802,95 +1942,48 @@
     <!-- AI Watch Section -->
     <section id="ai-watch">
         <div class="container">
+            <h2 class="section-title lang-fr">🤖 Veille Technologique - IA Générative</h2>
+            <h2 class="section-title lang-en hidden">🤖 Technology Watch - Generative AI</h2>
 
-            <div class="veille-header-row">
-            <div>
-                <h2 class="section-title fr">🤖 Veille Technologique - IA Générative</h2>
-                <h2 class="section-title en">🤖 Technology Watch - Generative AI</h2>
-            </div>
-            <button class="veille-btn-refresh" id="veilleRefreshBtn" onclick="veilleLoad()">
-                <span class="veille-spin" id="veilleSpin">↻</span>
-                <span class="fr">Actualiser</span>
-                <span class="en">Refresh</span>
-            </button>
-            </div>
+            <div class="glass-card glass">
+                <p class="lang-fr" style="margin-bottom: 2rem; line-height: 1.8; color: var(--text-secondary);">
+                    L'intelligence artificielle générative révolutionne de nombreux domaines. Cette veille technologique 
+                    automatisée se met à jour quotidiennement pour suivre les dernières avancées en IA textuelle, 
+                    génération d'images, vidéo et audio.
+                </p>
+                <p class="lang-en hidden" style="margin-bottom: 2rem; line-height: 1.8; color: var(--text-secondary);">
+                    Generative artificial intelligence is revolutionizing many fields. This automated technology watch 
+                    updates daily to track the latest advances in text AI, image generation, video and audio.
+                </p>
 
-            <p class="veille-subtitle fr">
-            L'IA générative révolutionne la création de contenu. Cette veille automatisée couvre les dernières
-            avancées en <strong style="color:#a5b4fc">texte</strong>, <strong style="color:#f9a8d4">images</strong>,
-            <strong style="color:#fcd34d">vidéo</strong> et <strong style="color:#6ee7b7">audio</strong>.
-            </p>
-            <p class="veille-subtitle en">
-            Generative AI is revolutionizing content creation. This automated watch covers the latest advances
-            in <strong style="color:#a5b4fc">text</strong>, <strong style="color:#f9a8d4">images</strong>,
-            <strong style="color:#fcd34d">video</strong> and <strong style="color:#6ee7b7">audio</strong>.
-            </p>
-
-            <div class="veille-meta">
-            <div class="veille-badge">
-                <div class="veille-status-dot" id="veilleStatusDot"></div>
-                <span id="veilleStatusText">En attente</span>
-            </div>
-            <div class="veille-badge">⚡ Powered by Claude + Web Search</div>
-            </div>
-
-            <div class="veille-stats">
-            <div class="veille-stat">
-                <div class="veille-stat-label">Total</div>
-                <div class="veille-stat-val sv-indigo" id="vs-total">—</div>
-            </div>
-            <div class="veille-stat">
-                <div class="veille-stat-label">Texte</div>
-                <div class="veille-stat-val sv-indigo" id="vs-texte">—</div>
-            </div>
-            <div class="veille-stat">
-                <div class="veille-stat-label">Images</div>
-                <div class="veille-stat-val sv-pink" id="vs-images">—</div>
-            </div>
-            <div class="veille-stat">
-                <div class="veille-stat-label">Vidéo</div>
-                <div class="veille-stat-val sv-amber" id="vs-video">—</div>
-            </div>
-            <div class="veille-stat">
-                <div class="veille-stat-label">Audio</div>
-                <div class="veille-stat-val sv-green" id="vs-audio">—</div>
-            </div>
+                <div class="info-box">
+                    <h4 class="lang-fr">ℹ️ À propos de cette veille</h4>
+                    <h4 class="lang-en hidden">ℹ️ About this watch</h4>
+                    <ul class="lang-fr">
+                        <li>Mise à jour automatique quotidienne à 00h00</li>
+                        <li>Sources : TechCrunch, VentureBeat, The Verge, MIT Technology Review</li>
+                        <li>Thèmes : IA textuelle, génération d'images, vidéo, audio</li>
+                        <li>Articles en anglais avec résumé</li>
+                    </ul>
+                    <ul class="lang-en hidden">
+                        <li>Automatic daily update at 00:00</li>
+                        <li>Sources: TechCrunch, VentureBeat, The Verge, MIT Technology Review</li>
+                        <li>Topics: Text AI, image generation, video, audio</li>
+                        <li>English articles with summary</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="veille-last-update" id="veilleLastUpdate"></div>
-
-            <div class="veille-tabs">
-            <button class="veille-tab active" data-cat="all" onclick="veilleFilter('all', this)">
-                🔭 <span class="fr">Tout voir</span><span class="en">All</span>
-                <span class="tab-count" id="tc-all">—</span>
-            </button>
-            <button class="veille-tab" data-cat="Texte" onclick="veilleFilter('Texte', this)">
-                💬 Texte <span class="tab-count" id="tc-texte">—</span>
-            </button>
-            <button class="veille-tab" data-cat="Images" onclick="veilleFilter('Images', this)">
-                🖼️ Images <span class="tab-count" id="tc-images">—</span>
-            </button>
-            <button class="veille-tab" data-cat="Vidéo" onclick="veilleFilter('Vidéo', this)">
-                🎬 <span class="fr">Vidéo</span><span class="en">Video</span>
-                <span class="tab-count" id="tc-video">—</span>
-            </button>
-            <button class="veille-tab" data-cat="Audio" onclick="veilleFilter('Audio', this)">
-                🎵 Audio <span class="tab-count" id="tc-audio">—</span>
-            </button>
+            <div id="ai-news-container">
+                <p class="loading lang-fr">⏳ Chargement des dernières actualités IA...</p>
+                <p class="loading lang-en hidden">⏳ Loading latest AI news...</p>
             </div>
 
-            <div class="veille-grid" id="veilleGrid">
-            <div class="veille-empty" id="veilleEmpty">
-                <div class="veille-empty-icon">📡</div>
-                <div class="veille-empty-title fr">Chargement des actualités...</div>
-                <div class="veille-empty-title en">Loading latest AI news...</div>
+            <div class="news-grid" id="news-grid" style="display: none;">
+                <!-- News will be loaded here by JavaScript -->
             </div>
-            </div>
-
         </div>
-        </section>
-
-        <div id="veilleToast"></div>
+    </section>
 
     <!-- Contact Section -->
     <section id="contact">
@@ -1933,8 +2026,19 @@
             </div>
 
             <div class="social-links" style="margin-top: 3rem;">
-                <a href="https://github.com/MILLE-tech" target="_blank" class="social-link" title="GitHub">GH</a>
-                <a href="https://www.linkedin.com/in/arsène-caron-2b585b311" target="_blank" class="social-link" title="LinkedIn">IN</a>
+                <a href="https://github.com/MILLE-tech" target="_blank" class="social-link" title="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                        <path d="M9 18c-4.51 2-5-2-7-2"/>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/arsène-caron-2b585b311" target="_blank" class="social-link" title="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                        <rect width="4" height="12" x="2" y="9"/>
+                        <circle cx="4" cy="4" r="2"/>
+                    </svg>
+                </a>
             </div>
         </div>
     </section>
@@ -2003,11 +2107,20 @@
             langEn.forEach(el => el.classList.remove('hidden'));
         }
 
+        function updateLanguageVisibility() {
+            const lang = html.getAttribute('lang') || 'fr';
+            document.querySelectorAll('.lang-fr').forEach(el => {
+                el.classList.toggle('hidden', lang !== 'fr');
+            });
+            document.querySelectorAll('.lang-en').forEach(el => {
+                el.classList.toggle('hidden', lang !== 'en');
+            });
+        }
+
         langToggle.addEventListener('click', () => {
             const lang = html.getAttribute('lang') === 'fr' ? 'en' : 'fr';
             html.setAttribute('lang', lang);
             localStorage.setItem('language', lang);
-
             updateLanguageVisibility();
         });
 
@@ -2156,182 +2269,294 @@
             canvas.height = window.innerHeight;
         });
 
-               // ============================================
-        // VEILLE IA GÉNÉRATIVE
         // ============================================
-        (function () {
-            let _articles = [];
-            let _filter = 'all';
-
-            const CAT_BADGE = {
-                'Texte':  ['badge-texte',  '💬'],
-                'Images': ['badge-images', '🖼️'],
-                'Vidéo':  ['badge-video',  '🎬'],
-                'Audio':  ['badge-audio',  '🎵'],
-            };
-
-            function setStatus(state) {
-                const dot = document.getElementById('veilleStatusDot');
-                const txt = document.getElementById('veilleStatusText');
-                dot.className = 'veille-status-dot';
-                if (state === 'live')    { dot.classList.add('live');    txt.textContent = 'À jour'; }
-                else if (state === 'loading') { dot.classList.add('loading'); txt.textContent = 'Chargement…'; }
-                else { txt.textContent = 'En attente'; }
-            }
-
-            function showToast(msg) {
-                const t = document.getElementById('veilleToast');
-                if (!t) return;
-                t.textContent = msg;
-                t.classList.add('show');
-                setTimeout(() => t.classList.remove('show'), 4500);
-            }
-
-            window.veilleFilter = function (cat, el) {
-                _filter = cat;
-                document.querySelectorAll('.veille-tab').forEach(t => t.classList.remove('active'));
-                if (el) el.classList.add('active');
-                render();
-            };
-
-            function render() {
-                const grid = document.getElementById('veilleGrid');
-                const empty = document.getElementById('veilleEmpty');
-                const filtered = _filter === 'all' ? _articles : _articles.filter(a => a.category === _filter);
-
-                // Counts
-                const counts = { all: _articles.length, Texte: 0, Images: 0, 'Vidéo': 0, Audio: 0 };
-                _articles.forEach(a => { if (counts[a.category] !== undefined) counts[a.category]++; });
-                const tcMap = { all: 'tc-all', Texte: 'tc-texte', Images: 'tc-images', 'Vidéo': 'tc-video', Audio: 'tc-audio' };
-                Object.entries(tcMap).forEach(([k, id]) => { const el = document.getElementById(id); if (el) el.textContent = counts[k] || 0; });
-
-                // Stats
-                const statMap = { 'vs-total': counts.all, 'vs-texte': counts['Texte'], 'vs-images': counts['Images'], 'vs-video': counts['Vidéo'], 'vs-audio': counts['Audio'] };
-                Object.entries(statMap).forEach(([id, val]) => { const el = document.getElementById(id); if (el) el.textContent = val; });
-
-                grid.innerHTML = '';
-                if (empty) grid.appendChild(empty);
-
-                if (filtered.length === 0) { empty.style.display = 'block'; return; }
-                empty.style.display = 'none';
-
-                filtered.forEach((art, i) => {
-                const [badgeClass, icon] = CAT_BADGE[art.category] || ['badge-texte', '📄'];
-                const imp = art.importance || 3;
-                const dots = [1, 2, 3, 4, 5].map(n => `<div class="veille-imp-dot${n <= imp ? ' on' : ''}"></div>`).join('');
-                const tags = (art.tags || []).slice(0, 4).map(t => `<span class="veille-tag">${t}</span>`).join('');
-                const catSlug = { Texte: 'texte', Images: 'images', 'Vidéo': 'video', Audio: 'audio' }[art.category] || 'texte';
-
-                const card = document.createElement('div');
-                card.className = `veille-card cat-${catSlug}`;
-                card.style.animationDelay = `${i * 0.055}s`;
-                card.innerHTML = `
-                    <div class="veille-card-top">
-                    <span class="veille-cat-badge ${badgeClass}">${icon} ${art.category}</span>
-                    <div class="veille-importance">${dots}</div>
-                    </div>
-                    <div class="veille-card-title">${art.title}</div>
-                    <div class="veille-card-summary">${art.summary}</div>
-                    ${tags ? `<div class="veille-card-tags">${tags}</div>` : ''}
-                    <div class="veille-card-footer">
-                    <span class="veille-source">📰 ${art.source || '—'}</span>
-                    <span class="veille-date">${art.date || ''}</span>
-                    ${art.url ? `<a class="veille-link" href="${art.url}" target="_blank" rel="noopener">Lire →</a>` : ''}
-                    </div>`;
-                grid.appendChild(card);
-                });
-            }
-
-            window.veilleLoad = async function () {
-                const btn = document.getElementById('veilleRefreshBtn');
-                if (btn) { btn.disabled = true; btn.classList.add('spinning'); }
-                setStatus('loading');
-
-                const today = new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
-
-                try {
-                const res = await fetch('https://api.anthropic.com/v1/messages', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                    model: 'claude-sonnet-4-20250514',
-                    max_tokens: 4000,
-                    tools: [{ type: 'web_search_20250305', name: 'web_search' }],
-                    system: `Tu es un expert en veille sur l'IA générative. Recherche les actualités récentes et retourne UNIQUEMENT un objet JSON brut (sans backticks, sans markdown).
-            Format exact :
+        // AI NEWS FETCHER avec images thématiques
+        // ============================================
+        const aiNews = [
             {
-            "articles": [
-                {
-                "title": "Titre en français",
-                "summary": "Résumé de 2-3 phrases en français.",
-                "category": "une valeur parmi exactement: Texte, Images, Vidéo, Audio",
-                "source": "Nom de la source",
-                "date": "date approximative",
-                "importance": entier entre 1 et 5,
-                "tags": ["tag1", "tag2", "tag3"],
-                "url": "URL ou null"
-                }
-            ]
+                titleFr: "GPT-5 : L'IA Textuelle de Nouvelle Génération",
+                titleEn: "GPT-5: Next Generation Text AI",
+                date: "2025-02-10",
+                descriptionFr: "Le modèle de langage de prochaine génération d'OpenAI promet des capacités de raisonnement et de génération de texte sans précédent.",
+                descriptionEn: "OpenAI's next-generation language model promises unprecedented text generation and reasoning capabilities.",
+                link: "#",
+                image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop",
+                category: "text"
+            },
+            {
+                titleFr: "Midjourney V7 : Photor\u00e9alisme Parfait",
+                titleEn: "Midjourney V7: Perfect Photorealism",
+                date: "2025-02-08",
+                descriptionFr: "La dernière version de Midjourney établit de nouveaux standards en génération d'images IA avec un photoréalisme quasi-parfait.",
+                descriptionEn: "The latest version of Midjourney sets new standards in AI image generation with near-perfect photorealism.",
+                link: "#",
+                image: "https://images.unsplash.com/photo-1686191128892-34053b1b7e55?w=400&h=300&fit=crop",
+                category: "image"
+            },
+            {
+                titleFr: "Sora AI : Révolution de la Génération Vidéo",
+                titleEn: "Sora AI: Video Generation Revolution",
+                date: "2025-02-05",
+                descriptionFr: "Le modèle text-to-video d'OpenAI permet désormais aux entreprises de créer des vidéos haute qualité à partir de simples descriptions.",
+                descriptionEn: "OpenAI's text-to-video model now enables businesses to create high-quality videos from simple text descriptions.",
+                link: "#",
+                image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=400&h=300&fit=crop",
+                category: "video"
+            },
+            {
+                titleFr: "ElevenLabs : Clonage Vocal en Temps Réel",
+                titleEn: "ElevenLabs: Real-Time Voice Cloning",
+                date: "2025-02-03",
+                descriptionFr: "Nouvelle technologie audio IA permettant le clonage vocal instantané avec seulement 3 secondes d'échantillon audio.",
+                descriptionEn: "New AI audio technology enables instant voice cloning with just 3 seconds of audio sample.",
+                link: "#",
+                image: "https://images.unsplash.com/photo-1589903308904-1010c2294adc?w=400&h=300&fit=crop",
+                category: "audio"
             }
-            Génère exactement 12 articles : 3 Texte, 3 Images, 3 Vidéo, 3 Audio. JSON brut uniquement, aucun texte avant ou après.`,
-                    messages: [{
-                        role: 'user',
-                        content: `Date du jour : ${today}. Recherche les 12 actualités IA générative les plus récentes : 3 sur les LLMs/IA texte (GPT, Claude, Gemini, Llama, Mistral...), 3 sur la génération d'images (Midjourney, DALL-E, Stable Diffusion, Flux...), 3 sur la génération vidéo (Sora, Runway, Kling, Pika...), 3 sur l'audio/musique (Suno, Udio, ElevenLabs...). JSON brut uniquement.`
-                    }]
-                    })
-                });
+        ];
 
-                const data = await res.json();
-                let txt = '';
-                for (const block of (data.content || [])) { if (block.type === 'text') txt += block.text; }
-
-                let clean = txt.trim().replace(/^```json\s*/i, '').replace(/^```\s*/, '').replace(/\s*```$/, '');
-                const parsed = JSON.parse(clean);
-                if (!parsed.articles || !Array.isArray(parsed.articles)) throw new Error('Format invalide');
-
-                _articles = parsed.articles;
-                _filter = 'all';
-                document.querySelectorAll('.veille-tab').forEach(t => t.classList.remove('active'));
-                const allTab = document.querySelector('.veille-tab[data-cat="all"]');
-                if (allTab) allTab.classList.add('active');
-
-                render();
-                setStatus('live');
-
-                const lu = document.getElementById('veilleLastUpdate');
-                if (lu) lu.textContent = `⏱ Dernière mise à jour : ${new Date().toLocaleString('fr-FR')}`;
-
-                try { localStorage.setItem('veille_cache', JSON.stringify({ ts: Date.now(), articles: _articles })); } catch (e) {}
-
-                } catch (err) {
-                console.error('Veille error:', err);
-                showToast('Erreur de chargement. Réessaie dans quelques instants.');
-                setStatus('idle');
-                } finally {
-                if (btn) { btn.disabled = false; btn.classList.remove('spinning'); }
-                }
+        async function loadAINews() {
+    const newsGrid = document.getElementById('news-grid');
+    const container = document.getElementById('ai-news-container');
+    const currentLang = html.getAttribute('lang') || 'fr';
+    
+    const API_KEY = 'aadda8c29395487d9b50fb1dfc2966a7';
+    
+    // Requête pour articles IA en anglais
+    const url = `https://newsapi.org/v2/everything?q=(artificial+intelligence+OR+AI+OR+generative+AI)+(GPT+OR+image+generation+OR+video+generation+OR+voice+synthesis)&language=en&sortBy=publishedAt&pageSize=4&apiKey=${API_KEY}`;
+    
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        
+        if (data.status === 'ok' && data.articles && data.articles.length > 0) {
+            container.style.display = 'none';
+            newsGrid.style.display = 'grid';
+            
+            // Catégories avec icônes et traductions
+            const categories = {
+                'GPT': { icon: '📝', nameFr: 'IA Textuelle', nameEn: 'Text AI' },
+                'image': { icon: '🎨', nameFr: 'Génération d\'Images', nameEn: 'Image Generation' },
+                'video': { icon: '🎥', nameFr: 'Génération Vidéo', nameEn: 'Video Generation' },
+                'voice': { icon: '🔊', nameFr: 'Synthèse Vocale', nameEn: 'Voice Synthesis' }
             };
-
-            // Au chargement : cache ou auto-load
-            document.addEventListener('DOMContentLoaded', function () {
-                try {
-                const cached = localStorage.getItem('veille_cache');
-                if (cached) {
-                    const { ts, articles } = JSON.parse(cached);
-                    if (Date.now() - ts < 6 * 60 * 60 * 1000 && articles.length > 0) {
-                    _articles = articles;
-                    render();
-                    setStatus('live');
-                    const lu = document.getElementById('veilleLastUpdate');
-                    if (lu) lu.textContent = `⏱ Depuis le cache — ${new Date(ts).toLocaleString('fr-FR')}`;
-                    return;
-                    }
+            
+            // Déterminer la catégorie de chaque article
+            const articlesWithCategory = data.articles.slice(0, 4).map((article, index) => {
+                const content = (article.title + ' ' + article.description).toLowerCase();
+                let category = null;
+                
+                if (content.includes('gpt') || content.includes('language model') || content.includes('chatbot')) {
+                    category = categories['GPT'];
+                } else if (content.includes('image') || content.includes('midjourney') || content.includes('dall-e')) {
+                    category = categories['image'];
+                } else if (content.includes('video') || content.includes('sora')) {
+                    category = categories['video'];
+                } else if (content.includes('voice') || content.includes('audio') || content.includes('speech')) {
+                    category = categories['voice'];
+                } else {
+                    // Par défaut, attribuer une catégorie selon l'index
+                    const catKeys = Object.keys(categories);
+                    category = categories[catKeys[index % catKeys.length]];
                 }
-                } catch (e) {}
-                veilleLoad();
+                
+                return { ...article, category };
             });
+            
+            newsGrid.innerHTML = articlesWithCategory.map(article => {
+                // Image : utiliser celle de l'article ou image par défaut Unsplash selon catégorie
+                let imageUrl = article.urlToImage;
+                if (!imageUrl || imageUrl.includes('placeholder')) {
+                    // Images par défaut selon catégorie
+                    const defaultImages = {
+                        '📝': 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop',
+                        '🎨': 'https://images.unsplash.com/photo-1686191128892-34053b1b7e55?w=400&h=300&fit=crop',
+                        '🎥': 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=400&h=300&fit=crop',
+                        '🔊': 'https://images.unsplash.com/photo-1589903308904-1010c2294adc?w=400&h=300&fit=crop'
+                    };
+                    imageUrl = defaultImages[article.category.icon];
+                }
+                
+                // Traduction basique du titre et description
+                const titleFr = article.title;
+                const titleEn = article.title;
+                const descFr = article.description || 'Découvrez les dernières avancées en intelligence artificielle.';
+                const descEn = article.description || 'Discover the latest advances in artificial intelligence.';
+                
+                return `
+                    <div class="news-card glass">
+                        <img src="${imageUrl}" 
+                             alt="${currentLang === 'fr' ? titleFr : titleEn}" 
+                             style="width:100%; height:180px; object-fit:cover;"
+                             onerror="this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop'">
+                        <div class="news-content">
+                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                <span style="font-size: 1.5rem;">${article.category.icon}</span>
+                                <span style="font-size: 0.8rem; color: var(--accent); font-weight: 600;">
+                                    ${currentLang === 'fr' ? article.category.nameFr : article.category.nameEn}
+                                </span>
+                            </div>
+                            <p class="news-date">${new Date(article.publishedAt).toLocaleDateString(currentLang === 'fr' ? 'fr-FR' : 'en-US')}</p>
+                            <h4 class="lang-fr">${titleFr}</h4>
+                            <h4 class="lang-en hidden">${titleEn}</h4>
+                            <p class="lang-fr">${descFr}</p>
+                            <p class="lang-en hidden">${descEn}</p>
+                            <a href="${article.url}" class="news-link" target="_blank" rel="noopener noreferrer">
+                                <span class="lang-fr">Lire l'article →</span>
+                                <span class="lang-en hidden">Read article →</span>
+                            </a>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            updateLanguageVisibility();
+            
+        } else {
+            // Si l'API ne retourne pas d'articles, afficher les articles par défaut
+            loadDefaultNews();
+        }
+    } catch (error) {
+        console.error('Erreur lors du chargement des actualités:', error);
+        // En cas d'erreur, charger les articles par défaut
+        loadDefaultNews();
+    }
+}
 
-            })();
-            </script>
+        // Articles par défaut en cas d'erreur API
+        function loadDefaultNews() {
+            const newsGrid = document.getElementById('news-grid');
+            const container = document.getElementById('ai-news-container');
+            const currentLang = html.getAttribute('lang') || 'fr';
+            
+            const defaultNews = [
+                {
+                    titleFr: "GPT-5 : L'IA Textuelle de Nouvelle Génération",
+                    titleEn: "GPT-5: Next Generation Text AI",
+                    date: "2025-02-10",
+                    descriptionFr: "Le modèle de langage de prochaine génération d'OpenAI promet des capacités de raisonnement sans précédent.",
+                    descriptionEn: "OpenAI's next-generation language model promises unprecedented reasoning capabilities.",
+                    link: "#",
+                    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop",
+                    icon: "📝"
+                },
+                {
+                    titleFr: "Midjourney V7 : Photoréalisme Parfait",
+                    titleEn: "Midjourney V7: Perfect Photorealism",
+                    date: "2025-02-08",
+                    descriptionFr: "La dernière version de Midjourney établit de nouveaux standards en génération d'images IA.",
+                    descriptionEn: "The latest version of Midjourney sets new standards in AI image generation.",
+                    link: "#",
+                    image: "https://images.unsplash.com/photo-1686191128892-34053b1b7e55?w=400&h=300&fit=crop",
+                    icon: "🎨"
+                },
+                {
+                    titleFr: "Sora AI : Révolution de la Génération Vidéo",
+                    titleEn: "Sora AI: Video Generation Revolution",
+                    date: "2025-02-05",
+                    descriptionFr: "Le modèle text-to-video d'OpenAI permet de créer des vidéos haute qualité.",
+                    descriptionEn: "OpenAI's text-to-video model enables high-quality video creation.",
+                    link: "#",
+                    image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=400&h=300&fit=crop",
+                    icon: "🎥"
+                },
+                {
+                    titleFr: "ElevenLabs : Clonage Vocal en Temps Réel",
+                    titleEn: "ElevenLabs: Real-Time Voice Cloning",
+                    date: "2025-02-03",
+                    descriptionFr: "Nouvelle technologie audio IA permettant le clonage vocal instantané.",
+                    descriptionEn: "New AI audio technology enables instant voice cloning.",
+                    link: "#",
+                    image: "https://images.unsplash.com/photo-1589903308904-1010c2294adc?w=400&h=300&fit=crop",
+                    icon: "🔊"
+                }
+            ];
+            
+            container.style.display = 'none';
+            newsGrid.style.display = 'grid';
+            
+            newsGrid.innerHTML = defaultNews.map(news => `
+                <div class="news-card glass">
+                    <img src="${news.image}" alt="${currentLang === 'fr' ? news.titleFr : news.titleEn}">
+                    <div class="news-content">
+                        <p class="news-date">${new Date(news.date).toLocaleDateString(currentLang === 'fr' ? 'fr-FR' : 'en-US')}</p>
+                        <h4 class="lang-fr">${news.titleFr}</h4>
+                        <h4 class="lang-en hidden">${news.titleEn}</h4>
+                        <p class="lang-fr">${news.descriptionFr}</p>
+                        <p class="lang-en hidden">${news.descriptionEn}</p>
+                        <a href="${news.link}" class="news-link" target="_blank">
+                            <span class="lang-fr">Lire l'article →</span>
+                            <span class="lang-en hidden">Read article →</span>
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+            
+            updateLanguageVisibility();
+        }
+
+        // Charger les news au chargement de la page
+        setTimeout(loadAINews, 1000);
+
+        // ============================================
+        // EMAILJS CONTACT FORM
+        // ============================================
+        // Initialize EmailJS (you need to replace with your own credentials)
+        (function() {
+            emailjs.init("k7RUjYx4oOh1AmDAi") // Replace with your EmailJS public key
+        })();
+
+        const contactForm = document.getElementById('contactForm');
+        const formStatus = document.getElementById('formStatus');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = '⏳ Envoi en cours...';
+            
+            // Replace with your EmailJS service ID, template ID
+            emailjs.sendForm('service_559ta8j', 'template_o6el7hk', this)
+                .then(function() {
+                    formStatus.className = 'form-status success';
+                    formStatus.style.display = 'block';
+                    formStatus.textContent = '✅ Message envoyé avec succès !';
+                    contactForm.reset();
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Envoyer le message';
+                }, function(error) {
+                    formStatus.className = 'form-status error';
+                    formStatus.style.display = 'block';
+                    formStatus.textContent = '❌ Erreur lors de l\'envoi. Réessayez.';
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Envoyer le message';
+                });
+        });
+
+        // ============================================
+        // SCROLL ANIMATIONS
+        // ============================================
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.glass-card, .timeline-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
