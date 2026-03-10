@@ -793,34 +793,8 @@
     let veilleArticles=[];
     const catIcons={'Texte':'📝','Images':'🎨','Vidéo':'🎥','Audio':'🔊'};
 
-    const catImages = {
-        'Texte': 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=200&fit=crop',
-        'Images': 'https://images.unsplash.com/photo-1686191128892-34053b1b7e55?w=400&h=200&fit=crop',
-        'Vidéo': 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=400&h=200&fit=crop',
-        'Audio': 'https://images.unsplash.com/photo-1589903308904-1010c2294adc?w=400&h=200&fit=crop'
-    };
-    
-    function renderVeille(articles){
-        const grid=document.getElementById('veille-grid');
-        grid.innerHTML=articles.map(a=>{
-            const icon=catIcons[a.category]||'📰';
-            const stars=Array.from({length:5},(_,i)=>`<span class="${i<a.importance?'active':''}"></span>`).join('');
-            const tags=(a.tags||[]).map(t=>`<span class="veille-tag">${t}</span>`).join('');
-            const googleUrl=`https://www.google.com/search?q=${encodeURIComponent(a.title)}`;
-            const img=catImages[a.category]||catImages['Texte'];
-            return `<a href="${googleUrl}" target="_blank" rel="noopener noreferrer" class="veille-card glass">
-                <img src="${img}" alt="${a.category}" style="width:100%;height:160px;object-fit:cover;border-radius:12px 12px 0 0;margin:-1.8rem -1.8rem 1rem -1.8rem;width:calc(100% + 3.6rem);">
-                <div class="veille-card-top">
-                    <span class="veille-category">${icon} ${a.category}</span>
-                    <div class="veille-importance">${stars}</div>
-                </div>
-                <h4>${a.title}</h4>
-                <p>${a.summary}</p>
-                ${tags?`<div class="veille-tags">${tags}</div>`:''}
-                <div class="veille-card-footer"><span>${a.source||''}</span><span>${a.date||''}</span></div>
-            </a>`;
-        }).join('');
-    }
+    const seed = encodeURIComponent(a.title.slice(0, 20));
+    const img = `https://picsum.photos/seed/${seed}/400/200`;
 
     function renderStats(articles){
         const s=document.getElementById('veille-stats');
