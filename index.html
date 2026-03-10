@@ -793,8 +793,7 @@
     let veilleArticles=[];
     const catIcons={'Texte':'📝','Images':'🎨','Vidéo':'🎥','Audio':'🔊'};
 
-    const seed = encodeURIComponent(a.title.slice(0, 20));
-    const img = `https://picsum.photos/seed/${seed}/400/200`;
+    const img = a.image || catImages[a.category] || catImages['Texte'];
 
     function renderStats(articles){
         const s=document.getElementById('veille-stats');
