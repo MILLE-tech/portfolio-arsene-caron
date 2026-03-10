@@ -17,7 +17,7 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
         max_tokens: 8000,
-        system: `Tu es un expert en veille sur l'IA générative. Retourne UNIQUEMENT un objet JSON brut sans backticks ni markdown. Format exact: {"articles":[{"title":"...","summary":"...","category":"Texte","source":"...","date":"2025-03-10","importance":4,"tags":["tag1"],"url":"https://..."}]}. Génère exactement 12 articles : 3 Texte, 3 Images, 3 Vidéo, 3 Audio. Pas de texte avant ou après le JSON.`,
+        system: `Tu es un expert en veille sur l'IA générative. Retourne UNIQUEMENT un objet JSON brut sans backticks ni markdown. Format exact: {"articles":[{"title":"...","summary":"...","category":"Texte|Images|Vidéo|Audio","source":"...","date":"2025-03-10","importance":4,"tags":["tag1"],"url":"https://...","image":"https://images.unsplash.com/photo-XXXXXX?w=400&h=200&fit=crop"}]}. Génère exactement 12 articles : 3 Texte, 3 Images, 3 Vidéo, 3 Audio. Pour chaque article, choisis une vraie URL Unsplash pertinente parmi ces options selon la catégorie - Texte: photo-1677442136019, Images: photo-1686191128892, Vidéo: photo-1574717024653, Audio: photo-1589903308904. Pas de texte avant ou après le JSON.`,
         messages: [{ role: 'user', content: `Date: ${today}. Génère 12 actualités récentes sur l'IA générative en JSON brut uniquement.` }]
       })
     });
