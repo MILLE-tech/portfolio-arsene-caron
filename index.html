@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arsène Caron | Administrateur systèmes | Portfolio BTS SIO SISR</title>
-    <link rel="icon" type="image/svg+xml" href="Gemini_Generated_Image_d6dqujd6dqujd6dq.png">
+    <link rel="icon" type="image/svg+xml" href="arsene.png">
     <meta name="description" content="Portfolio d'Arsène Caron, administrateur systèmes en BTS SIO SISR.">
     <meta name="author" content="Arsène Caron">
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -60,6 +60,19 @@
         .container{max-width:1400px;margin:0 auto;padding:0 2rem;position:relative;z-index:1;}
         section{padding:6rem 0;position:relative;}
         section:first-of-type{padding-top:10rem;}
+
+        /* ===== SECTION TITLES — UNIFORMISÉS ===== */
+        .section-title{
+            font-family:'Sora',sans-serif;
+            font-size:clamp(2rem,4vw,3rem);
+            font-weight:800;
+            margin-bottom:3rem;
+            background:linear-gradient(135deg,var(--accent),var(--accent-light));
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+            background-clip:text;
+        }
+
         .hero{text-align:center;min-height:90vh;display:flex;align-items:center;justify-content:center;}
         .hero-content{animation:fadeInUp 1s ease-out;}
         @keyframes fadeInUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
@@ -78,7 +91,6 @@
         .social-link{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;color:var(--accent);font-weight:700;border:2px solid var(--accent);transition:all .3s;}
         .social-link svg,.control-btn svg{stroke:currentColor;}
         .social-link:hover{background:var(--accent);color:white;transform:translateY(-3px);}
-        .section-title{font-size:clamp(2rem,4vw,3rem);font-weight:800;margin-bottom:3rem;background:linear-gradient(135deg,var(--accent),var(--accent-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
         .glass-card{border-radius:25px;padding:2.5rem;margin-bottom:2rem;transition:all .3s;animation:fadeInUp .8s ease-out;animation-fill-mode:both;}
         .glass-card:hover{transform:translateY(-5px);box-shadow:0 20px 60px rgba(20,184,166,.2);}
         .badge{display:inline-block;padding:.4rem 1rem;background:var(--accent);color:white;border-radius:20px;font-size:.8rem;font-weight:600;margin-bottom:1rem;}
@@ -106,8 +118,10 @@
         .timeline-item h4{font-size:1.2rem;color:var(--accent);margin-bottom:.5rem;}
         .timeline-item .year{color:var(--text-muted);font-size:.9rem;font-family:'IBM Plex Mono',monospace;margin-bottom:.5rem;}
         .timeline-item p{color:var(--text-secondary);}
+        .btn-fiche{margin-top:1.5rem;padding:.8rem 1.8rem;border-radius:25px;border:2px solid var(--accent);background:transparent;color:var(--accent);font-family:'Sora',sans-serif;font-weight:700;font-size:.88rem;cursor:pointer;display:inline-flex;align-items:center;gap:.6rem;transition:all .3s;}
+        .btn-fiche:hover{background:linear-gradient(135deg,var(--accent),var(--accent-light));color:white;transform:translateY(-2px);box-shadow:0 8px 24px rgba(94,175,198,.35);}
 
-        /* ===== VEILLE IA ===== */
+        /* ===== VEILLE RSS ===== */
         .veille-loading{text-align:center;padding:4rem 2rem;color:var(--text-muted);}
         .veille-spinner{width:50px;height:50px;border:3px solid var(--glass-border);border-top-color:var(--accent);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 1.5rem;}
         @keyframes spin{to{transform:rotate(360deg);}}
@@ -131,17 +145,7 @@
         .veille-stat{text-align:center;}
         .veille-stat-value{font-size:1.8rem;font-weight:800;color:var(--accent);font-family:'IBM Plex Mono',monospace;}
         .veille-stat-label{font-size:.75rem;color:var(--text-muted);margin-top:.2rem;}
-        .veille-error{text-align:center;padding:3rem;}
-        .veille-error-icon{font-size:3rem;margin-bottom:1rem;}
-        /* Fallback news */
-        .news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;margin-top:2rem;}
-        .news-card{border-radius:20px;overflow:hidden;transition:all .3s;}
-        .news-card:hover{transform:translateY(-5px);}
-        .news-card img{width:100%;height:180px;object-fit:cover;}
-        .news-content{padding:1.5rem;}
-        .news-card h4{font-size:1.1rem;color:var(--text-primary);margin-bottom:.8rem;line-height:1.4;}
-        .news-date{color:var(--text-muted);font-size:.85rem;margin-bottom:.8rem;font-family:'IBM Plex Mono',monospace;}
-        .news-card p{color:var(--text-secondary);font-size:.9rem;line-height:1.6;}
+        .veille-source-badge{font-size:.7rem;padding:.15rem .5rem;background:rgba(94,175,198,.12);border-radius:8px;color:var(--text-muted);}
 
         /* Certifications */
         .cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2rem;}
@@ -162,7 +166,7 @@
         .cert-detail-label{font-size:.75rem;opacity:.8;text-transform:uppercase;letter-spacing:1px;margin-bottom:.3rem;}
         .cert-detail-value{font-size:1rem;font-weight:600;}
         .cert-badge{width:60px;height:60px;margin:1rem auto 0;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;}
-        .flip-hint{position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);font-size:.7rem;color:var(--text-muted);opacity:.6;}
+        .flip-hint{position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);font-size:.7rem;color:var(--text-muted);opacity:.6;white-space:nowrap;}
         .cert-view-btn{display:inline-block;margin-top:1rem;padding:.7rem 1.5rem;background:rgba(255,255,255,.2);border:2px solid white;border-radius:25px;color:white;text-decoration:none;font-weight:600;font-size:.9rem;transition:all .3s;backdrop-filter:blur(10px);}
         .cert-view-btn:hover{background:white;color:var(--accent);transform:translateY(-2px);}
 
@@ -193,11 +197,10 @@
             section:first-of-type{padding-top:8rem;}
             .avatar{width:140px;height:140px;font-size:3rem;}
             .timeline{padding-left:2rem;}
-            .veille-grid,.news-grid{grid-template-columns:1fr;}
+            .veille-grid{grid-template-columns:1fr;}
             .back-to-top{bottom:1rem;right:1rem;}
         }
         .hidden{display:none!important;}
-        .loading{text-align:center;padding:2rem;color:var(--text-muted);font-style:italic;}
     </style>
 </head>
 <body>
@@ -238,7 +241,9 @@
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="avatar" style="background-image:url('images/avataaars.png');background-size:cover;"></div>
+                <div class="avatar" style="background-image:url('arsene.png');background-size:cover;background-position:center;">
+                    <div style="position:absolute;inset:0;border-radius:50%;background:rgba(94,175,198,0.40);"></div>
+                </div>
                 <h1>Arsène Caron</h1>
                 <p class="subtitle lang-fr">Administrateur systèmes</p>
                 <p class="subtitle lang-en hidden">Infrastructure & Network Technician</p>
@@ -263,20 +268,23 @@
     <!-- ABOUT -->
     <section id="about">
         <div class="container">
-            <h2 class="lang-fr">👋 À Propos de Moi</h2>
-            <h2 class="lang-en hidden">👋 About Me</h2>
+            <h2 class="section-title lang-fr">🙋🏻‍♂️ À Propos de Moi</h2>
+            <h2 class="section-title lang-en hidden">🙋🏻‍♂️ About Me</h2>
             <div class="glass-card glass">
-                <div style="display:flex;gap:3rem;align-items:center;">
-                    <div style="width:200px;height:200px;border-radius:20px;background:linear-gradient(135deg,var(--accent),var(--accent-light));flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:5rem;color:white;">💻</div>
-                    <div>
+                <div style="display:flex;gap:3rem;align-items:center;flex-wrap:wrap;">
+                    <div style="width:200px;height:200px;border-radius:20px;background:linear-gradient(135deg,var(--accent),var(--accent-light));flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:5rem;color:white;">👨🏻‍💻</div>
+                    <div style="flex:1;min-width:280px;">
                         <h3 style="font-size:1.8rem;margin-bottom:1rem;" class="lang-fr">Passionné par l'Infrastructure IT</h3>
                         <h3 style="font-size:1.8rem;margin-bottom:1rem;" class="lang-en hidden">Passionate about IT Infrastructure</h3>
                         <p class="lang-fr" style="color:var(--text-secondary);line-height:1.8;margin-bottom:1rem;">Je suis Arsène Caron, étudiant en BTS SIO option SISR à INGETIS Paris. Passionné par les technologies de l'infrastructure et des réseaux, je me spécialise dans l'administration des systèmes, la virtualisation et la sécurisation des infrastructures IT.</p>
-                        <p class="lang-en hidden" style="color:var(--text-secondary);line-height:1.8;margin-bottom:1rem;">I'm Arsène Caron, BTS SIO SISR student at INGETIS Paris. Passionate about infrastructure and network technologies, I specialize in systems administration, virtualization and IT infrastructure security.</p>
+                        <p class="lang-en hidden" style="color:var(--text-secondary);line-height:1.8;margin-bottom:1rem;">I'm Arsène Caron, a BTS SIO SISR student at INGETIS Paris. Passionate about infrastructure and network technologies, I specialize in systems administration, virtualization and IT infrastructure security.</p>
                         <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem;">
-                            <span style="padding:.6rem 1.2rem;background:rgba(94,175,198,.1);border:1px solid var(--accent);border-radius:20px;color:var(--accent);font-weight:600;font-size:.9rem;" class="lang-fr">🎯 Rigoureux</span>
-                            <span style="padding:.6rem 1.2rem;background:rgba(94,175,198,.1);border:1px solid var(--accent);border-radius:20px;color:var(--accent);font-weight:600;font-size:.9rem;" class="lang-fr">💡 Curieux</span>
-                            <span style="padding:.6rem 1.2rem;background:rgba(94,175,198,.1);border:1px solid var(--accent);border-radius:20px;color:var(--accent);font-weight:600;font-size:.9rem;" class="lang-fr">🚀 Motivé</span>
+                            <span style="padding:.6rem 1.2rem;background:rgba(94,175,198,.1);border:1px solid var(--accent);border-radius:20px;color:var(--accent);font-weight:600;font-size:.9rem;" class="lang-fr">Rigoureux</span>
+                            <span style="padding:.6rem 1.2rem;background:rgba(94,175,198,.1);border:1px solid var(--accent);border-radius:20px;color:var(--accent);font-weight:600;font-size:.9rem;" class="lang-fr">Curieux</span>
+                            <span style="padding:.6rem 1.2rem;background:rgba(94,175,198,.1);border:1px solid var(--accent);border-radius:20px;color:var(--accent);font-weight:600;font-size:.9rem;" class="lang-fr">Motivé</span>
+                            <span style="padding:.6rem 1.2rem;background:rgba(94,175,198,.1);border:1px solid var(--accent);border-radius:20px;color:var(--accent);font-weight:600;font-size:.9rem;" class="lang-en hidden">Rigorous</span>
+                            <span style="padding:.6rem 1.2rem;background:rgba(94,175,198,.1);border:1px solid var(--accent);border-radius:20px;color:var(--accent);font-weight:600;font-size:.9rem;" class="lang-en hidden">Curious</span>
+                            <span style="padding:.6rem 1.2rem;background:rgba(94,175,198,.1);border:1px solid var(--accent);border-radius:20px;color:var(--accent);font-weight:600;font-size:.9rem;" class="lang-en hidden">Motivated</span>
                         </div>
                     </div>
                 </div>
@@ -287,43 +295,51 @@
     <!-- BTS -->
     <section id="bts">
         <div class="container">
-            <h2 style="font-size:clamp(2rem,4vw,3rem);font-weight:800;margin-bottom:3rem;" class="lang-fr">🎓 BTS SIO - SISR</h2>
+            <h2 class="section-title lang-fr">👨🏻‍🎓 BTS SIO - SISR</h2>
+            <h2 class="section-title lang-en hidden">👨🏻‍🎓 BTS SIO - SISR</h2>
             <div class="glass-card glass">
                 <span class="badge">INGETIS Paris - 5ème arrondissement</span>
                 <h3 style="font-size:1.8rem;margin:1rem 0;" class="lang-fr">Services Informatiques aux Organisations</h3>
+                <h3 style="font-size:1.8rem;margin:1rem 0;" class="lang-en hidden">IT Services for Organizations</h3>
                 <p class="lang-fr" style="color:var(--text-secondary);line-height:1.8;margin-bottom:2rem;">Le BTS SIO option SISR forme des techniciens capables d'installer, administrer et sécuriser des infrastructures systèmes et réseaux. Formation de 2 ans à INGETIS Paris.</p>
+                <p class="lang-en hidden" style="color:var(--text-secondary);line-height:1.8;margin-bottom:2rem;">The BTS in IT Services for Organizations, with a specialization in Infrastructure, Systems, and Networks Solutions (SISR), trains technicians who specialize in installing, administering, and securing system and network infrastructures. This two-year program is offered at INGETIS Paris.</p>
                 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:2rem;margin:2rem 0;">
                     <div style="padding:2rem;border-left:4px solid var(--accent);" class="glass">
-                        <h4 style="font-size:1.5rem;margin-bottom:1rem;" class="lang-fr">📚 Première Année</h4>
+                        <h4 style="font-size:1.5rem;margin-bottom:1rem;" class="lang-fr">Première Année</h4>
+                        <h4 style="font-size:1.5rem;margin-bottom:1rem;" class="lang-en hidden">First Year</h4>
                         <ul style="list-style:none;">
-                            <li style="padding-left:1.5rem;margin-bottom:.7rem;position:relative;color:var(--text-secondary);"><span style="position:absolute;left:0;color:var(--accent);font-weight:700;">▸</span>Fondamentaux des réseaux (TCP/IP, modèle OSI)</li>
-                            <li style="padding-left:1.5rem;margin-bottom:.7rem;position:relative;color:var(--text-secondary);"><span style="position:absolute;left:0;color:var(--accent);font-weight:700;">▸</span>Administration Windows Server & Linux</li>
-                            <li style="padding-left:1.5rem;margin-bottom:.7rem;position:relative;color:var(--text-secondary);"><span style="position:absolute;left:0;color:var(--accent);font-weight:700;">▸</span>Virtualisation (VMware, Hyper-V)</li>
-                            <li style="padding-left:1.5rem;margin-bottom:.7rem;position:relative;color:var(--text-secondary);"><span style="position:absolute;left:0;color:var(--accent);font-weight:700;">▸</span>Cybersécurité niveau 1</li>
+                            <li style="padding-left:1.5rem;margin-bottom:.7rem;position:relative;color:var(--text-secondary);"><span style="position:absolute;left:0;color:var(--accent);font-weight:700;">▸</span><span class="lang-fr">Fondamentaux des réseaux (TCP/IP, modèle OSI)</span><span class="lang-en hidden">Network fundamentals (TCP/IP, OSI model)</span></li>
+                            <li style="padding-left:1.5rem;margin-bottom:.7rem;position:relative;color:var(--text-secondary);"><span style="position:absolute;left:0;color:var(--accent);font-weight:700;">▸</span><span class="lang-fr">Administration Windows Server & Linux</span><span class="lang-en hidden">Windows Server & Linux administration</span></li>
+                            <li style="padding-left:1.5rem;margin-bottom:.7rem;position:relative;color:var(--text-secondary);"><span style="position:absolute;left:0;color:var(--accent);font-weight:700;">▸</span><span class="lang-fr">Virtualisation (VMware, Hyper-V)</span><span class="lang-en hidden">Virtualization (VMware, Hyper-V)</span></li>
+                            <li style="padding-left:1.5rem;margin-bottom:.7rem;position:relative;color:var(--text-secondary);"><span style="position:absolute;left:0;color:var(--accent);font-weight:700;">▸</span><span class="lang-fr">Cybersécurité niveau 1</span><span class="lang-en hidden">Cybersecurity level 1</span></li>
                         </ul>
                     </div>
                     <div style="padding:2rem;border-left:4px solid var(--accent);" class="glass">
-                        <h4 style="font-size:1.5rem;margin-bottom:1rem;" class="lang-fr">🚀 Deuxième Année</h4>
+                        <h4 style="font-size:1.5rem;margin-bottom:1rem;" class="lang-fr">Deuxième Année</h4>
+                        <h4 style="font-size:1.5rem;margin-bottom:1rem;" class="lang-en hidden">Second Year</h4>
                         <ul style="list-style:none;">
-                            <li style="padding-left:1.5rem;margin-bottom:.7rem;position:relative;color:var(--text-secondary);"><span style="position:absolute;left:0;color:var(--accent);font-weight:700;">▸</span>Architectures réseau avancées (VLAN, routage)</li>
-                            <li style="padding-left:1.5rem;margin-bottom:.7rem;position:relative;color:var(--text-secondary);"><span style="position:absolute;left:0;color:var(--accent);font-weight:700;">▸</span>Active Directory et stratégies de groupe</li>
-                            <li style="padding-left:1.5rem;margin-bottom:.7rem;position:relative;color:var(--text-secondary);"><span style="position:absolute;left:0;color:var(--accent);font-weight:700;">▸</span>Cloud Computing (Azure, AWS)</li>
-                            <li style="padding-left:1.5rem;margin-bottom:.7rem;position:relative;color:var(--text-secondary);"><span style="position:absolute;left:0;color:var(--accent);font-weight:700;">▸</span>Projets professionnels (E4, E5)</li>
+                            <li style="padding-left:1.5rem;margin-bottom:.7rem;position:relative;color:var(--text-secondary);"><span style="position:absolute;left:0;color:var(--accent);font-weight:700;">▸</span><span class="lang-fr">Architectures réseau avancées (VLAN, routage)</span><span class="lang-en hidden">Advanced network architectures (VLAN, routing)</span></li>
+                            <li style="padding-left:1.5rem;margin-bottom:.7rem;position:relative;color:var(--text-secondary);"><span style="position:absolute;left:0;color:var(--accent);font-weight:700;">▸</span><span class="lang-fr">Active Directory et stratégies de groupe</span><span class="lang-en hidden">Active Directory and Group Policies</span></li>
+                            <li style="padding-left:1.5rem;margin-bottom:.7rem;position:relative;color:var(--text-secondary);"><span style="position:absolute;left:0;color:var(--accent);font-weight:700;">▸</span><span class="lang-fr">Cloud Computing (Azure, AWS)</span><span class="lang-en hidden">Cloud Computing (Azure, AWS)</span></li>
+                            <li style="padding-left:1.5rem;margin-bottom:.7rem;position:relative;color:var(--text-secondary);"><span style="position:absolute;left:0;color:var(--accent);font-weight:700;">▸</span><span class="lang-fr">Projets professionnels (E4, E5)</span><span class="lang-en hidden">Professional projects (E4, E5)</span></li>
                         </ul>
                     </div>
                 </div>
                 <div style="padding:2rem;background:rgba(94,175,198,.1);border:2px solid var(--accent);border-radius:20px;text-align:center;margin:2rem 0;">
-                    <h4 style="margin-bottom:1rem;font-size:1.3rem;">📹 Découvrir le BTS SIO</h4>
-                    <p style="color:var(--text-secondary);margin-bottom:1.5rem;">Regardez la vidéo de présentation du BTS SIO</p>
-                    <a href="https://youtu.be/kfgHfSGnSfA" target="_blank" class="btn btn-primary" style="display:inline-block;">▶️ Voir la vidéo sur YouTube</a>
+                    <h4 style="margin-bottom:1rem;font-size:1.3rem;" class="lang-fr">📹 Découvrir le BTS SIO</h4>
+                    <h4 style="margin-bottom:1rem;font-size:1.3rem;" class="lang-en hidden">📹 Discover the BTS SIO</h4>
+                    <p style="color:var(--text-secondary);margin-bottom:1.5rem;" class="lang-fr">Regardez la vidéo de présentation du BTS SIO</p>
+                    <p style="color:var(--text-secondary);margin-bottom:1.5rem;" class="lang-en hidden">Watch the BTS SIO presentation video</p>
+                    <a href="https://youtu.be/kfgHfSGnSfA" target="_blank" class="btn btn-primary" style="display:inline-flex;">▶️ <span class="lang-fr">Voir la vidéo sur YouTube</span><span class="lang-en hidden">Watch on YouTube</span></a>
                 </div>
             </div>
 
-            <h3 style="margin:3rem 0 2rem;font-size:2rem;" class="lang-fr">🏆 Mes Certifications</h3>
-            <h3 style="margin:3rem 0 2rem;font-size:2rem;" class="lang-en hidden">🏆 My Certifications</h3>
+            <h3 style="margin:3rem 0 2rem;font-size:2rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;" class="lang-fr">📜 Mes Certifications</h3>
+            <h3 style="margin:3rem 0 2rem;font-size:2rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;" class="lang-en hidden">📜 My Certifications</h3>
             <p style="text-align:center;color:var(--text-muted);margin-bottom:2rem;font-style:italic;">💡 <span class="lang-fr">Cliquez sur une carte pour voir les détails</span><span class="lang-en hidden">Click on a card to see details</span></p>
 
             <div class="cert-grid">
+                <!-- CCNA -->
                 <div class="cert-card" onclick="this.classList.toggle('flipped')">
                     <div class="cert-card-inner">
                         <div class="cert-card-front">
@@ -331,20 +347,22 @@
                             <h4>Cisco CCNA</h4>
                             <p class="cert-status lang-fr">En cours</p>
                             <p class="cert-status lang-en hidden">In Progress</p>
-                            <p class="flip-hint">👆 Cliquer pour détails</p>
+                            <span class="flip-hint lang-fr">👆 Cliquer pour détails</span>
+                            <span class="flip-hint lang-en hidden">👆 Click for details</span>
                         </div>
                         <div class="cert-card-back">
                             <h4>Cisco CCNA</h4>
                             <div class="cert-details">
-                                <div class="cert-detail-item"><div class="cert-detail-label">Statut</div><div class="cert-detail-value lang-fr">En cours de préparation</div><div class="cert-detail-value lang-en hidden">In Progress</div></div>
-                                <div class="cert-detail-item"><div class="cert-detail-label">Organisme</div><div class="cert-detail-value">Cisco</div></div>
-                                <div class="cert-detail-item"><div class="cert-detail-label lang-fr">Date prévue</div><div class="cert-detail-value">2026</div></div>
-                                <div class="cert-detail-item"><div class="cert-detail-label lang-fr">Compétences</div><div class="cert-detail-value" style="font-size:.85rem;">Réseaux, Routage, Switching, IPv4/IPv6</div></div>
+                                <div class="cert-detail-item"><div class="cert-detail-label"><span class="lang-fr">Statut</span><span class="lang-en hidden">Status</span></div><div class="cert-detail-value lang-fr">En cours de préparation</div><div class="cert-detail-value lang-en hidden">In Progress</div></div>
+                                <div class="cert-detail-item"><div class="cert-detail-label"><span class="lang-fr">Organisme</span><span class="lang-en hidden">Issuer</span></div><div class="cert-detail-value">Cisco</div></div>
+                                <div class="cert-detail-item"><div class="cert-detail-label"><span class="lang-fr">Date prévue</span><span class="lang-en hidden">Expected date</span></div><div class="cert-detail-value">2026</div></div>
+                                <div class="cert-detail-item"><div class="cert-detail-label"><span class="lang-fr">Compétences</span><span class="lang-en hidden">Skills</span></div><div class="cert-detail-value" style="font-size:.85rem;"><span class="lang-fr">Réseaux, Routage, Switching, IPv4/IPv6</span><span class="lang-en hidden">Networking, Routing, Switching, IPv4/IPv6</span></div></div>
                             </div>
                             <div class="cert-badge">🎯</div>
                         </div>
                     </div>
                 </div>
+                <!-- SecNum -->
                 <div class="cert-card" onclick="this.classList.toggle('flipped')">
                     <div class="cert-card-inner">
                         <div class="cert-card-front">
@@ -352,15 +370,16 @@
                             <h4>SecNum</h4>
                             <p class="cert-status lang-fr">Obtenue</p>
                             <p class="cert-status lang-en hidden">Obtained</p>
-                            <p class="flip-hint">👆 Cliquer pour détails</p>
+                            <span class="flip-hint lang-fr">👆 Cliquer pour détails</span>
+                            <span class="flip-hint lang-en hidden">👆 Click for details</span>
                         </div>
                         <div class="cert-card-back">
                             <h4>SecNum Académie</h4>
                             <div class="cert-details">
-                                <div class="cert-detail-item"><div class="cert-detail-label">Statut</div><div class="cert-detail-value lang-fr">✅ Certifié</div><div class="cert-detail-value lang-en hidden">✅ Certified</div></div>
-                                <div class="cert-detail-item"><div class="cert-detail-label">Organisme</div><div class="cert-detail-value">ANSSI</div></div>
-                                <div class="cert-detail-item"><div class="cert-detail-label lang-fr">Date d'obtention</div><div class="cert-detail-value">2024</div></div>
-                                <div class="cert-detail-item"><div class="cert-detail-label lang-fr">Compétences</div><div class="cert-detail-value" style="font-size:.85rem;">Cybersécurité, Protection des données</div></div>
+                                <div class="cert-detail-item"><div class="cert-detail-label"><span class="lang-fr">Statut</span><span class="lang-en hidden">Status</span></div><div class="cert-detail-value lang-fr">✅ Certifié</div><div class="cert-detail-value lang-en hidden">✅ Certified</div></div>
+                                <div class="cert-detail-item"><div class="cert-detail-label"><span class="lang-fr">Organisme</span><span class="lang-en hidden">Issuer</span></div><div class="cert-detail-value">ANSSI</div></div>
+                                <div class="cert-detail-item"><div class="cert-detail-label"><span class="lang-fr">Date d'obtention</span><span class="lang-en hidden">Obtained</span></div><div class="cert-detail-value">2024</div></div>
+                                <div class="cert-detail-item"><div class="cert-detail-label"><span class="lang-fr">Compétences</span><span class="lang-en hidden">Skills</span></div><div class="cert-detail-value" style="font-size:.85rem;"><span class="lang-fr">Cybersécurité, Protection des données</span><span class="lang-en hidden">Cybersecurity, Data protection</span></div></div>
                             </div>
                             <div class="cert-badge">🏆</div>
                             <a href="certifs/Attesation ANSSI.pdf" class="cert-view-btn lang-fr" onclick="event.stopPropagation();">📄 Voir le certificat</a>
@@ -368,6 +387,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- NetAcad -->
                 <div class="cert-card" onclick="this.classList.toggle('flipped')">
                     <div class="cert-card-inner">
                         <div class="cert-card-front">
@@ -375,15 +395,16 @@
                             <h4>Cisco NetAcad</h4>
                             <p class="cert-status lang-fr">Obtenue</p>
                             <p class="cert-status lang-en hidden">Obtained</p>
-                            <p class="flip-hint">👆 Cliquer pour détails</p>
+                            <span class="flip-hint lang-fr">👆 Cliquer pour détails</span>
+                            <span class="flip-hint lang-en hidden">👆 Click for details</span>
                         </div>
                         <div class="cert-card-back">
                             <h4>Cisco Networking Academy</h4>
                             <div class="cert-details">
-                                <div class="cert-detail-item"><div class="cert-detail-label">Statut</div><div class="cert-detail-value lang-fr">✅ Certifié</div><div class="cert-detail-value lang-en hidden">✅ Certified</div></div>
-                                <div class="cert-detail-item"><div class="cert-detail-label">Organisme</div><div class="cert-detail-value">Cisco</div></div>
-                                <div class="cert-detail-item"><div class="cert-detail-label lang-fr">Date d'obtention</div><div class="cert-detail-value">2024</div></div>
-                                <div class="cert-detail-item"><div class="cert-detail-label lang-fr">Compétences</div><div class="cert-detail-value" style="font-size:.85rem;">Fondamentaux réseaux, Configuration Cisco</div></div>
+                                <div class="cert-detail-item"><div class="cert-detail-label"><span class="lang-fr">Statut</span><span class="lang-en hidden">Status</span></div><div class="cert-detail-value lang-fr">✅ Certifié</div><div class="cert-detail-value lang-en hidden">✅ Certified</div></div>
+                                <div class="cert-detail-item"><div class="cert-detail-label"><span class="lang-fr">Organisme</span><span class="lang-en hidden">Issuer</span></div><div class="cert-detail-value">Cisco</div></div>
+                                <div class="cert-detail-item"><div class="cert-detail-label"><span class="lang-fr">Date d'obtention</span><span class="lang-en hidden">Obtained</span></div><div class="cert-detail-value">2024</div></div>
+                                <div class="cert-detail-item"><div class="cert-detail-label"><span class="lang-fr">Compétences</span><span class="lang-en hidden">Skills</span></div><div class="cert-detail-value" style="font-size:.85rem;"><span class="lang-fr">Fondamentaux réseaux, Configuration Cisco</span><span class="lang-en hidden">Network fundamentals, Cisco configuration</span></div></div>
                             </div>
                             <div class="cert-badge">🏆</div>
                             <a href="certifs/Cisco.pdf" class="cert-view-btn lang-fr" onclick="event.stopPropagation();">📄 Voir le certificat</a>
@@ -391,6 +412,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- RGPD -->
                 <div class="cert-card" onclick="this.classList.toggle('flipped')">
                     <div class="cert-card-inner">
                         <div class="cert-card-front">
@@ -399,16 +421,17 @@
                             <h4 class="lang-en hidden">GDPR Workshop CNIL</h4>
                             <p class="cert-status lang-fr">Obtenue</p>
                             <p class="cert-status lang-en hidden">Obtained</p>
-                            <p class="flip-hint">👆 Cliquer pour détails</p>
+                            <span class="flip-hint lang-fr">👆 Cliquer pour détails</span>
+                            <span class="flip-hint lang-en hidden">👆 Click for details</span>
                         </div>
                         <div class="cert-card-back">
                             <h4 class="lang-fr">Atelier RGPD</h4>
                             <h4 class="lang-en hidden">GDPR Workshop</h4>
                             <div class="cert-details">
-                                <div class="cert-detail-item"><div class="cert-detail-label">Statut</div><div class="cert-detail-value lang-fr">✅ Validé</div><div class="cert-detail-value lang-en hidden">✅ Validated</div></div>
-                                <div class="cert-detail-item"><div class="cert-detail-label">Organisme</div><div class="cert-detail-value">CNIL</div></div>
-                                <div class="cert-detail-item"><div class="cert-detail-label lang-fr">Date d'obtention</div><div class="cert-detail-value">2024</div></div>
-                                <div class="cert-detail-item"><div class="cert-detail-label lang-fr">Compétences</div><div class="cert-detail-value" style="font-size:.85rem;">Protection des données, RGPD</div></div>
+                                <div class="cert-detail-item"><div class="cert-detail-label"><span class="lang-fr">Statut</span><span class="lang-en hidden">Status</span></div><div class="cert-detail-value lang-fr">✅ Validé</div><div class="cert-detail-value lang-en hidden">✅ Validated</div></div>
+                                <div class="cert-detail-item"><div class="cert-detail-label"><span class="lang-fr">Organisme</span><span class="lang-en hidden">Issuer</span></div><div class="cert-detail-value">CNIL</div></div>
+                                <div class="cert-detail-item"><div class="cert-detail-label"><span class="lang-fr">Date d'obtention</span><span class="lang-en hidden">Obtained</span></div><div class="cert-detail-value">2024</div></div>
+                                <div class="cert-detail-item"><div class="cert-detail-label"><span class="lang-fr">Compétences</span><span class="lang-en hidden">Skills</span></div><div class="cert-detail-value" style="font-size:.85rem;"><span class="lang-fr">Protection des données, RGPD</span><span class="lang-en hidden">Data protection, GDPR compliance</span></div></div>
                             </div>
                             <div class="cert-badge">🏆</div>
                             <a href="certifs/CNIL.pdf" class="cert-view-btn lang-fr" onclick="event.stopPropagation();">📄 Voir le certificat</a>
@@ -416,6 +439,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- CoinAcademy -->
                 <div class="cert-card" onclick="this.classList.toggle('flipped')">
                     <div class="cert-card-inner">
                         <div class="cert-card-front">
@@ -423,15 +447,16 @@
                             <h4>CoinAcademy</h4>
                             <p class="cert-status lang-fr">Obtenue</p>
                             <p class="cert-status lang-en hidden">Obtained</p>
-                            <p class="flip-hint">👆 Cliquer pour détails</p>
+                            <span class="flip-hint lang-fr">👆 Cliquer pour détails</span>
+                            <span class="flip-hint lang-en hidden">👆 Click for details</span>
                         </div>
                         <div class="cert-card-back">
                             <h4>CoinAcademy</h4>
                             <div class="cert-details">
-                                <div class="cert-detail-item"><div class="cert-detail-label">Statut</div><div class="cert-detail-value lang-fr">✅ Certifié</div><div class="cert-detail-value lang-en hidden">✅ Certified</div></div>
-                                <div class="cert-detail-item"><div class="cert-detail-label">Organisme</div><div class="cert-detail-value">CoinAcademy</div></div>
-                                <div class="cert-detail-item"><div class="cert-detail-label lang-fr">Date d'obtention</div><div class="cert-detail-value">2024</div></div>
-                                <div class="cert-detail-item"><div class="cert-detail-label lang-fr">Compétences</div><div class="cert-detail-value" style="font-size:.85rem;">Blockchain, Cryptomonnaies</div></div>
+                                <div class="cert-detail-item"><div class="cert-detail-label"><span class="lang-fr">Statut</span><span class="lang-en hidden">Status</span></div><div class="cert-detail-value lang-fr">✅ Certifié</div><div class="cert-detail-value lang-en hidden">✅ Certified</div></div>
+                                <div class="cert-detail-item"><div class="cert-detail-label"><span class="lang-fr">Organisme</span><span class="lang-en hidden">Issuer</span></div><div class="cert-detail-value">CoinAcademy</div></div>
+                                <div class="cert-detail-item"><div class="cert-detail-label"><span class="lang-fr">Date d'obtention</span><span class="lang-en hidden">Obtained</span></div><div class="cert-detail-value">2024</div></div>
+                                <div class="cert-detail-item"><div class="cert-detail-label"><span class="lang-fr">Compétences</span><span class="lang-en hidden">Skills</span></div><div class="cert-detail-value" style="font-size:.85rem;"><span class="lang-fr">Blockchain, Cryptomonnaies</span><span class="lang-en hidden">Blockchain, Cryptocurrencies</span></div></div>
                             </div>
                             <div class="cert-badge">🏆</div>
                             <a href="certifs/Crypto.pdf" class="cert-view-btn lang-fr" onclick="event.stopPropagation();">📄 Voir le certificat</a>
@@ -446,8 +471,8 @@
     <!-- EXPERIENCE -->
     <section id="experience">
         <div class="container">
-            <h2 class="section-title lang-fr">💼 Expérience Professionnelle</h2>
-            <h2 class="section-title lang-en hidden">💼 Professional Experience</h2>
+            <h2 class="section-title lang-fr">👔 Expérience Professionnelle</h2>
+            <h2 class="section-title lang-en hidden">👔 Professional Experience</h2>
             <div class="glass-card glass">
                 <div class="experience-item">
                     <span class="badge lang-fr">EN COURS</span>
@@ -456,21 +481,26 @@
                         <div>
                             <h3 class="lang-fr">Alternant Technicien Infrastructure</h3>
                             <h3 class="lang-en hidden">Infrastructure Technician Apprentice</h3>
-                            <p class="experience-meta">TDF • <span class="lang-fr">Alternance • 10 mois</span><span class="lang-en hidden">Work-study • 10 months</span></p>
+                            <p class="experience-meta">TDF • <span class="lang-fr">Alternance • 11 mois</span><span class="lang-en hidden">Work-study • 11 months</span></p>
                         </div>
                     </div>
                     <p class="lang-fr">En alternance chez TDF, leader de l'audiovisuel et des télécommunications, je contribue à la maintenance et l'évolution de l'infrastructure IT de l'entreprise.</p>
+                    <p class="lang-en hidden">As an apprentice at TDF, a leader in broadcasting and telecommunications, I contribute to the maintenance and evolution of the company's IT infrastructure.</p>
                     <ul class="lang-fr">
                         <li><strong>Ticketing & Support :</strong> Gestion d'incidents via système de ticketing, support technique niveau 2</li>
                         <li><strong>IA Générative :</strong> Mise en production d'une solution d'IA pour optimiser les processus internes</li>
-                        <li><strong>Virtualisation :</strong> Création et configuration de machines virtuelles de préproduction Windows 10</li>
-                        <li><strong>Monitoring :</strong> Mise à jour et déploiement des agents NCPA pour la supervision</li>
+                        <li><strong>Virtualisation :</strong> Création et configuration de machines virtuelles de préproduction Linux ubuntu 24.02</li>
                         <li><strong>Documentation :</strong> Rédaction de procédures techniques et guides d'utilisation</li>
                     </ul>
+                    <ul class="lang-en hidden">
+                        <li><strong>Ticketing & Support:</strong> Incident management via ticketing system, level 2 technical support</li>
+                        <li><strong>Generative AI:</strong> Deployment of an AI solution to optimize internal processes</li>
+                        <li><strong>Virtualization:</strong> Creation and configuration of Linux ubuntu 24.02 pre-production virtual machines</li>
+                        <li><strong>Documentation:</strong> Writing technical procedures and user guides</li>
+                    </ul>
                     <div class="tech-badges">
-                        <span class="tech-badge">Windows 10</span>
+                        <span class="tech-badge">Linux ubuntu 24.02</span>
                         <span class="tech-badge">Virtualisation</span>
-                        <span class="tech-badge">NCPA</span>
                         <span class="tech-badge">Support N2</span>
                         <span class="tech-badge">IA</span>
                     </div>
@@ -480,18 +510,26 @@
                         <div>
                             <h3 class="lang-fr">Stage Technicien Systèmes</h3>
                             <h3 class="lang-en hidden">Systems Technician Internship</h3>
-                            <p class="experience-meta lang-fr">Mairie de Yerres • Stage • 2 mois</p>
+                            <p class="experience-meta lang-fr">Mairie de Yerres • Stage • 5 semaines</p>
+                            <p class="experience-meta lang-en hidden">Mairie de Yerres • Internship • 5 weeks</p>
                         </div>
                     </div>
                     <p class="lang-fr">Stage au sein des services informatiques de la ville, centré sur le développement et le déploiement d'une solution de gestion du parc automobile municipal.</p>
+                    <p class="lang-en hidden">Internship completed within the city's IT departments. This internship focused on the development and deployment of a management solution. This solution concerned the municipal vehicle fleet.</p>
                     <ul class="lang-fr">
                         <li><strong>Développement :</strong> Création d'une application de gestion du parc automobile</li>
-                        <li><strong>Infrastructure :</strong> Mise en place d'une VM Windows 10 pour héberger l'application en production</li>
+                        <li><strong>Infrastructure :</strong> Mise en place d'une VM Windows Server 2022 pour héberger l'application en production</li>
                         <li><strong>Haute disponibilité :</strong> Configuration pour un fonctionnement 24/7</li>
                         <li><strong>Formation :</strong> Accompagnement et formation des utilisateurs finaux</li>
                     </ul>
+                    <ul class="lang-en hidden">
+                        <li><strong>Development:</strong> Creation of a fleet management application</li>
+                        <li><strong>Infrastructure:</strong> Setup of a Windows Server 2022 VM to host the application in production</li>
+                        <li><strong>High availability:</strong> Configuration for 24/7 operation</li>
+                        <li><strong>Training:</strong> End-user support and training</li>
+                    </ul>
                     <div class="tech-badges">
-                        <span class="tech-badge">Windows 10</span>
+                        <span class="tech-badge">Windows Server 2022</span>
                         <span class="tech-badge">VM</span>
                         <span class="tech-badge">Application</span>
                         <span class="tech-badge">24/7</span>
@@ -503,39 +541,10 @@
 
     <!-- PROJECTS -->
     <section id="projects">
+        
         <div class="container">
             <h2 class="section-title lang-fr">🚀 Mes Projets Techniques</h2>
             <h2 class="section-title lang-en hidden">🚀 My Technical Projects</h2>
-            <div class="glass-card glass project-card">
-                <div class="project-header">
-                    <h3 class="lang-fr">Segmentation Réseau par VLAN</h3>
-                    <h3 class="lang-en hidden">Network Segmentation with VLANs</h3>
-                    <span class="badge">01</span>
-                </div>
-                <div class="tech-badges">
-                    <span class="tech-badge">Cisco Switch 2960</span>
-                    <span class="tech-badge">VLAN</span>
-                    <span class="tech-badge">Trunk</span>
-                    <span class="tech-badge">DHCP</span>
-                    <span class="tech-badge">Router-on-a-stick</span>
-                </div>
-                <div class="project-section">
-                    <h4 class="lang-fr">⚠️ Problème</h4>
-                    <p class="lang-fr">L'entreprise AC.Corp (15 salariés) avait besoin de séparer logiquement les services RH et Comptabilité pour des raisons de sécurité.</p>
-                </div>
-                <div class="project-section">
-                    <h4 class="lang-fr">✅ Solution</h4>
-                    <p class="lang-fr">2 VLAN distincts sur switch Cisco 2960, lien trunk vers routeur, DHCP avec relay. Plan d'adressage : 192.168.10.0/28 (RH) et 192.168.10.16/29 (COMPTA).</p>
-                </div>
-                <div class="info-box">
-                    <h4 class="lang-fr">📊 Résultats</h4>
-                    <ul class="lang-fr">
-                        <li>Isolation complète des flux réseau entre services</li>
-                        <li>Sécurisation accrue de l'infrastructure</li>
-                        <li>Attribution automatique des IP via DHCP</li>
-                    </ul>
-                </div>
-            </div>
             <div class="glass-card glass project-card">
                 <div class="project-header">
                     <h3 class="lang-fr">Infrastructure Virtualisée avec Active Directory</h3>
@@ -551,19 +560,79 @@
                 </div>
                 <div class="project-section">
                     <h4 class="lang-fr">⚠️ Problème</h4>
+                    <h4 class="lang-en hidden">⚠️ Problem</h4>
                     <p class="lang-fr">Besoin d'une infrastructure d'entreprise virtualisée avec gestion centralisée des utilisateurs et politiques de sécurité.</p>
+                    <p class="lang-en hidden">Need for a virtualized enterprise infrastructure with centralized user management and security policies.</p>
                 </div>
                 <div class="project-section">
                     <h4 class="lang-fr">✅ Solution</h4>
+                    <h4 class="lang-en hidden">✅ Solution</h4>
                     <p class="lang-fr">Windows Server 2022 avec AD, DNS, DHCP. GPO pour déploiement automatique de logiciels et restrictions par profil.</p>
-                </div>
+                    <p class="lang-en hidden">Windows Server 2022 with AD, DNS, DHCP. GPOs for automatic software deployment and profile-based restrictions.</p>
+                    </div>
                 <div class="info-box">
                     <h4 class="lang-fr">📊 Résultats</h4>
+                    <h4 class="lang-en hidden">📊 Results</h4>
                     <ul class="lang-fr">
                         <li>Administration centralisée de plus de 20 postes clients</li>
                         <li>Automatisation complète du déploiement de configurations</li>
                         <li>Réduction significative du temps d'administration</li>
                     </ul>
+                    <ul class="lang-en hidden">
+                        <li>Centralized administration of 20+ client workstations</li>
+                        <li>Fully automated configuration deployment</li>
+                        <li>Significant reduction in administration time</li>
+                    </ul>   
+                    <button class="btn-fiche" onclick="window.open('fiches/7- Annexes 7 - Epreuve E5 - BTS SIO 2026(SYS).pdf', '_blank')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        <span class="lang-fr">Voir la fiche de situation</span>
+                        <span class="lang-en hidden">View situation sheet</span>
+                    </button>
+                </div>
+            </div>
+            <div class="glass-card glass project-card">
+                <div class="project-header">
+                    <h3 class="lang-fr">Segmentation Réseau par VLAN</h3>
+                    <h3 class="lang-en hidden">Network Segmentation with VLANs</h3>
+                    <span class="badge">01</span>
+                </div>
+                <div class="tech-badges">
+                    <span class="tech-badge">Cisco Switch 2960</span>
+                    <span class="tech-badge">VLAN</span>
+                    <span class="tech-badge">Trunk</span>
+                    <span class="tech-badge">DHCP</span>
+                    <span class="tech-badge">Router-on-a-stick</span>
+                </div>
+                <div class="project-section">
+                    <h4 class="lang-fr">⚠️ Problème</h4>
+                    <h4 class="lang-en hidden">⚠️ Problem</h4>
+                    <p class="lang-fr">L'entreprise AC.Corp (15 salariés) avait besoin de séparer logiquement les services RH et Comptabilité pour des raisons de sécurité.</p>
+                    <p class="lang-en hidden">AC.Corp (15 employees) needed to logically separate the HR and Accounting departments for security reasons.</p>
+                </div>
+                <div class="project-section">
+                    <h4 class="lang-fr">✅ Solution</h4>
+                    <h4 class="lang-en hidden">✅ Solution</h4>
+                    <p class="lang-fr">2 VLAN distincts sur switch Cisco 2960, lien trunk vers routeur, DHCP avec relay. Plan d'adressage : 192.168.10.0/28 (RH) et 192.168.10.16/29 (COMPTA).</p>
+                    <p class="lang-en hidden">2 distinct VLANs on Cisco 2960 switch, trunk link to router, DHCP with relay. Addressing plan: 192.168.10.0/28 (HR) and 192.168.10.16/29 (ACCOUNTING).</p>
+                </div>
+                <div class="info-box">
+                    <h4 class="lang-fr">📊 Résultats</h4>
+                    <h4 class="lang-en hidden">📊 Results</h4>
+                    <ul class="lang-fr">
+                        <li>Isolation complète des flux réseau entre services</li>
+                        <li>Sécurisation accrue de l'infrastructure</li>
+                        <li>Attribution automatique des IP via DHCP</li>
+                    </ul>
+                    <ul class="lang-en hidden">
+                        <li>Complete isolation of network traffic between departments</li>
+                        <li>Enhanced infrastructure security</li>
+                        <li>Automatic IP assignment via DHCP</li>
+                    </ul>
+                    <button class="btn-fiche" onclick="window.open('fiches/7- Annexes 7 - Epreuve E5 - BTS SIO 2026(RSX).pdf', '_blank')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        <span class="lang-fr">Voir la fiche de situation</span>
+                        <span class="lang-en hidden">View situation sheet</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -577,97 +646,130 @@
             <div class="glass-card glass">
                 <span class="badge">BTS SIO - SISR</span>
                 <div class="timeline">
-                    <div class="timeline-item"><h4>B1.1 - Support & Patrimoine</h4><p class="lang-fr">Gérer le patrimoine informatique et assister les utilisateurs dans l'utilisation des systèmes et réseaux</p></div>
-                    <div class="timeline-item"><h4>B1.2 - Cybersécurité</h4><p class="lang-fr">Répondre aux incidents de sécurité, assurer la protection des données et des systèmes</p></div>
-                    <div class="timeline-item"><h4>B2.1 - Administration Systèmes</h4><p class="lang-fr">Installer, configurer et administrer les systèmes d'exploitation serveurs (Windows Server, Linux)</p></div>
-                    <div class="timeline-item"><h4>B2.2 - Administration Réseau</h4><p class="lang-fr">Concevoir, déployer et maintenir une infrastructure réseau sécurisée</p></div>
-                    <div class="timeline-item"><h4>B3 - Cloud & Virtualisation</h4><p class="lang-fr">Déployer des services dans des environnements virtualisés et cloud</p></div>
-                    <div class="timeline-item"><h4>B4 - Gestion de Projet</h4><p class="lang-fr">Travailler en mode projet agile, documenter les solutions techniques</p></div>
+                    <div class="timeline-item">
+                        <h4>B1.1 - <span class="lang-fr">Support & Patrimoine</span><span class="lang-en hidden">Support & Asset Management</span></h4>
+                        <p class="lang-fr">Gérer le patrimoine informatique et assister les utilisateurs dans l'utilisation des systèmes et réseaux</p>
+                        <p class="lang-en hidden">Manage IT assets and assist users in using systems and networks</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>B1.2 - <span class="lang-fr">Cybersécurité</span><span class="lang-en hidden">Cybersecurity</span></h4>
+                        <p class="lang-fr">Répondre aux incidents de sécurité, assurer la protection des données et des systèmes</p>
+                        <p class="lang-en hidden">Respond to security incidents, ensure data and system protection</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>B2.1 - <span class="lang-fr">Administration Systèmes</span><span class="lang-en hidden">Systems Administration</span></h4>
+                        <p class="lang-fr">Installer, configurer et administrer les systèmes d'exploitation serveurs (Windows Server, Linux)</p>
+                        <p class="lang-en hidden">Install, configure and administer server operating systems (Windows Server, Linux)</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>B2.2 - <span class="lang-fr">Administration Réseau</span><span class="lang-en hidden">Network Administration</span></h4>
+                        <p class="lang-fr">Concevoir, déployer et maintenir une infrastructure réseau sécurisée</p>
+                        <p class="lang-en hidden">Design, deploy and maintain a secure network infrastructure</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>B3 - <span class="lang-fr">Cloud & Virtualisation</span><span class="lang-en hidden">Cloud & Virtualization</span></h4>
+                        <p class="lang-fr">Déployer des services dans des environnements virtualisés et cloud</p>
+                        <p class="lang-en hidden">Deploy services in virtualized and cloud environments</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>B4 - <span class="lang-fr">Gestion de Projet</span><span class="lang-en hidden">Project Management</span></h4>
+                        <p class="lang-fr">Travailler en mode projet agile, documenter les solutions techniques</p>
+                        <p class="lang-en hidden">Work in agile project mode, document technical solutions</p>
+                    </div>
                 </div>
             </div>
             <div class="glass-card glass">
-                <h3 style="font-size:1.5rem;margin-bottom:1.5rem;color:var(--accent);">🛠️ Outils & Technologies</h3>
+                <h3 style="font-size:1.5rem;margin-bottom:1.5rem;color:var(--accent);">🛠️ <span class="lang-fr">Outils & Technologies</span><span class="lang-en hidden">Tools & Technologies</span></h3>
                 <div class="tech-badges">
                     <span class="tech-badge">Windows Server 2019/2022</span>
-                    <span class="tech-badge">Linux (Ubuntu, Debian, CentOS)</span>
+                    <span class="tech-badge">Linux (Ubuntu, Debian)</span>
                     <span class="tech-badge">Active Directory</span>
                     <span class="tech-badge">VMware / Hyper-V</span>
                     <span class="tech-badge">PowerShell</span>
-                    <span class="tech-badge">Bash</span>
-                    <span class="tech-badge">Cisco IOS</span>
                     <span class="tech-badge">DNS / DHCP</span>
-                    <span class="tech-badge">VPN</span>
-                    <span class="tech-badge">Firewall</span>
                 </div>
             </div>
             <div class="glass-card glass">
                 <h3 style="font-size:1.5rem;margin-bottom:1.5rem;color:var(--accent);" class="lang-fr">📚 Parcours Scolaire</h3>
+                <h3 style="font-size:1.5rem;margin-bottom:1.5rem;color:var(--accent);" class="lang-en hidden">📚 Education</h3>
                 <div class="timeline">
-                    <div class="timeline-item"><h4>BTS SIO - SISR</h4><p class="year">2024 - 2026</p><p class="lang-fr">Services Informatiques aux Organisations - Solutions d'Infrastructure, Systèmes et Réseaux</p></div>
-                    <div class="timeline-item"><h4 class="lang-fr">Baccalauréat Général</h4><p class="year">2023</p></div>
+                    <div class="timeline-item">
+                        <h4>BTS SIO - SISR</h4>
+                        <p class="year">2024 - 2026</p>
+                        <p class="lang-fr">Services Informatiques aux Organisations - Solutions d'Infrastructure, Systèmes et Réseaux</p>
+                        <p class="lang-en hidden">IT Services for Organizations - Infrastructure, Systems and Networks Solutions</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4 class="lang-fr">MAN MHR</h4>
+                        <h4 class="lang-en hidden">MAN MHR</h4>
+                        <p class="lang-fr">Classe préparatoire au BTS Management en Hotellerie Restauration</p>
+                        <p class="lang-en hidden">Preparatory Class for BTS Management in Hotel and Restaurant Management</p>
+                        <p class="year">2023-2024</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4 class="lang-fr">Baccalauréat Général</h4>
+                        <h4 class="lang-en hidden">French General Baccalaureate</h4>
+                        <p class="year">2023</p>
+                    </div>
                 </div>
             </div>
             <div class="info-box">
                 <h4 class="lang-fr">🌍 Langues</h4>
+                <h4 class="lang-en hidden">🌍 Languages</h4>
                 <ul class="lang-fr"><li>Français : Langue maternelle</li><li>Anglais : Professionnel (B2)</li></ul>
+                <ul class="lang-en hidden"><li>French: Native language</li><li>English: Professional (B2)</li></ul>
             </div>
         </div>
     </section>
 
-    <!-- VEILLE IA — NOUVELLE VERSION -->
+    <!-- VEILLE IA — RSS FEEDS -->
     <section id="ai-watch">
         <div class="container">
             <h2 class="section-title lang-fr">🤖 Veille Technologique - IA Générative</h2>
             <h2 class="section-title lang-en hidden">🤖 Technology Watch - Generative AI</h2>
 
             <div class="glass-card glass">
-                <p class="lang-fr" style="margin-bottom:2rem;line-height:1.8;color:var(--text-secondary);">Cette veille technologique automatisée utilise Claude AI avec recherche web pour présenter les dernières actualités en temps réel.</p>
-                <p class="lang-en hidden" style="margin-bottom:2rem;line-height:1.8;color:var(--text-secondary);">This automated technology watch uses Claude AI with web search to present the latest news in real time.</p>
+                <p class="lang-fr" style="margin-bottom:1.5rem;line-height:1.8;color:var(--text-secondary);">Cette veille technologique agrège en temps réel les flux RSS des principales sources spécialisées en IA générative.</p>
+                <p class="lang-en hidden" style="margin-bottom:1.5rem;line-height:1.8;color:var(--text-secondary);">This technology watch aggregates real-time RSS feeds from leading generative AI specialized sources.</p>
                 <div class="info-box">
-                    <h4 class="lang-fr">ℹ️ À propos de cette veille</h4>
-                    <h4 class="lang-en hidden">ℹ️ About this watch</h4>
-                    <ul class="lang-fr">
-                        <li>Alimentée par Claude AI (Anthropic) avec recherche web en temps réel</li>
-                        <li>Thèmes : IA textuelle, génération d'images, vidéo, audio</li>
-                        <li>12 articles organisés par catégorie avec score d'importance</li>
-                        <li>Mise à jour à chaque visite de la page</li>
-                    </ul>
-                    <ul class="lang-en hidden">
-                        <li>Powered by Claude AI (Anthropic) with real-time web search</li>
-                        <li>12 articles organized by category with importance score</li>
-                        <li>Updated on every page visit</li>
+                    <h4 class="lang-fr">ℹ️ Sources surveillées</h4>
+                    <h4 class="lang-en hidden">ℹ️ Monitored sources</h4>
+                    <ul>
+                        <li>VentureBeat AI — <span class="lang-fr">actualités business & recherche IA</span><span class="lang-en hidden">AI business & research news</span></li>
+                        <li>The Verge AI — <span class="lang-fr">news tech grand public</span><span class="lang-en hidden">mainstream tech news</span></li>
+                        <li>MIT Technology Review — <span class="lang-fr">analyses approfondies</span><span class="lang-en hidden">in-depth analyses</span></li>
+                        <li>Hacker News — <span class="lang-fr">communauté tech & IA</span><span class="lang-en hidden">tech & AI community</span></li>
                     </ul>
                 </div>
             </div>
 
             <div id="veille-container">
-                <!-- Loading -->
                 <div class="veille-loading" id="veille-loading">
                     <div class="veille-spinner"></div>
-                    <p style="font-size:1.1rem;font-weight:600;" class="lang-fr">Chargement des actualités IA en cours...</p>
-                    <p style="font-size:1.1rem;font-weight:600;" class="lang-en hidden">Loading AI news...</p>
-                    <p style="font-size:.85rem;margin-top:.5rem;color:var(--text-muted);" class="lang-fr">Claude AI recherche les dernières actualités sur le web ⏳</p>
+                    <p style="font-size:1.1rem;font-weight:600;" class="lang-fr">Chargement des flux RSS...</p>
+                    <p style="font-size:1.1rem;font-weight:600;" class="lang-en hidden">Loading RSS feeds...</p>
+                    <p style="font-size:.85rem;margin-top:.5rem;color:var(--text-muted);" class="lang-fr">Agrégation des sources IA en cours ⏳</p>
+                    <p style="font-size:.85rem;margin-top:.5rem;color:var(--text-muted);" class="lang-en hidden">Aggregating AI sources ⏳</p>
                 </div>
 
-                <!-- Contenu -->
                 <div id="veille-content" style="display:none;">
                     <div class="veille-stats" id="veille-stats"></div>
                     <div class="veille-tabs" id="veille-tabs">
                         <button class="veille-tab active" onclick="filterVeille('all',this)"><span class="lang-fr">Tout voir</span><span class="lang-en hidden">All</span></button>
-                        <button class="veille-tab" onclick="filterVeille('Texte',this)">📝 Texte</button>
-                        <button class="veille-tab" onclick="filterVeille('Images',this)">🎨 Images</button>
-                        <button class="veille-tab" onclick="filterVeille('Vidéo',this)">🎥 Vidéo</button>
-                        <button class="veille-tab" onclick="filterVeille('Audio',this)">🔊 Audio</button>
+                        <button class="veille-tab" onclick="filterVeille('Texte & LLM',this)">📝 LLM</button>
+                        <button class="veille-tab" onclick="filterVeille('Images',this)">🎨 <span class="lang-fr">Images</span><span class="lang-en hidden">Images</span></button>
+                        <button class="veille-tab" onclick="filterVeille('Vidéo & Audio',this)">🎬 <span class="lang-fr">Vidéo & Audio</span><span class="lang-en hidden">Video & Audio</span></button>
+                        <button class="veille-tab" onclick="filterVeille('Recherche',this)">🔬 <span class="lang-fr">Recherche</span><span class="lang-en hidden">Research</span></button>
                     </div>
                     <div class="veille-grid" id="veille-grid"></div>
                 </div>
 
-                <!-- Erreur / Fallback -->
-                <div id="veille-error" style="display:none;" class="glass-card glass veille-error">
-                    <div class="veille-error-icon">⚠️</div>
-                    <h3 style="color:var(--accent);margin-bottom:1rem;" class="lang-fr">Veille temporairement indisponible</h3>
-                    <p style="color:var(--text-secondary);" class="lang-fr">Voici les dernières actualités en attendant.</p>
-                    <div class="news-grid" id="veille-fallback" style="margin-top:2rem;text-align:left;"></div>
+                <div id="veille-error" style="display:none;" class="glass-card glass">
+                    <p style="font-size:2rem;margin-bottom:1rem;text-align:center;">📡</p>
+                    <h3 style="color:var(--accent);margin-bottom:1rem;text-align:center;" class="lang-fr">Flux RSS temporairement indisponibles</h3>
+                    <h3 style="color:var(--accent);margin-bottom:1rem;text-align:center;" class="lang-en hidden">RSS feeds temporarily unavailable</h3>
+                    <p style="color:var(--text-secondary);text-align:center;" class="lang-fr">Vérifiez votre connexion ou réessayez plus tard.</p>
+                    <p style="color:var(--text-secondary);text-align:center;" class="lang-en hidden">Check your connection or try again later.</p>
                 </div>
             </div>
         </div>
@@ -727,7 +829,7 @@
     <button class="back-to-top" id="backToTop" aria-label="Retour en haut">↑</button>
 
     <script>
-    // THEME
+    // ===== THEME =====
     const themeToggle=document.getElementById('themeToggle'),html=document.documentElement,themeLight=document.querySelector('.theme-light'),themeDark=document.querySelector('.theme-dark');
     const t=localStorage.getItem('theme')||'dark';
     html.setAttribute('data-theme',t);
@@ -738,22 +840,25 @@
         themeLight.classList.toggle('hidden');themeDark.classList.toggle('hidden');
     });
 
-    // LANG
+    // ===== LANG =====
     const langToggle=document.getElementById('langToggle');
     const cl=localStorage.getItem('language')||'fr';
     html.setAttribute('lang',cl);
-    if(cl==='en'){document.querySelectorAll('.lang-fr').forEach(e=>e.classList.add('hidden'));document.querySelectorAll('.lang-en').forEach(e=>e.classList.remove('hidden'));}
+
     function updateLanguageVisibility(){
         const l=html.getAttribute('lang')||'fr';
         document.querySelectorAll('.lang-fr').forEach(e=>e.classList.toggle('hidden',l!=='fr'));
         document.querySelectorAll('.lang-en').forEach(e=>e.classList.toggle('hidden',l!=='en'));
     }
+    updateLanguageVisibility();
+
     langToggle.addEventListener('click',()=>{
         const l=html.getAttribute('lang')==='fr'?'en':'fr';
-        html.setAttribute('lang',l);localStorage.setItem('language',l);updateLanguageVisibility();
+        html.setAttribute('lang',l);localStorage.setItem('language',l);
+        updateLanguageVisibility();
     });
 
-    // PROGRESS + NAV + BACK TO TOP
+    // ===== SCROLL / NAV / PROGRESS =====
     const progressBar=document.getElementById('progressBar'),navbar=document.getElementById('navbar'),backToTop=document.getElementById('backToTop');
     window.addEventListener('scroll',()=>{
         const s=window.pageYOffset,d=document.documentElement.scrollHeight-window.innerHeight;
@@ -763,10 +868,14 @@
     });
     backToTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
-        a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});
+        a.addEventListener('click',function(e){
+            e.preventDefault();
+            const tgt=document.querySelector(this.getAttribute('href'));
+            if(tgt)tgt.scrollIntoView({behavior:'smooth',block:'start'});
+        });
     });
 
-    // PARTICLES
+    // ===== PARTICLES =====
     const canvas=document.getElementById('particles-canvas'),ctx=canvas.getContext('2d');
     canvas.width=window.innerWidth;canvas.height=window.innerHeight;
     const particles=[];
@@ -778,91 +887,193 @@
     for(let i=0;i<80;i++)particles.push(new Particle());
     function animate(){
         ctx.clearRect(0,0,canvas.width,canvas.height);
-        particles.forEach((p,i)=>{p.update();p.draw();
-            for(let j=i+1;j<particles.length;j++){const dx=p.x-particles[j].x,dy=p.y-particles[j].y,d=Math.sqrt(dx*dx+dy*dy);
-                if(d<150){ctx.strokeStyle=`rgba(20,184,166,${.2*(1-d/150)})`;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(particles[j].x,particles[j].y);ctx.stroke();}}
+        particles.forEach((p,i)=>{
+            p.update();p.draw();
+            for(let j=i+1;j<particles.length;j++){
+                const dx=p.x-particles[j].x,dy=p.y-particles[j].y,d=Math.sqrt(dx*dx+dy*dy);
+                if(d<150){ctx.strokeStyle=`rgba(20,184,166,${.2*(1-d/150)})`;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(particles[j].x,particles[j].y);ctx.stroke();}
+            }
         });
         requestAnimationFrame(animate);
     }
     animate();
     window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
 
-    // ============================================================
-    // VEILLE IA — appel à /api/veille
-    // ============================================================
-    let veilleArticles=[];
-    const catIcons={'Texte':'📝','Images':'🎨','Vidéo':'🎥','Audio':'🔊'};
+    // ===== VEILLE RSS =====
+    const CAT_ICONS = {'Texte & LLM':'📝','Images':'🎨','Vidéo & Audio':'🎬','Recherche':'🔬'};
 
-    const img = a.image || catImages[a.category] || catImages['Texte'];
+    const RSS_FEEDS = [
+        { url: 'https://venturebeat.com/category/ai/feed/',                              source: 'VentureBeat' },
+        { url: 'https://www.theverge.com/rss/ai-artificial-intelligence/index.xml',     source: 'The Verge' },
+        { url: 'https://www.technologyreview.com/feed/',                                 source: 'MIT Tech Review' },
+        { url: 'https://hnrss.org/newest?q=AI+LLM&count=10',                            source: 'Hacker News' }
+    ];
+
+    function categorize(text){
+        const t=(text||'').toLowerCase();
+        if(/sora|runway|video|vidéo|animation|film|music|audio|voice|speech|eleven|sound/.test(t)) return 'Vidéo & Audio';
+        if(/image|midjourney|dall-e|stable diffusion|flux|photo|picture|visual|artwork|firefly/.test(t)) return 'Images';
+        if(/research|paper|arxiv|study|benchmark|dataset|training|model|weights/.test(t)) return 'Recherche';
+        return 'Texte & LLM';
+    }
+
+    function extractTags(title){
+        const keywords=['GPT','Claude','Gemini','Llama','Mistral','Midjourney','DALL-E','Sora','ElevenLabs','OpenAI','Anthropic','Google','Meta','Microsoft','HuggingFace','open-source','multimodal','RAG','fine-tuning'];
+        return keywords.filter(k=>title.toLowerCase().includes(k.toLowerCase())).slice(0,3);
+    }
+
+    function stripHTML(str){
+        return (str||'').replace(/<[^>]*>/g,'').replace(/&[a-z]+;/g,' ').trim();
+    }
+
+    function formatDate(str){
+        try{
+            const d=new Date(str);
+            return d.toLocaleDateString(document.documentElement.getAttribute('lang')==='fr'?'fr-FR':'en-GB',{day:'numeric',month:'short',year:'numeric'});
+        }catch{return '';}
+    }
+
+    let veilleArticles=[];
+
+    function renderVeille(articles){
+        const grid=document.getElementById('veille-grid');
+        if(!articles.length){
+            grid.innerHTML='<p style="color:var(--text-muted);text-align:center;padding:2rem;grid-column:1/-1;">Aucun article dans cette catégorie.</p>';
+            return;
+        }
+        grid.innerHTML=articles.map(a=>`
+            <a href="${a.link||'#'}" target="_blank" rel="noopener noreferrer" class="veille-card glass">
+                <div class="veille-card-top">
+                    <span class="veille-category">${CAT_ICONS[a.category]||'📰'} ${a.category}</span>
+                    <div class="veille-importance">
+                        ${[1,2,3,4,5].map(i=>`<span class="${i<=(a.importance||3)?'active':''}"></span>`).join('')}
+                    </div>
+                </div>
+                <h4>${a.title}</h4>
+                <p>${a.summary}</p>
+                <div class="veille-tags">
+                    ${(a.tags||[]).map(tag=>`<span class="veille-tag">${tag}</span>`).join('')}
+                </div>
+                <div class="veille-card-footer">
+                    <span class="veille-source-badge">${a.source}</span>
+                    <span>${formatDate(a.pubDate)}</span>
+                </div>
+            </a>
+        `).join('');
+    }
 
     function renderStats(articles){
-        const s=document.getElementById('veille-stats');
         const cats=[...new Set(articles.map(a=>a.category))];
-        const avg=(articles.reduce((x,a)=>x+(a.importance||0),0)/articles.length).toFixed(1);
-        s.innerHTML=`
-            <div class="veille-stat"><div class="veille-stat-value">${articles.length}</div><div class="veille-stat-label lang-fr">Articles</div></div>
-            <div class="veille-stat"><div class="veille-stat-value">${cats.length}</div><div class="veille-stat-label lang-fr">Catégories</div></div>
-            <div class="veille-stat"><div class="veille-stat-value">${avg}/5</div><div class="veille-stat-label lang-fr">Importance moy.</div></div>
-            <div class="veille-stat"><div class="veille-stat-value" style="font-size:1rem;">${new Date().toLocaleDateString('fr-FR')}</div><div class="veille-stat-label lang-fr">Mis à jour</div></div>`;
+        const sources=[...new Set(articles.map(a=>a.source))];
+        document.getElementById('veille-stats').innerHTML=`
+            <div class="veille-stat"><div class="veille-stat-value">${articles.length}</div><div class="veille-stat-label">Articles</div></div>
+            <div class="veille-stat"><div class="veille-stat-value">${cats.length}</div><div class="veille-stat-label">Catégories</div></div>
+            <div class="veille-stat"><div class="veille-stat-value">${sources.length}</div><div class="veille-stat-label">Sources</div></div>
+            <div class="veille-stat"><div class="veille-stat-value" style="font-size:1rem;">${new Date().toLocaleDateString('fr-FR')}</div><div class="veille-stat-label">Mis à jour</div></div>`;
     }
 
     window.filterVeille=function(cat,btn){
-        document.querySelectorAll('.veille-tab').forEach(t=>t.classList.remove('active'));
+        document.querySelectorAll('.veille-tab').forEach(b=>b.classList.remove('active'));
         btn.classList.add('active');
         renderVeille(cat==='all'?veilleArticles:veilleArticles.filter(a=>a.category===cat));
     };
 
-    function showFallback(){
-        document.getElementById('veille-loading').style.display='none';
-        document.getElementById('veille-content').style.display='none';
-        document.getElementById('veille-error').style.display='block';
-        document.getElementById('veille-fallback').innerHTML=[
-            {title:"GPT-4o : Nouvelles capacités multimodales",img:"https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop",date:"2025-03-01",desc:"OpenAI améliore ses modèles avec de nouvelles capacités multimodales."},
-            {title:"Midjourney v6 : Images ultra-réalistes",img:"https://images.unsplash.com/photo-1686191128892-34053b1b7e55?w=400&h=300&fit=crop",date:"2025-02-28",desc:"La dernière version repousse les limites du photoréalisme en IA."},
-            {title:"Sora : Vidéos de 60 secondes disponibles",img:"https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=400&h=300&fit=crop",date:"2025-02-25",desc:"OpenAI étend Sora pour générer des vidéos plus longues."},
-            {title:"ElevenLabs : Clonage vocal en 3 secondes",img:"https://images.unsplash.com/photo-1589903308904-1010c2294adc?w=400&h=300&fit=crop",date:"2025-02-20",desc:"La technologie de clonage vocal atteint un nouveau niveau de réalisme."}
-        ].map(n=>`<div class="news-card glass"><img src="${n.img}" alt="${n.title}" style="width:100%;height:180px;object-fit:cover;"><div class="news-content"><p class="news-date">${n.date}</p><h4>${n.title}</h4><p>${n.desc}</p></div></div>`).join('');
-        updateLanguageVisibility();
+    async function fetchFeed(feed){
+        try{
+            const proxyUrl='https://api.allorigins.win/get?url='+encodeURIComponent(feed.url);
+            const res=await fetch(proxyUrl,{signal:AbortSignal.timeout(12000)});
+            if(!res.ok)return[];
+            const data=await res.json();
+            if(!data.contents)return[];
+
+            const parser=new DOMParser();
+            const xml=parser.parseFromString(data.contents,'text/xml');
+            const items=[...xml.querySelectorAll('item, entry')].slice(0,5);
+
+            return items.map(item=>{
+                const get=tag=>item.querySelector(tag)?.textContent?.trim()||'';
+                const title=get('title').replace(/\s+/g,' ').slice(0,100);
+                const linkEl=item.querySelector('link');
+                const link=linkEl?.getAttribute('href')||linkEl?.textContent?.trim()||'#';
+                const desc=stripHTML(get('description')||get('summary')||get('content')).slice(0,160);
+                const pubDate=get('pubDate')||get('published')||get('updated')||'';
+                const cat=categorize(title+' '+desc);
+                return{
+                    title,
+                    summary:desc+(desc.length>=160?'…':''),
+                    link,pubDate,
+                    source:feed.source,
+                    category:cat,
+                    importance:Math.min(5,Math.max(1,Math.floor(Math.random()*2)+3)),
+                    tags:extractTags(title)
+                };
+            });
+        }catch(e){console.warn('Feed failed:',feed.source,e.message);return[];}
     }
 
     async function veilleLoad(){
         try{
-            const res=await fetch('/api/veille',{method:'GET'});
-            if(!res.ok)throw new Error(`HTTP ${res.status}`);
-            const data=await res.json();
-            if(!data.articles||!data.articles.length)throw new Error('No articles');
-            veilleArticles=data.articles;
+            const results=await Promise.allSettled(RSS_FEEDS.map(f=>fetchFeed(f)));
+            const all=results.flatMap(r=>r.status==='fulfilled'?r.value:[]);
+
+            const seen=new Set();
+            const unique=all.filter(a=>{
+                const key=a.title.toLowerCase().slice(0,50);
+                if(seen.has(key))return false;
+                seen.add(key);return true;
+            });
+
+            unique.sort((a,b)=>new Date(b.pubDate)-new Date(a.pubDate));
+
+            if(!unique.length)throw new Error('No articles');
+
+            veilleArticles=unique;
             document.getElementById('veille-loading').style.display='none';
             document.getElementById('veille-content').style.display='block';
             renderStats(veilleArticles);
             renderVeille(veilleArticles);
-            updateLanguageVisibility();
         }catch(err){
-            console.error('Veille error:',err);
-            showFallback();
+            console.error('Veille RSS error:',err);
+            document.getElementById('veille-loading').style.display='none';
+            document.getElementById('veille-error').style.display='block';
         }
     }
-    setTimeout(veilleLoad,500);
+    veilleLoad();
 
-    // EMAILJS
+    // ===== EMAILJS =====
     (function(){emailjs.init("k7RUjYx4oOh1AmDAi");})();
     const contactForm=document.getElementById('contactForm'),formStatus=document.getElementById('formStatus');
     contactForm.addEventListener('submit',function(e){
         e.preventDefault();
         const btn=contactForm.querySelector('button[type="submit"]');
-        btn.disabled=true;btn.textContent='⏳ Envoi en cours...';
+        const lang=html.getAttribute('lang')||'fr';
+        btn.disabled=true;
+        btn.textContent=lang==='fr'?'⏳ Envoi en cours...':'⏳ Sending...';
         emailjs.sendForm('service_559ta8j','template_o6el7hk',this).then(()=>{
-            formStatus.className='form-status success';formStatus.style.display='block';formStatus.textContent='✅ Message envoyé avec succès !';
-            contactForm.reset();btn.disabled=false;btn.innerHTML='<span class="lang-fr">Envoyer le message</span><span class="lang-en hidden">Send message</span>';updateLanguageVisibility();
+            formStatus.className='form-status success';formStatus.style.display='block';
+            formStatus.textContent=lang==='fr'?'✅ Message envoyé avec succès !':'✅ Message sent successfully!';
+            contactForm.reset();btn.disabled=false;
+            btn.innerHTML='<span class="lang-fr">Envoyer le message</span><span class="lang-en hidden">Send message</span>';
+            updateLanguageVisibility();
         },()=>{
-            formStatus.className='form-status error';formStatus.style.display='block';formStatus.textContent="❌ Erreur lors de l'envoi. Réessayez.";
-            btn.disabled=false;btn.innerHTML='<span class="lang-fr">Envoyer le message</span><span class="lang-en hidden">Send message</span>';updateLanguageVisibility();
+            formStatus.className='form-status error';formStatus.style.display='block';
+            formStatus.textContent=lang==='fr'?"❌ Erreur lors de l'envoi. Réessayez.":'❌ Send error. Please try again.';
+            btn.disabled=false;
+            btn.innerHTML='<span class="lang-fr">Envoyer le message</span><span class="lang-en hidden">Send message</span>';
+            updateLanguageVisibility();
         });
     });
 
-    // SCROLL ANIMATIONS
-    const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:.1,rootMargin:'0px 0px -100px 0px'});
-    document.querySelectorAll('.glass-card,.timeline-item').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(30px)';el.style.transition='opacity .6s ease,transform .6s ease';obs.observe(el);});
+    // ===== SCROLL ANIMATIONS =====
+    const obs=new IntersectionObserver(entries=>{
+        entries.forEach(e=>{
+            if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}
+        });
+    },{threshold:.1,rootMargin:'0px 0px -100px 0px'});
+    document.querySelectorAll('.glass-card,.timeline-item').forEach(el=>{
+        el.style.opacity='0';el.style.transform='translateY(30px)';el.style.transition='opacity .6s ease,transform .6s ease';
+        obs.observe(el);
+    });
     </script>
 </body>
 </html>
