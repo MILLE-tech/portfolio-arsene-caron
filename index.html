@@ -1314,23 +1314,48 @@
     }
 
         // ===== TYPEWRITER =====
-    function typewriter(el, text, speed=42){
-        const full = text;
-        el.textContent='';
-        el.style.borderRight='none';
-        let i=0;
-        const t=setInterval(()=>{
-            el.textContent+=full[i++];
-            if(i>=full.length) clearInterval(t);
-        },speed);
-    }
-    setTimeout(()=>{
-        const lang=document.documentElement.getAttribute('lang')||'fr';
-        const tFr=document.querySelector('.tagline.lang-fr');
-        const tEn=document.querySelector('.tagline.lang-en');
-        if(lang==='fr'&&tFr) typewriter(tFr,"« De l'idée à l'infrastructure »");
-        else if(lang==='en'&&tEn) typewriter(tEn,"« From Idea to Infrastructure »");
-    },600);
+        function typewriterLoop(el, text, speed = 42, pause = 1200) {
+            let i = 0;
+            let isDeleting = false;
+        
+            el.textContent = '';
+        
+            function tick() {
+                if (!isDeleting) {
+                    el.textContent = text.slice(0, i + 1);
+                    i++;
+        
+                    if (i === text.length) {
+                        isDeleting = true;
+                        setTimeout(tick, pause);
+                        return;
+                    }
+                } else {
+                    el.textContent = text.slice(0, i - 1);
+                    i--;
+        
+                    if (i === 0) {
+                        isDeleting = false;
+                    }
+                }
+        
+                setTimeout(tick, isDeleting ? speed / 2 : speed);
+            }
+        
+            tick();
+        }
+        
+        setTimeout(() => {
+            const lang = document.documentElement.getAttribute('lang') || 'fr';
+            const tFr = document.querySelector('.tagline.lang-fr');
+            const tEn = document.querySelector('.tagline.lang-en');
+        
+            if (lang === 'fr' && tFr) {
+                typewriterLoop(tFr, "« De l'idée à l'infrastructure »");
+            } else if (lang === 'en' && tEn) {
+                typewriterLoop(tEn, "« From Idea to Infrastructure »");
+            }
+        }, 600);
 
     // ===== SCROLL REVEAL (upgrade) =====
     const srObs=new IntersectionObserver(entries=>{
