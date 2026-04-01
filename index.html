@@ -1343,5 +1343,15 @@
         srObs.observe(el);
     });
     </script>
+    <script>
+        const originalTitle=document.title;
+
+        document.addEventListener('visibilitychange', () => {
+            document.title = document.hidden ?
+                "👀 Reviens vite !" :
+                originalTitle;
+        });
+    </script>
 </body>
 </html>
+
